@@ -45,6 +45,7 @@ route::post('/store_product', [AdminController::class, 'store_product']);
 
 route::post('/update_product/{id}', [AdminController::class, 'update_product1']);
 
+route::get('/borrow_product/{id}', [HomeController::class, 'borrow_product']);
 
 
 

@@ -45,7 +45,7 @@
                   <br>
 
                   <div class="">
-                    <a class="btn btn-primary" href="">Meld je aan</a>
+                    <a class="btn btn-primary" href="{{url('borrow_product', $data->id)}}">Meld je aan</a>
                   </div>
 
 
