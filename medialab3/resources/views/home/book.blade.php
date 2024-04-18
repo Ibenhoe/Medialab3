@@ -40,8 +40,17 @@
                     Total<br><strong>{{$data->Quantity}}</strong><br>
                   </span>
                   <div class="text-button">
-                    <a href="details.html">View Item Details</a>
+                    <a href="{{url('product_details',$data->id)}}">Bekijk product</a>
                   </div>
+                  <br>
+
+                  <div class="">
+                    <a class="btn btn-primary" href="">Meld je aan</a>
+                  </div>
+
+
+
+
                 </div>
               </div>
             </div>
