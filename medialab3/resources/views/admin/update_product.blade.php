@@ -50,10 +50,10 @@
                     <div class="div_pad">
                         <label for="">Category</label>
                         <select name="product_category" required >
-                            <option value="$data->category_id">{{$data->categorie->cat_title}}</option>
+                            <option value="{{$data->category_id}}">{{$data->categorie->cat_title}}</option>
                             
                             @foreach($category as $category)
-                            <option value="{{$category->cat_title}}}">{{$category->cat_title}}</option>
+                            <option value="{{$category->id}}">{{$category->cat_title}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -71,12 +71,12 @@
 
                     <div class="div_pad">
                         <label for="">Update product photo</label>
-                        <input type="file" name="product_img">
+                        <input type="file" name="product_image">
                     </div>
 
                     <div>
                         <label for=""> </label>
-                        <input name="Update_product" type="submit" value="Update product" class="btn btn-info">
+                        <input name="Update_product1" type="submit" value="Update product" class="btn btn-info">
                     </div>
 
                 </form>

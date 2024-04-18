@@ -43,7 +43,7 @@ route::get('/update_product/{id}', [AdminController::class, 'update_product']);
 route::post('/store_product', [AdminController::class, 'store_product']);
 
 
-
+route::post('/update_product/{id}', [AdminController::class, 'update_product1']);
 
 
 

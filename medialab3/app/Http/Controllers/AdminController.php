@@ -119,7 +119,7 @@ class AdminController extends Controller
         return view('admin.update_product', compact('data', 'category'));
     }
 
-    public function update_product_store(Request $request, $id)
+    public function update_product1(Request $request, $id)
     {
         $data = Product::find($id);
         $data->Merk = $request->product_merk;
@@ -138,6 +138,6 @@ class AdminController extends Controller
 
     
         $data->save();
-        return redirect()->back()->with('message', 'Product Updated Successfully');
+        return redirect('/show_product');
     }
 }
