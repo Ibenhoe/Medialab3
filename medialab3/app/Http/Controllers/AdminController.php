@@ -25,6 +25,7 @@ class AdminController extends Controller
                 return view('admin.index');
             }
             else if($usertype == 'user'){
+                $data = Product::all();
                 return view('home.index');
             }
             
