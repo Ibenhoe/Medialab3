@@ -7,6 +7,15 @@
             <h2><em>Items</em> Currently In The Market.</h2>
           </div>
         </div>
+
+        
+          @if(session()->has('message'))
+          <div class="alert alert-succes">
+            <button type="button" class="close" data-bs-dissmis="alert" aria-hidden="true">x</button>
+          {{session()->get('message')}}
+          </div>
+          @endif
+        
         <div class="col-lg-6">
           <div class="filters">
             <ul>
