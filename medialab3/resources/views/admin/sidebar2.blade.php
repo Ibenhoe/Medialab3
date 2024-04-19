@@ -11,14 +11,13 @@
         </div>
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
-                <li ><a href="index.html"> <i class="icon-home"></i>Home </a></li>
+                <li ><a href="{{url('home')}}"> <i class="icon-home"></i>Home </a></li>
                 <li class="active"><a href="{{url('categorie_page')}}"> <i class="icon-grid"></i>Categorie</a></li>
                 
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Products</a>
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="{{url('add_product')}}">Add product</a></li>
-                    <li><a href="#">Page</a></li>
-                    <li><a href="#">Page</a></li>
+                    <li><a href="{{url('show_product')}}">Show products</a></li>
                   </ul>
                 </li>
                 <li><a href="login.html"> <i class="icon-logout"></i>Login page </a></li>
