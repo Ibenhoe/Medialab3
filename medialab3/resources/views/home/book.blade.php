@@ -10,10 +10,8 @@
 
         
           @if(session()->has('message'))
-          <div class="alert alert-succes">
-            <button type="button" class="close" data-bs-dissmis="alert" aria-hidden="true">x</button>
-          {{session()->get('message')}}
-          </div>
+          <div class="alert alert-success">
+            <button type="button" class="close" data-bs-dissmis="alert" aria-hidden="true" >x</button>
           @endif
         
         <div class="col-lg-6">

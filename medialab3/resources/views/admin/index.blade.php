@@ -2,13 +2,63 @@
 <html>
   <head> 
     @include('admin.css')
+    <style type="text/css">
+      
+        th{
+            padding: 20px;
+            font-weight: bold;
+            font-size: 20px;
+            border-bottom: 3px solid grey;
+        }
+        td{
+            padding: 20px;
+            border-bottom: 1px solid grey;
+        }
+    </style>
   </head>
   <body>
     @include('admin.header')
     <div class="d-flex align-items-stretch">
     @include('admin.sidebar')
       <!-- Sidebar Navigation end-->
-      @include('admin.body')
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <div class="table_request">
+            <table >
+              <tr>
+                <th>User name</th>
+                <th>Email</th>
+                <th>Product title</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Product image</th>
+                <th>Change status</th>
+              </tr>
+
+              @foreach($data as $data)
+              <tr>
+                <td>{{$data->user->name}}</td>
+                <td>{{$data->user->email}}</td>
+                <td>{{$data->product->Merk}} {{$data->product->title}}</td>
+                <td>{{$data->product->Quantity}}</td>
+                <td>{{$data->status}}</td>
+                <td><img src="producten_images/{{$data->product->product_img}}" style="width: 100px; height: 100px;"></td>
+                <td><a class="btn btn-warning" href="{{url('approved_product',$data->id)}}">Approved</a>
+                    <a class="btn btn-danger" href="{{url('rejected_product',$data->id)}}">Rejected</a>
+                    <a class="btn btn-info" href="{{url('returned_product',$data->id)}}">Returned</a>
+                </td>
+
+
+              </tr>
+              @endforeach
+            </table>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
     @include('admin.footer')
   </body>
 </html>

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Categorie;
 
 use App\Models\Product;
+use App\Models\Borrow;
 
 
 class AdminController extends Controller
@@ -22,11 +23,13 @@ class AdminController extends Controller
             $usertype = Auth()->user()->usertype;
 
             if($usertype == 'admin'){
-                return view('admin.index');
+                
+                $data = Borrow::all();
+                return view('admin.index', compact('data'));
             }
             else if($usertype == 'user'){
                 $data = Product::all();
-                return view('home.index');
+                return view('home.index', compact('data'));
             }
             
         }
@@ -139,5 +142,51 @@ class AdminController extends Controller
     
         $data->save();
         return redirect('/show_product');
+    }
+
+    public function approve_product($id)
+    {
+        $data = Borrow::find($id);
+        
+        if($data->status == 'approved'){
+            return redirect()->back()->with('message', 'Product Already Approved');
+        }else{
+            $productid = $data->product_id;
+            $product = Product::find($productid);
+            $product->Quantity = $product->Quantity - 1;
+            $product->save();
+            $data->status = 'approved';
+            $data->save();
+            return redirect()->back()->with('message', 'Product Approved Successfully');
+        }}
+        
+
+        
+
+    public function rejected_product($id)
+    {
+        $data = Borrow::find($id);
+        $data->status = 'rejected';
+        $data->save();
+        return redirect()->back()->with('message', 'Product Rejected Successfully');
+    }
+
+    public function returned_product($id)
+    {
+        $data = Borrow::find($id);
+        
+        if($data->status == 'returned'){
+            return redirect()->back()->with('message', 'Product Already Returned');
+        }else{
+
+        $productid = $data->product_id;
+        $product = Product::find($productid);
+        $product->Quantity = $product->Quantity + 1;
+        $product->save();
+        $data->status = 'returned';
+        $data->save();
+        
+        return redirect()->back()->with('message', 'Product Returned Successfully');
+        }
     }
 }

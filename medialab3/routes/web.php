@@ -47,6 +47,11 @@ route::post('/update_product/{id}', [AdminController::class, 'update_product1'])
 
 route::get('/borrow_product/{id}', [HomeController::class, 'borrow_product']);
 
+route::get('/approved_product/{id}', [AdminController::class, 'approve_product']);
+
+route::get('/rejected_product/{id}', [AdminController::class, 'rejected_product']);
+
+route::get('/returned_product/{id}', [AdminController::class, 'returned_product']);
 
 
 
