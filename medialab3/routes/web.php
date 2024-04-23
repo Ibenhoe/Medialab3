@@ -53,6 +53,17 @@ route::get('/rejected_product/{id}', [AdminController::class, 'rejected_product'
 
 route::get('/returned_product/{id}', [AdminController::class, 'returned_product']);
 
+route::get('/mainpage', [HomeController::class, 'mainpage']);
+
+route::get('/home2', [HomeController::class, 'index']);
+
+route::get('/search', [HomeController::class, 'search']);
+
+
+
+
+
+
 
 
 Route::middleware([
