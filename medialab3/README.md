@@ -65,8 +65,18 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+Met gebruik van copolit
+https://copilot.microsoft.com/
+
 
 https://www.youtube.com/playlist?list=PLm8sgxwSZoffQAcAEHAlfyuWGs7U9ZJin
 https://getbootstrap.com/
+https://jetstream.laravel.com/introduction.html
+https://chat.openai.com/share/27791442-50ae-4ada-942b-cf06812f05b0 
+https://chat.openai.com/share/493fd47d-af95-4487-9010-542e158ee675 
+https://chat.openai.com/share/4ff94c57-86d1-4070-9845-a85fb21d7e7b 
+https://chat.openai.com/share/1615f9df-cf64-481e-9a29-a4667b9f2f1a 
+https://chat.openai.com/share/12dfb28e-3ba8-422f-aeb9-156f0a3db01f 
+https://chat.openai.com/share/18ea6143-4841-43ee-8ced-d5e45f96cb57 
 
-
+https://chat.openai.com/share/32245154-bc5a-452e-978b-e5c7dcc9cc3c 
