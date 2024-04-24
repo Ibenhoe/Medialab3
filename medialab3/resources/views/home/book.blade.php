@@ -4,7 +4,7 @@
         <div class="col-lg-6">
           <div class="section-heading">
             <div class="line-dec"></div>
-            <h2><em>Items</em> Currently In The Market.</h2>
+            <h2><em>Bekijk</em> alles wat beschikbaar is.</h2>
           </div>
         </div>
 
@@ -47,7 +47,7 @@
                     Total<br><strong>{{$data->Quantity}}</strong><br>
                   </span>
                   <div class="text-button">
-                    <a href="{{url('product_details',$data->id)}}">Bekijk product</a>
+                    <a href="{{url('details_product',$data->id)}}">Bekijk product</a>
                   </div>
                   <br>
 

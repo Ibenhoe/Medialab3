@@ -81,5 +81,10 @@ class HomeController extends Controller
         return view('home.mainpage', compact('data', 'data2'));
     
     }
+    public function details_product($id)
+    {
+        $data = Product::find($id);
+        return view('home.details_product', compact('data'));
+    }
 
 }
