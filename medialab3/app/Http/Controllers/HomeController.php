@@ -16,7 +16,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data = Product::all();
+        $data = Product::paginate(10);
 
         return view('home.index', compact('data'));
        
@@ -51,7 +51,7 @@ class HomeController extends Controller
     }
     public function mainpage()
     {   
-        $data = Product::all();
+        $data = Product::paginate(10);
         $data2 = Categorie::all();
         return view('home.mainpage', compact('data', 'data2'));
     }

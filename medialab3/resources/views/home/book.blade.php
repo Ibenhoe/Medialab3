@@ -29,36 +29,37 @@
             
 
 
-            @foreach($data as $data)
+            @foreach($data as $data1)
 
             <div class="col-lg-6 currently-market-item all msc">
               <div class="item">
                 <div class="left-image">
-                  <img src="producten_images/{{$data->product_img}}" alt="" style="border-radius: 20px; min-width: 195px; max-width: 195px">
+                  <img src="producten_images/{{$data1->product_img}}" alt="" style="border-radius: 20px; min-width: 195px; max-width: 195px">
                 </div>
                 <div class="right-content">
-                  <h4>{{$data->Merk}} {{$data->title}}</h4>
+                  <h4>{{$data1->Merk}} {{$data1->title}}</h4>
                   
                   <div class="line-dec"></div>
                   <span class="bid">
-                    Current Available<br><strong>{{$data->Quantity}}</strong><br> 
+                    Current Available<br><strong>{{$data1->Quantity}}</strong><br> 
                   </span>
                   <span class="ends">
-                    Total<br><strong>{{$data->Quantity}}</strong><br>
+                    Total<br><strong>{{$data1->Quantity}}</strong><br>
                   </span>
                   <div class="text-button">
-                    <a href="{{url('details_product',$data->id)}}">Bekijk product</a>
+                    <a href="{{url('details_product',$data1->id)}}">Bekijk product</a>
                   </div>
                   <br>
 
                   <div class="">
-                    <a class="btn btn-primary" href="{{url('borrow_product', $data->id)}}">Meld je aan</a>
+                    <a class="btn btn-primary" href="{{url('borrow_product', $data1->id)}}">Meld je aan</a>
                   </div>
 
 
 
 
                 </div>
+                
               </div>
             </div>
             @endforeach
@@ -67,7 +68,9 @@
             
 
           </div>
+          
         </div>
+        {{$data->links()}}
       </div>
     </div>
   </div>
