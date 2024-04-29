@@ -60,18 +60,19 @@
                     <th>Category name</th>
                     <th>Action</th>
                   </tr>
-                  @foreach($data as $data)
+                  @foreach($data as $datas)
                   <tr>
-                    <td>{{$data->cat_title}}</td>
+                    <td>{{$datas->cat_title}}</td>
                     <td>
-                      <a class="btn btn-info" href="{{url('cat_edit',$data->id)}}">Edit</a>
-                      <a onclick="confirmation(event)" class="btn btn-danger" href="{{url('cat_delete',$data->id)}}">Delete</a>
+                      <a class="btn btn-info" href="{{url('cat_edit',$datas->id)}}">Edit</a>
+                      <a onclick="confirmation(event)" class="btn btn-danger" href="{{url('cat_delete',$datas->id)}}">Delete</a>
                     </td>
                   </tr>
                   @endforeach
                 </table>
 
               </div>
+              {{$data->links()}}
 
             </div>
 
