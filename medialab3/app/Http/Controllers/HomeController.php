@@ -64,7 +64,7 @@ class HomeController extends Controller
         $category = $request->input('Category');
         $data2 = Categorie::all();
     
-        $data = Product::selectRaw('*, CONCAT(Merk, " ", title) AS combined_name')
+        $query = Product::selectRaw('*, CONCAT(Merk, " ", title) AS combined_name')
                         ->where(function($query) use ($search) {
                             $query->where('title', 'like', '%'.$search.'%')
                                   ->orWhere('Merk', 'like', '%'.$search.'%')
@@ -73,10 +73,10 @@ class HomeController extends Controller
     
         // Optioneel: Filter op categorie als een specifieke categorie is geselecteerd
         if ($category && $category != 'All Categories') {
-            $data->where('category_id', $category);
+            $query->where('category_id', $category);
         }
     
-        $data = $data->get();
+        $data = $query->paginate(10);
     
         return view('home.mainpage', compact('data', 'data2'));
     
