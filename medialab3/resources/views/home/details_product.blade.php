@@ -46,6 +46,16 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-6">
+              <span class="bid">Available<br><strong>10</strong><br></span>
+            </div>
+            <div class="col-6">
+              <label for="lease-date">Choose Lease Date:</label>
+              <input type="date" id="lease-date" name="lease-date">
+        </div>
+      </div>
+
+        <div class="row">
                 <div class="col-12">
                   <h4>{{$data->Merk}} {{$data->title}}</h4>
                   <p>{{$data->description}}</p>
