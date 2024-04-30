@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Borrow;
 use App\Models\Categorie;
-
-
-
+use App\Models\Favorites;
 
 class HomeController extends Controller
 {
@@ -85,6 +83,24 @@ class HomeController extends Controller
     {
         $data = Product::find($id);
         return view('home.details_product', compact('data'));
+    }
+
+    public function add_favorites($id)
+    {
+        $user_id = Auth::user()->id;
+        $favorites = new Favorites();
+        $product_id = $id;
+        
+        $favorites->product_id = $product_id;
+        $favorites->user_id = $user_id;
+        $favorites->save();
+        return redirect()->back()->with('message', 'Product added to favorites');
+    }
+    public function show_favorites()
+    {
+        $user_id = Auth::user()->id;
+        $data = Favorites::where('user_id', $user_id)->with('product')->get();
+        return view('home.show_favorites', compact('data'));
     }
 
 }

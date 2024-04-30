@@ -61,6 +61,12 @@ route::get('/search', [HomeController::class, 'search']);
 
 route::get('/details_product/{id}', [HomeController::class, 'details_product']);
 
+route::get('/add_favorites/{id}', [HomeController::class, 'add_favorites']);
+
+route::get('/show_favorites', [HomeController::class, 'show_favorites']);
+
+
+
 
 
 

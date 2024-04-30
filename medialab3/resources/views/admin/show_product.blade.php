@@ -62,7 +62,7 @@
                     <tr>
                         <td>{{$product->Merk}}</td>
                         <td>{{$product->title}}</td>
-                        <td>{{$product->description}}</td>
+                        <td>{!!Str::limit($product->description, 50)!!}</td>
                         <td>{{$product->Quantity}}</td>
                         <td>{{$product->categorie->cat_title}}</td>
                         <td><img src="producten_images/{{$product->product_img}}" style="width: 100px; height: 100px;"></td>

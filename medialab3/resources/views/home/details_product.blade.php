@@ -54,6 +54,9 @@
               <input type="date" id="lease-date" name="lease-date">
         </div>
       </div>
+      <div>
+        <a href="{{url('add_favorites', $data->id)}}">Favorites</a>
+      </div>
 
         <div class="row">
                 <div class="col-12">
