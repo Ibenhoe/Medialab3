@@ -3,6 +3,9 @@
 
   <head>
     @include('home.css')
+    <style>
+      
+    </style>
     
   </head>
 

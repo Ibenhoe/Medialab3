@@ -28,7 +28,7 @@ class AdminController extends Controller
                 return view('admin.index', compact('data'));
             }
             else if($usertype == 'user'){
-                $data = Product::all();
+                $data = Product::paginate(10);
                 return view('home.index', compact('data'));
             }
             
