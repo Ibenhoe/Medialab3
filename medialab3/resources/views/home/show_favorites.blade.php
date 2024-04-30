@@ -24,6 +24,7 @@
                 <a onclick="confirmation(event)" class="btn btn-danger" href="">Delete</a>
             </td>
             </tr>
+            <br>
             
             @endforeach
             </table>
