@@ -69,6 +69,8 @@ route::get('/details_product/{id}', [HomeController::class, 'details_product']);
 
 
 
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
