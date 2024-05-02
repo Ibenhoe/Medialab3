@@ -20,7 +20,9 @@
     @include('admin.header')
     <div class="d-flex align-items-stretch">
     @include('admin.sidebar')
+    
       <!-- Sidebar Navigation end-->
+      
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
@@ -36,17 +38,17 @@
                 <th>Change status</th>
               </tr>
 
-              @foreach($data as $data)
+              @foreach($data as $borrow)
               <tr>
-                <td>{{$data->user->name}}</td>
-                <td>{{$data->user->email}}</td>
-                <td>{{$data->product->Merk}} {{$data->product->title}}</td>
-                <td>{{$data->product->Quantity}}</td>
-                <td>{{$data->status}}</td>
-                <td><img src="producten_images/{{$data->product->product_img}}" style="width: 100px; height: 100px;"></td>
-                <td><a class="btn btn-warning" href="{{url('approved_product',$data->id)}}">Approved</a>
-                    <a class="btn btn-danger" href="{{url('rejected_product',$data->id)}}">Rejected</a>
-                    <a class="btn btn-info" href="{{url('returned_product',$data->id)}}">Returned</a>
+                <td>{{$borrow->user->name}}</td>
+                <td>{{$borrow->user->email}}</td>
+                <td>{{$borrow->product->Merk}} {{$borrow->product->title}}</td>
+                <td>{{$borrow->product->Quantity}}</td>
+                <td>{{$borrow->status}}</td>
+                <td><img src="producten_images/{{$borrow->product->product_img}}" style="width: 100px; height: 100px;"></td>
+                <td><a class="btn btn-warning" href="{{url('approved_product',$borrow->id)}}">Approved</a>
+                    <a class="btn btn-danger" href="{{url('rejected_product',$borrow->id)}}">Rejected</a>
+                    <a class="btn btn-info" href="{{url('returned_product',$borrow->id)}}">Returned</a>
                 </td>
 
 
@@ -59,6 +61,7 @@
           </div>
         </div>
       </div>
+      
     @include('admin.footer')
   </body>
 </html>

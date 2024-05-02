@@ -16,7 +16,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-route::get('/', [HomeController::class, 'index']);
+route::get('/', [HomeController::class, 'index']);;
 
 route::get('/home', [AdminController::class, 'index']);
 

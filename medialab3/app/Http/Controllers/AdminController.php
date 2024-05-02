@@ -16,29 +16,20 @@ use App\Models\Borrow;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function __construct()
     {
-        if(Auth::id()){
-
-            $usertype = Auth()->user()->usertype;
-
-            if($usertype == 'admin'){
-                
-                $data = Borrow::all();
-                return view('admin.index', compact('data'));
-            }
-            else if($usertype == 'user'){
-                $data = Product::paginate(10);
-                return view('home.index', compact('data'));
-            }
-            
-        }
-        else{
-            return redirect()->back();
-        }
-
+        
+        $this->middleware('admin'); // Voeg een custom 'admin' middleware toe om te controleren of de gebruiker een admin is
         
     }
+
+    public function index()
+    {
+        $data = Borrow::paginate(10);
+        return view('admin.index', compact('data'));
+    }
+    
+
     public function categorie_page()
     {
         $data = Categorie::paginate(10);

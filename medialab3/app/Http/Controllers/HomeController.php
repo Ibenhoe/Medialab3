@@ -55,30 +55,44 @@ class HomeController extends Controller
     }
 
     public function search(Request $request)
+{
+    // Valideer de invoer
+    $validatedData = $request->validate([
+        'search' => 'nullable|string',
+        'Category' => 'nullable|string', // Pas de validatieregels aan op basis van wat je verwacht
+    ]);
 
-    {
-        
-        $search = $request->input('search');
-        $category = $request->input('Category');
-        $data2 = Categorie::all();
+    // Haal de gevalideerde invoer op
+    $search = $validatedData['search'] ?? '';
+    $category = $validatedData['Category'];
+
+    // Haal alle categorieën op
+    $data2 = Categorie::all();
+
+    // Bouw de zoekquery op met behulp van Eloquent-methoden
+    $query = Product::query();
     
-        $query = Product::selectRaw('*, CONCAT(Merk, " ", title) AS combined_name')
-                        ->where(function($query) use ($search) {
-                            $query->where('title', 'like', '%'.$search.'%')
-                                  ->orWhere('Merk', 'like', '%'.$search.'%')
-                                  ->orWhereRaw('CONCAT(Merk, " ", title) like ?', ['%'.$search.'%']);
-                        });
-    
-        // Optioneel: Filter op categorie als een specifieke categorie is geselecteerd
-        if ($category && $category != 'All Categories') {
-            $query->where('category_id', $category);
-        }
-    
-        $data = $query->paginate(10);
-    
-        return view('home.mainpage', compact('data', 'data2'));
-    
+    if ($search) {
+        $query->where(function($query) use ($search) {
+            $query->where('title', 'like', '%'.$search.'%')
+                  ->orWhere('Merk', 'like', '%'.$search.'%')
+                  ->orWhere(function($query) use ($search) {
+                      $query->whereRaw('CONCAT(Merk, " ", title) like ?', ['%'.$search.'%']);
+                  });
+        });
     }
+
+    // Optioneel: Filter op categorie als een specifieke categorie is geselecteerd
+    if ($category && $category != 'All Categories') {
+        $query->where('category_id', $category);
+    }
+
+    // Haal de resultaten op en geef deze door naar de view
+    $data = $query->paginate(10);
+    $data->appends(['search' => $search, 'Category' => $category]);
+
+    return view('home.mainpage', compact('data', 'data2'));
+}
     public function details_product($id)
     {
         $data = Product::find($id);
