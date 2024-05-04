@@ -57,6 +57,9 @@
       <div>
         <a href="{{url('add_favorites', $data->id)}}">Favorites</a>
       </div>
+      <div>
+            <a class="btn btn-primary" href="{{url('add_cart', $data->id)}}">Voeg toe aan winkelmandje</a>
+      </div>
 
         <div class="row">
                 <div class="col-12">
