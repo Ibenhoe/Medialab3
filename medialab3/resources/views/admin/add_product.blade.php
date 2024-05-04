@@ -50,7 +50,7 @@
             
             <div class="div_pad">
                 <label for="">Product quantity</label>
-                <input type="number" name="product_quantity">
+                <input value="1" type="number" name="product_quantity">
             </div>
 
             

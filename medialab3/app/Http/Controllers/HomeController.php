@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Borrow;
 use App\Models\Categorie;
 use App\Models\Favorites;
+use App\Models\Cart;
 
 class HomeController extends Controller
 {
@@ -115,6 +116,19 @@ class HomeController extends Controller
         $user_id = Auth::user()->id;
         $data = Favorites::where('user_id', $user_id)->with('product')->get();
         return view('home.show_favorites', compact('data'));
+    }
+
+    public function add_cart($id)
+    {
+        $user_id = Auth::user()->id;
+        $product_id = $id;
+        $data = new Cart();
+
+        $data->product_id = $product_id;
+        $data->user_id = $user_id;
+        $data->save();
+
+        return redirect()->back();
     }
 
 }
