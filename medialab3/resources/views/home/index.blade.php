@@ -11,7 +11,7 @@
   @include('home.header')
   <!-- ***** Header Area End ***** -->
 
-  @include('home.mainbanner')
+  
   
   @include('home.categories')
 
