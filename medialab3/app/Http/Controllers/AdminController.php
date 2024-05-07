@@ -75,7 +75,11 @@ class AdminController extends Controller
         $data = new Product;
         $data->Merk = $request->product_merk;
         $data->title = $request->product_title;
-        $data->Quantity = $request->product_quantity;
+        if ($request->product_quantity > 1) {
+            $data->Quantity = $request->product_quantity;
+        } else {
+            $data->Quantity = 1;
+        }
         $data->category_id = $request->product_category;
         $data->description = $request->product_description;
         $product_image = $request->product_image;
