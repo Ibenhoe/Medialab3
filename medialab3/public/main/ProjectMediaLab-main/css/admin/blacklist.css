@@ -1,0 +1,79 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+.navigatie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px rgb(54, 54, 54); 
+  padding: 1em;
+  margin-bottom: 0;
+}
+.navigatie img {
+  height: auto;
+  width: 100%;
+  background-color: rgb(195, 195, 195);
+  border-radius: 50%;
+}
+.navigatie a {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  margin-right: 10px;
+  overflow: hidden;
+  object-fit: contain;
+}
+.navigatie a:hover {
+  filter: brightness(80%);
+}
+.allesDiv {
+  background-color: rgb(195, 195, 195);
+  margin: 1em;
+  border-radius: 2em;
+  min-height: 100vh;
+  padding-bottom: 2em;
+  padding-top: 1em;
+}
+.titel {
+  background-color: white;
+  width: fit-content;
+  margin-left: 1em;
+  padding: 0.6em;
+  border-radius: 0.6em;
+}
+.naamDiv {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  margin: 1em 2em 1em 2em;
+  border-radius: 2em;
+  height: 3em;
+}
+.naamDiv p {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1em;
+}
+.naamDiv a {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1em;
+  text-decoration: none;
+  color: white;
+  background-color: blue;
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 1em;
+}
+.naamDiv a:hover {
+  filter: brightness(80%);
+}
+.zoekbalk {
+  background-color: rgb(195, 195, 195);
+  border: none;
+  font-size: larger;
+  width: 40%;
+  padding: 0.4em;
+  border-radius: 2em;
+}

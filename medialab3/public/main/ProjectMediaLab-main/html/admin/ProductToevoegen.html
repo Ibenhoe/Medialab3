@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product toevoegen</title>
+  <link rel="website icon" href="../../images/EhB-logo-transparant(1).png">
+  <link rel="stylesheet" href="../../css/admin/productToevoegen.css">
+</head>
+<body>
+  <div class="navigatie">
+    <a href="#"><img src="../../images/homeIcon.png"></a>
+    <div class="navrechts">
+    <a href="../admin/ProductToevoegen.html"><img src="../../images/toevoegen.png"></a>
+    <a href="../admin/Blacklist.html"><img src="../../images/blacklist.png"></a>
+    <a href="../user/Login.html"><img src="../../images/logout.png"></a>
+    </div>
+  </div>
+  <div class="heleDiv">
+    <div class="d-flex align-items-stretch">
+      <div class="page-content">
+        <div class="page-header">
+          <div class="container-fluid">
+            <div class="div_left">
+              <h1 class="h2">Add Product</h1>
+              <form action="{{url('store_product')}}" method="post" enctype="multipart/form-data">
+              <div class="div_pad">
+                  <label for="">Product Merk</label>
+                  <input class="tekstveld" type="text" name="product_merk">
+              </div>
+              <div class="div_pad">
+                  <label for="">Product Title</label>
+                  <input class="tekstveld" type="text" name="product_title">
+              </div>
+              <div class="div_pad">
+                  <label for="">Product quantity</label>
+                  <input class="tekstveld" type="number" name="product_quantity">
+              </div>
+              <div class="div_pad">
+                  <label for="">Product category</label>
+                  <select name="product_category" required >
+                      <option >Select a Category</option>
+                      <option value="{{$data->id}}">{{$data->cat_title}}</option>
+                  </select>
+              </div>
+              <div class="div_pad">
+                  <label for="" style="vertical-align: top;">Product description</label>
+                  <textarea name="product_description" cols="30" rows="5"></textarea>
+              </div>
+              <div class="div_pad">
+                  <label for="">Product images</label>
+                  <input type="file" name="product_image">
+              </div>
+              <div class="div_pad">
+                  <input type="submit" value="Add product" class="btn btn-info">
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

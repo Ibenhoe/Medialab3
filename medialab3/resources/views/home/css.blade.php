@@ -4,7 +4,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <title>Liberty NFT Marketplace - HTML CSS Template</title>
+    <title>Uitleendienst Ehb</title>
+    <link rel="stylesheet" href="medialab3/public/main/ProjectMediaLab-main/css/user/mainPage.css">
+    <link rel="website icon" href="../../images/EhB-logo-transparant(1).png">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +18,7 @@
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
 <!--
 
 TemplateMo 577 Liberty Market

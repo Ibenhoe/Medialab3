@@ -1,0 +1,152 @@
+body, html, footer {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+
+.navigatie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px rgb(54, 54, 54); 
+  padding: 1em;
+  margin-bottom: 0;
+}
+
+.navigatie img {
+  height: auto;
+  width: 100%;
+  background-color: rgb(195, 195, 195);
+  border-radius: 50%;
+}
+
+.navigatie a {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  margin-right: 10px;
+  overflow: hidden;
+  object-fit: contain;
+}
+.navigatie a:hover {
+  filter: brightness(80%);
+}
+
+#search {
+  width: 60%;
+  margin: 0 10px;
+  background-color: rgb(214, 214, 214);
+  border-style: none;
+  padding: 0.6em;
+  border-radius: 3em;
+  margin: 0px;
+  font-size: large;
+}
+
+.navrechts {
+  display: flex;
+}
+
+h1 {
+  margin: 1em;
+}
+
+.itemBalkje {
+  background-color: rgb(194, 194, 194);
+  width: 80%;
+  height: 3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+
+.itemBalkje img {
+  width: 2em;
+  height: 2em;
+
+}
+.itemBalkje p {
+  font-weight: 600;
+  margin: 1em;
+  font-size: large;
+  
+  margin-top: auto;
+  margin-bottom: auto;
+  
+}
+.reserveer {
+  background-color: rgb(61, 172, 61);
+  margin-top: auto;
+  margin-bottom: auto;
+  text-decoration: none;
+  padding: 0.4em 1em 0.4em 1em;
+  border-radius: 1em;
+  color: black;
+  font-weight: 600;
+}
+.reserveer:hover {
+  filter: brightness(80%);
+}
+
+.vuilbak {
+  background-color: rgb(255, 78, 78);
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 1em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+}
+.vuilbak:hover {
+  filter: brightness(80%);
+}
+.knoppenRechts {
+  display: flex;
+}
+.wisKnop {
+  float: right;
+  text-decoration: none;
+  background-color: rgb(0, 106, 255);
+  color: white;
+  font-size: medium;
+  border-radius: 2em;
+  padding: 0.5em 1em 0.5em 1em;
+  margin-bottom: 8em;
+  margin-right: 8em;
+}
+.wisKnop p {
+  padding: 0;
+  margin: 0;
+}
+.wisKnop:hover {
+  filter: brightness(80%);
+}
+footer {
+  background-color: black;
+  margin-bottom: 0;
+  color: white;
+  height: 100%;
+  padding: 1em;
+}
+.volledigeFooter {
+display: flex;
+justify-content: space-between;
+margin-top: 2em;
+}
+.footer-content {
+
+}
+.buttonstuk {
+margin-top: auto;
+margin-bottom: auto;
+
+}
+.buttonstuk  img {
+  width: 2em;
+  margin-right: 0.5em;
+}

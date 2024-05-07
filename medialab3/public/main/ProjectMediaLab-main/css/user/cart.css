@@ -1,0 +1,158 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+.navigatie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px rgb(54, 54, 54); 
+  padding: 1em;
+  margin-bottom: 0;
+}
+.navigatie img {
+  height: auto;
+  width: 100%;
+  background-color: rgb(195, 195, 195);
+  border-radius: 50%;
+}
+.navigatie a {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  margin-right: 10px;
+  overflow: hidden;
+  object-fit: contain;
+}
+.navigatie a:hover {
+  filter: brightness(80%);
+}
+h1 {
+  margin-left: 1em;
+}
+.volledigeDiv {
+  display: flex;
+
+  flex-direction: row;
+}
+.containerDiv {
+  width: 58%;
+}
+.linkerDiv {
+  
+  width: 100%;
+  height: fit-content;
+  
+  
+}
+.artikelDiv {
+  background-color: rgb(195, 195, 195);
+  border-radius: 2em;
+  margin: 1em;
+  margin-top: 0;
+}
+.bovenDiv {
+  display: flex;
+}
+.bovenDiv img {
+  width: 100%;
+  
+}
+.imgDiv {
+  width: 40%;
+  height: 40%;
+  padding: 1em;
+}
+.tekstDiv {
+  display:grid;
+  border-left: 1px solid black;
+  padding: 1em;
+}
+.tekstDiv h2 {
+  font-size: x-large;
+}
+.tekstDiv p {
+  font-size: larger;
+}
+.onderDiv {
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+.onderDivTekst {
+  font-size: larger;
+  padding: 0em 1em 0.5em 1em;
+}
+.onderDivKnop {
+  background-color: rgb(255, 66, 45);
+  width: 40px;
+  height: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 2em;
+  border-radius: 2em;
+}
+.onderDivKnop:hover {
+  filter: brightness(80%);
+}
+.onderDivKnop img{
+  width: 40px;
+  width: 40px;
+}
+.rechterDiv {
+  background-color: rgb(195, 195, 195);
+  border-radius: 2em;
+  width: 38%;
+  height: fit-content;
+  padding: 1em;
+  
+}
+.artikelLijst {
+  margin: 1em;
+}
+.artikelNaam {
+  font-size: larger;
+  border-bottom: 1px solid black;
+}
+.knopDiv {
+  background-color: rgb(97, 83, 255);
+  display: flex;
+  justify-content: center;
+  border-radius: 1em;
+}
+.knopDiv:hover {
+  filter: brightness(80%);
+}
+.knopDiv a{
+  text-decoration: none;
+  color: white;
+  font-size: x-large;
+  font-weight: 700;
+  padding: 1em;
+}
+footer {
+  background-color: black;
+  margin-bottom: 0;
+  color: white;
+  height: 100%;
+  padding: 1em;
+  
+}
+.volledigeFooter {
+display: flex;
+justify-content: space-between;
+
+}
+.footer-content {
+
+}
+.buttonstuk {
+margin-top: auto;
+margin-bottom: auto;
+
+}
+.buttonstuk  img {
+  width: 2em;
+  margin-right: 0.5em;
+}

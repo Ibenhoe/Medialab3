@@ -1,0 +1,60 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+.navigatie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px rgb(54, 54, 54); 
+  padding: 1em;
+  margin-bottom: 0;
+}
+.navigatie img {
+  height: auto;
+  width: 100%;
+  background-color: rgb(195, 195, 195);
+  border-radius: 50%;
+}
+.navigatie a {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  margin-right: 10px;
+  overflow: hidden;
+  object-fit: contain;
+}
+.navigatie a:hover {
+  filter: brightness(80%);
+}
+.heleDiv {
+  background-color: rgb(195, 195, 195);
+  padding: 1em;
+  margin: 1em;
+  border-radius: 2em;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.div_left{
+  margin-left: 20px;
+}
+
+label{
+  display: inline-block;
+  width: 200px;
+}
+.div_pad{
+  padding: 10px;
+}
+textarea {
+  padding: 1em;
+}
+.tekstveld {
+  padding: 0.6em;
+}
+select {
+  padding: 0.4em;
+}

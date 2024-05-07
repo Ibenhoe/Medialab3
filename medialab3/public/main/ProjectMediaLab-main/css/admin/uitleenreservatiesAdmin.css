@@ -1,0 +1,133 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+  }
+  .navigatie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: solid 1px rgb(54, 54, 54);
+    padding: 1em;
+    margin-bottom: 0;
+  }
+  .navigatie img {
+    height: auto;
+    width: 100%;
+    background-color: rgb(195, 195, 195);
+    border-radius: 50%;
+  }
+  .homeButton a{
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    margin-right: 1em;
+    overflow: hidden;
+    object-fit: contain;
+  }
+  .navigatie a:hover {
+    filter: brightness(80%);
+  }
+  .navrechts {
+    display: flex;
+  }
+  .navrechts a {
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    font-size: larger;
+    color: black;
+  }
+  .navrechts a:hover {
+    background-color: rgb(195, 195, 195);
+    border-radius: 0.6em;
+  }
+
+/* Containerstijl */
+#container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titelstijl */
+h1 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+/* Tabelstijl */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+/* Stijl voor bolletjes */
+td.left-bullet, td.right-bullet {
+    width: 24px; /* Breedte van de cel aangepast */
+    text-align: center; /* Centraal uitlijnen */
+}
+
+td.left-bullet::before, td.right-bullet::before {
+    content: '●';
+    font-size: 24px; /* Grootte van het bolletje */
+}
+
+td.left-bullet::before {
+    color: green;
+}
+
+td.right-bullet::before {
+    color: gray;
+}
+
+td.right-bullet {
+    padding: 0;
+}
+
+.comment-input {
+    width: 100%; /* Breedte van het invoervak */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Aanpassing voor rijen */
+tr {
+    border-radius: 10px; /* Ronde hoeken voor elke rij */
+    border-collapse: separate; /* Zorgt ervoor dat de rijen apart blijven */
+    margin-bottom: 8px; /* Voeg marge toe tussen rijen */
+    background-color: #f9f9f9; /* Lichte achtergrondkleur voor rijen */
+}
+
+tr:hover {
+    background-color: #e0e0e0; /* Achtergrondkleur wijzigen bij hover */
+}
+
+.comment-input:focus {
+    border-color: #007bff;
+    outline: none;
+}

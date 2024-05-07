@@ -1,15 +1,5 @@
-<!-- ***** Preloader Start ***** -->
-<div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</div>
-<!-- ***** Preloader End ***** -->
+
+
 
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
@@ -30,26 +20,7 @@
                         <li><a href="author.html">Author</a></li>
                         <li><a href="create.html">Create Yours</a></li>
 
-                        @if (Route::has('login'))
-                       
-                            @auth
-                            <li><x-app-layout>
-                                </x-app-layout>
-                            </li>
-                            @else
-                            <li><a href="{{ route('login') }}">Login</a></li>
-
-                            @if (Route::has('register'))
-                            <li><a href="{{ route('register')}}">Register</a></li>
-                            @endif
-                            @endauth
                         
-                        @endif
-
-
-
-
-
 
 
 

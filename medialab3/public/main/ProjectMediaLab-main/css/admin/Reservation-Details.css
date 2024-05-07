@@ -1,0 +1,145 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+.navigatie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px rgb(54, 54, 54);
+  padding: 1em;
+  margin-bottom: 0;
+}
+.navigatie img {
+  height: auto;
+  width: 100%;
+  background-color: rgb(195, 195, 195);
+  border-radius: 50%;
+}
+.homeButton a {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  margin-right: 1em;
+  overflow: hidden;
+  object-fit: contain;
+}
+.navigatie a:hover {
+  filter: brightness(80%);
+}
+.navrechts {
+  display: flex;
+}
+.navrechts a {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  font-size: larger;
+  color: black;
+}
+.navrechts a:hover {
+  background-color: rgb(195, 195, 195);
+  border-radius: 0.6em;
+}
+.user-info{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-top: 2em;
+    margin-left: 2em;
+    
+}
+.user-info img{
+    width: 20px;
+    height: 20px;
+    margin-top: 1em;
+    margin-right: 0.5em;
+    margin-left: 1em;
+}
+
+.user-info2{
+    display: flex;
+    justify-content:flex-start;
+    flex-direction: row;
+    margin-top: 2em;
+    margin-left: 2em;
+    
+}
+.user-info2 img{
+    width: 20px;
+    height: 20px;
+    margin-top: 1em;
+    margin-right: 0.5em;
+    margin-left: 1em;
+    margin-bottom: 2em;
+}
+#Status{
+    margin-left: 70%;
+}
+#datum-lease{
+   
+   margin-left: 6%;
+   margin-right: 90%;
+    border-right: 1px solid black;
+    padding-right: 2em;
+}
+
+#items-quantity{
+display: flex;
+flex-direction: column;
+}
+#lease-info{
+  display: flex ;
+  flex-direction: row;
+margin-right: 95%;
+margin-left: 3em;
+
+
+}
+#changes-status{
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  margin-top: 50px;
+display: flex;
+justify-content: center;
+}
+#product-info{
+  border-right: 1px solid black;
+padding-right: 1em;
+ 
+}
+#product-info2{
+ 
+  margin-left: 1em;
+}
+#container-prod{
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  
+  border: 1 px solid rgb(161, 161, 161);
+  background-color: rgb(161, 161, 161);
+  margin: 2em;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 0px;
+  border-radius: 1em;
+  
+;
+}
+
+#under-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-right: 9em;
+}
+#under-info a{
+  text-decoration: none;
+  background-color:rgb(161, 161, 161) ;
+  color: white ;
+  padding: 1em;
+  border-radius: 1em ;
+  margin-left: 1em;
+}

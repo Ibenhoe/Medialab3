@@ -1,0 +1,120 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial;
+}
+
+.navigatie {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px rgb(54, 54, 54);
+  padding: 1em;
+  margin-bottom: 0;
+}
+
+.navigatie img {
+  height: auto;
+  width: 100%;
+  background-color: rgb(195, 195, 195);
+  border-radius: 50%;
+}
+
+.navigatie a {
+  display: inline-block;
+  width: 3em;
+  height: 3em;
+  margin-right: 10px;
+  overflow: hidden;
+  object-fit: contain;
+}
+.navigatie a:hover {
+  filter: brightness(80%);
+}
+
+#search {
+  width: 60%;
+  margin: 0 10px;
+  background-color: rgb(214, 214, 214);
+  border-style: none;
+  padding: 0.6em;
+  border-radius: 3em;
+  margin: 0px;
+  font-size: large;
+}
+
+.navrechts {
+  display: flex;
+}
+
+.allesDiv {
+  background-color: rgb(255, 255, 255);
+  margin: 1em;
+  border-radius: 2em;
+  min-height: 100vh;
+  padding-bottom: 2em;
+  padding-top: 1em;
+}
+.titel {
+  background-color: white;
+  width: fit-content;
+  padding: 0.6em;
+  border-radius: 0.6em;
+}
+.naamDiv {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(194, 194, 194);
+  margin: 1em 2em 1em 2em;
+  border-radius: 2em;
+  height: 3em;
+}
+.naamDiv p {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1em;
+}
+.naamDiv a:hover {
+  filter: brightness(80%);
+}
+.zoekbalk {
+  background-color: rgb(195, 195, 195);
+  border: none;
+  font-size: larger;
+  width: 40%;
+  padding: 0.4em;
+  border-radius: 2em;
+}
+.uitleenDatum {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1em;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(130, 130, 255);
+  padding: 0.5em 1em 0.5em 1em;
+  border-radius: 1em;
+}
+footer {
+  background-color: black;
+  margin-bottom: 0;
+  color: white;
+  height: 100%;
+  padding: 1em;
+}
+.volledigeFooter {
+display: flex;
+justify-content: space-between;
+}
+.footer-content {
+
+}
+.buttonstuk {
+margin-top: auto;
+margin-bottom: auto;
+
+}
+.buttonstuk  img {
+  width: 2em;
+  margin-right: 0.5em;
+}
