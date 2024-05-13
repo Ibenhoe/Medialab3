@@ -5,6 +5,7 @@
     @include('home.css')
     <style>
       
+      
     </style>
     
   </head>
@@ -18,9 +19,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-5">
-          <div class="section-heading">
-             
+        <div class="section-heading">
             
+            <h2><em>Bekijk</em> alles wat beschikbaar is.</h2>
           </div>
         </div>
         <div class="col-lg-7">

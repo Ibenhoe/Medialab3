@@ -36,11 +36,13 @@
                   </span>
                   <div class="text-button">
                     <a href="{{url('details_product',$data1->id)}}">Bekijk product</a>
+                    <a style="color: white;text-align: right;float: right;" class="btn btn-primary" href="{{url('add_cart', $data1->id)}}">+<i class="bi bi-cart"></a>
+                    
                   </div>
                   <br>
 
                   <div>
-                    <a class="btn btn-primary" href="{{url('add_cart', $data1->id)}}">Voeg toe aan winkelmandje</a>
+                    <a class="btn btn-primary" href="{{url('add_cart', $data1->id)}}">+<i class="bi bi-cart"></a>
                   </div>
 
 
