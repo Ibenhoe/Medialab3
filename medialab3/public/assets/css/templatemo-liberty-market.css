@@ -371,7 +371,7 @@ Header Style
   min-height: 80px;
   background: transparent;
   display: flex;
-  background-image: url(../images/dark-bg.jpg);
+  background-color: #23232b;
   padding: 15px 30px;
   
 }
@@ -578,7 +578,7 @@ Header Style
 
 .header-area.header-sticky {
   min-height: 70px;
-  background-image: url(../images/dark-bg.jpg)!important;
+  background-color: #23232b!important;
 }
 
 .header-area.header-sticky .nav li a.active {
@@ -1093,7 +1093,7 @@ Currently Market Style
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  padding: 120px 0px;
+  padding: 60px 0px;
   position: relative;
 }
 
@@ -1210,7 +1210,7 @@ Currently Market Style
 }
 
 .currently-market .item .text-button {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .currently-market .item .text-button a {
@@ -1417,7 +1417,7 @@ Explore Style
 }
 
 .discover-items {
-  background-image: url(../images/dark-bg.jpg);
+  background-color: #23232b;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1525,7 +1525,7 @@ Explore Style
 }
 
 .discover-items .item img {
-  margin-top: -32px;
+  margin-top: 0px;
   position: relative;
   z-index: 1;
 }
@@ -1622,7 +1622,7 @@ Details Page Style
 */
 
 .item-details-page {
-  background-image: url(../images/dark-bg.jpg);
+  background-color: #23232b;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1856,7 +1856,7 @@ Author Page Style
 */
 
 .author-page {
-  background-image: url(../images/dark-bg.jpg);
+  background-color: #23232b;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

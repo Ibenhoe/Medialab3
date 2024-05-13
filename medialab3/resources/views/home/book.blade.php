@@ -51,10 +51,6 @@
                   </div>
                   <br>
 
-                  <div class="">
-                    <a class="btn btn-primary" href="{{url('borrow_product', $data1->id)}}">Meld je aan</a>
-                  </div>
-
                   <div>
                     <a class="btn btn-primary" href="{{url('add_cart', $data1->id)}}">Voeg toe aan winkelmandje</a>
                   </div>
