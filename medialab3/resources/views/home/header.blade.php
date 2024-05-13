@@ -14,7 +14,7 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="{{url('home2')}}" class="active">Home</a></li>
+                        <li><a href="{{url('/')}}" class="active">Home</a></li>
                         <li><a href="{{url('mainpage')}}">Explore</a></li>
                         <li><a href="{{url('show_favorites')}}">Item Details</a></li>
                         <li><a href="author.html">Author</a></li>
@@ -29,9 +29,7 @@
                             @else
                             <li><a href="{{ route('login') }}">Login</a></li>
 
-                            @if (Route::has('register'))
-                            <li><a href="{{ route('register')}}">Register</a></li>
-                            @endif
+                            
                             @endauth
                         
                         @endif

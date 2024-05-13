@@ -2,10 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2><em>Bekijk</em> alles wat beschikbaar is.</h2>
-          </div>
+          
         </div>
 
         
@@ -14,16 +11,7 @@
             <button type="button" class="close" data-bs-dissmis="alert" aria-hidden="true" >x</button>
           @endif
         
-        <div class="col-lg-6">
-          <div class="filters">
-            <ul>
-              <li data-filter="*"  class="active">All Books</li>
-              <li data-filter=".msc">Popular</li>
-              <li data-filter=".dig">Latest</li>
-              
-            </ul>
-          </div>
-        </div>
+        
         <div class="col-lg-12">
           <div class="row grid">
             

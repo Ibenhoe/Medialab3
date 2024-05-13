@@ -18,7 +18,7 @@ class HomeController extends Controller
         $data = Product::paginate(10);
         $data2 = Categorie::all();
 
-        return view('home.index', compact('data', 'data2'));
+        return view('home.mainpage', compact('data', 'data2'));
        
         
     }

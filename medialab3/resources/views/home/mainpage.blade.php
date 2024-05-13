@@ -20,7 +20,7 @@
         <div class="col-lg-5">
           <div class="section-heading">
              
-            <h2>Discover Some Of Our <em>product</em>.</h2>
+            
           </div>
         </div>
         <div class="col-lg-7">
