@@ -2036,6 +2036,173 @@ Create Page Style
   text-align: center;
 }
 
+/*CSS from Elias and Nyo*/
+.volledigeDiv {
+  
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  
+  
+}
+.linkerDiv {
+  background-color: rgb(255, 255, 255);
+  width: 63%;
+  height:fit-content;
+  border-radius: 1.5em;
+  margin-top: 1em;
+ 
+}
+.linkerDiv p {
+  color: black;
+}
+.rechterDiv {
+  width: 34%;
+}
+.bovenDiv {
+  background-color: rgb(255, 255, 255);
+  height: 30em;
+  margin: 1em;
+  margin-right: 0;
+  border-radius: 1.5em;
+padding-bottom: 150px;
+
+}
+.onderDiv {
+  background-color: rgb(255, 255, 255);
+  height: 30em;
+  margin: 1em;
+  margin-right: 0;
+  border-radius: 1.5em;
+}
+
+
+.fotoDiv {
+  display: flex;
+  justify-content: center;
+}
+.fotoDiv img {
+  width: 50%;
+  margin: 0.5em;
+}
+.balkjeOnderFoto {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.balkjeOnderFoto p {
+  font-size:x-large;
+  font-weight: 600;
+  margin: 1em;
+}
+.balkjeOnderFoto a img {
+  width: 30px;
+  height: 30px;
+}
+.balkjeOnderFoto a {
+  text-decoration: none;
+}
+
+.productBeschrijving {
+  margin: 1em;
+  margin-bottom: 150px;
+  
+}
+.productBeschrijving p {
+  font-size: large;
+}
+.productBeschrijving h1 {
+  font-size: large;
+}
+
+.kalenderDiv {
+  display: flex;
+  justify-content: center;
+}
+.kalenderDiv img {
+  margin: 1em;
+  margin-bottom: 30px;
+  border-radius: 0.5em;
+  width: 70%;
+}
+.rechterDiv p {
+  width: fit-content;
+  font-size: x-large;
+  margin-left: 1em;
+  margin-bottom: 0.2em;
+  margin-top: 0.2em;
+}
+.rechterDiv a {
+  text-decoration: none;
+  color: white;
+  background-color: rgb(93, 93, 255);
+  padding: 0.7em;
+  font-size: xx-large;
+  border-radius: 0.7em;
+  width: 12em;
+  text-align: center;
+}
+.knop1 {
+  display: flex;
+  justify-content: center;
+}
+.knop1:hover {
+  filter: brightness(80%);
+}
+.knop2 {
+  display: flex;
+  justify-content: center;
+  filter: brightness(60%);
+}
+footer {
+  background-color: black;
+  margin-bottom: 0;
+  color: white;
+  height: 100%;
+  padding: 1em;
+}
+.volledigeFooter {
+display: flex;
+justify-content: space-between;
+}
+
+.buttonstuk {
+margin-top: auto;
+margin-bottom: auto;
+
+}
+.buttonstuk  img {
+  width: 2em;
+  margin-right: 0.5em;
+}
+
+
+
+.favorietenDiv {
+  display: flex;
+  height: fit-content;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 1em;
+  background-color: rgb(93, 93, 255);
+  padding-right: 0.5em;
+  border-radius: 2em;
+  
+}
+.favorietenDiv p {
+  font-size: large;
+  font-weight: 600;
+  color: white;
+  margin-right: 0;
+}
+.favorietenDiv img {
+  margin-top: 40%;
+  
+}
+
+
+
 
 
 

@@ -29,55 +29,40 @@
   <!-- ***** Header Area End ***** -->
   <div class="discover-items">
     <div class="container">
-      <div class="row">
-      <div class="item-details-page">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h2>View Details <em>For Item</em> Here.</h2>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <div class="left-image">
-            <img src="/producten_images/{{$data->product_img}}" alt="" style="border-radius: 20px; min-width: 400px; max-width: 500px">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-              <span class="bid">Available<br><strong>10</strong><br></span>
+    <div class="volledigeDiv">
+        <div class="linkerDiv">
+            <div class="fotoDiv"><img src="/producten_images/{{$data->product_img}}"></div>
+            <hr>
+            <div class="balkjeOnderFoto">
+                <p>{{$data->Merk}} {{$data->title}}</p>
+                <div class="favorietenDiv">
+                    <div><a href=""><p>Favorieten</p></a></div>
+                    <div><a href=""><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></div>
+                </div>
             </div>
-            <div class="col-6">
-              <label for="lease-date">Choose Lease Date:</label>
-              <input type="date" id="lease-date" name="lease-date">
+            <hr>
+            <div class="productBeschrijving">
+                <h1>Beschrijving</h1>
+                <p>{{$data->description}}</p>
+            </div>
+            
         </div>
-      </div>
-      <div>
-        <a href="{{url('add_favorites', $data->id)}}">Favorites</a>
-      </div>
-      <div>
-            <a class="btn btn-primary" href="{{url('add_cart', $data->id)}}">+<i class="bi bi-cart"></i></a>
-      </div>
 
-        <div class="row">
-                <div class="col-12">
-                  <h4>{{$data->Merk}} {{$data->title}}</h4>
-                  <p>{{$data->description}}</p>
+ 
+        <div class="rechterDiv">
+            <div class="bovenDiv">
+                <div class="kalenderDiv">
+                <label for="calender">Kies een datum:</label>
+                <input type="date" id="calender" name="calender_detail_page">
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <span class="bid">Available<br><strong>10</strong><br></span>
-                </div>
-          </div>
-          
+    
+                <div class="knop1"><a href="">Reserveren en toevoegen aan mandje</a></div>
+            </div>
         </div>
-        
-  </div>
     </div>
-      </div>
+
+    
+      
 
 
       </div>

@@ -36,18 +36,10 @@
                   </span>
                   <div class="text-button">
                     <a href="{{url('details_product',$data1->id)}}">Bekijk product</a>
-                    <a style="color: white;text-align: right;float: right;" class="btn btn-primary" href="{{url('add_cart', $data1->id)}}">+<i class="bi bi-cart"></a>
+                    <a style="color: white;float: right; display:flex" class="btn btn-primary" href="{{url('add_cart', $data1->id)}}">+<img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 25px;" ></a>
                     
                   </div>
                   <br>
-
-                  <div>
-                    <a class="btn btn-primary" href="{{url('add_cart', $data1->id)}}">+<i class="bi bi-cart"></a>
-                  </div>
-
-
-
-
                 </div>
                 
               </div>

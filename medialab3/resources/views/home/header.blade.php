@@ -9,16 +9,16 @@
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
                     <a href="index.html" class="logo">
-                        <img src="assets/images/EhB-logo-transparant(1).png" alt="">
+                        <img src="assets/images/eraslogo-white.png" alt="">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="{{url('/')}}" class="active">Home</a></li>
-                        <li><a href="{{url('mainpage')}}">Explore</a></li>
-                        <li><a href="{{url('show_favorites')}}">Item Details</a></li>
-                        <li><a href="author.html">Author</a></li>
-                        <li><a href="create.html">Create Yours</a></li>
+                        <li><a href="{{url('/')}}" class="active"><img src="assets/images/homeIcon-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        <li><a href="{{url('show_favorites')}}"><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        <li><a href="{{url('show_favorites')}}"><img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        <li><a href="author.html"><img src="assets/images/kalender-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        
 
                         @if (Route::has('login'))
                        
