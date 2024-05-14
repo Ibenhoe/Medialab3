@@ -25,7 +25,7 @@
 
 <body>
 
-  @include('home.header')
+  @include('home.headerdetailspage')
   <!-- ***** Header Area End ***** -->
   <div class="discover-items">
     <div class="container">

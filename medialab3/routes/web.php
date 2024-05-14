@@ -59,6 +59,9 @@ route::get('/home2', [HomeController::class, 'index']);
 
 route::get('/search', [HomeController::class, 'search']);
 
+route::get('/search2', [HomeController::class, 'search2']);
+
+
 route::get('/details_product/{id}', [HomeController::class, 'details_product']);
 
 route::get('/add_favorites/{id}', [HomeController::class, 'add_favorites']);

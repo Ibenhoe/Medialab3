@@ -95,6 +95,43 @@ class HomeController extends Controller
 
     return view('home.mainpage', compact('data', 'data2'));
 }
+    public function search2(Request $request)
+    {
+        $validatedData = $request->validate([
+            'search' => 'nullable|string',
+            // Pas de validatieregels aan op basis van wat je verwacht
+        ]);
+    
+        // Haal de gevalideerde invoer op
+        $search = $validatedData['search'] ?? '';
+        
+    
+        // Haal alle categorieën op
+        
+    
+        // Bouw de zoekquery op met behulp van Eloquent-methoden
+        $query = Product::query();
+        
+        if ($search) {
+            $query->where(function($query) use ($search) {
+                $query->where('title', 'like', '%'.$search.'%')
+                      ->orWhere('Merk', 'like', '%'.$search.'%')
+                      ->orWhere(function($query) use ($search) {
+                          $query->whereRaw('CONCAT(Merk, " ", title) like ?', ['%'.$search.'%']);
+                      });
+            });
+        }
+    
+        // Optioneel: Filter op categorie als een specifieke categorie is geselecteerd
+        
+        // Haal de resultaten op en geef deze door naar de view
+        $data = $query->paginate(10);
+        $data->appends(['search' => $search]);
+        $data2 = Categorie::all();
+        return view('home.mainpage', compact('data', 'data2'));
+    }
+
+
     public function details_product($id)
     {
         $data = Product::find($id);
