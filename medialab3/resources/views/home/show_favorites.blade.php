@@ -14,14 +14,15 @@
   <div class="discover-items" style="padding-top: 200px;">
     <div class="container">
       <div class="row">
+      <h1 class="favoh1">Favorieten</h1>
       
         
             @foreach($data as $datas)
 
             <div class="itemBalkje">
-                <p>{{$datas->product->title}}</p>
+                <p>{{$datas->product->Merk}} {{$datas->product->title}}</p>
               <div class="knoppenRechts">
-                <a href="#" class="reserveer">Reserveer</a>
+                <a href="{{url('details_product',$datas->product->id)}}" class="reserveer">Reserveer</a>
                 <a onclick="confirmation(event)" href="{{url('favo_delete',$datas->id)}}" class="vuilbak"><img src="assets/images/vuilbakje.png"></a>
               </div>
             </div>

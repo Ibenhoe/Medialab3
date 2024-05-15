@@ -36,8 +36,8 @@
             <div class="balkjeOnderFoto">
                 <p>{{$data->Merk}} {{$data->title}}</p>
                 <div class="favorietenDiv">
-                    <div><a href=""><p>Favorieten</p></a></div>
-                    <div><a href=""><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></div>
+                    <div><a href="{{url('add_favorites', $data->id)}}"><p>Favorieten</p></a></div>
+                    <div><a href="{{url('add_favorites', $data->id)}}"><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></div>
                 </div>
             </div>
             <hr>

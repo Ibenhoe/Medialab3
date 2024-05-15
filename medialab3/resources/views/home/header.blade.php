@@ -14,8 +14,8 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="{{url('/')}}" class="active"><img src="assets/images/homeIcon-white.png" alt="" style="max-width: 35px;" ></a></li>
-                        <li><a href="{{url('show_favorites')}}"><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        <li><a href="{{url('/')}}" class="{{ Request::is('/') ? 'active' : '' }}"><img src="assets/images/homeIcon-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        <li><a href="{{url('show_favorites')}}" class="{{ Request::is('show_favorites') ? 'active' : '' }}"><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></li>
                         <li><a href="{{url('show_favorites')}}"><img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 35px;" ></a></li>
                         <li><a href="author.html"><img src="assets/images/kalender-white.png" alt="" style="max-width: 35px;" ></a></li>
                         
