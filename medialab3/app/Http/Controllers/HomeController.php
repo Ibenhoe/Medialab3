@@ -168,5 +168,11 @@ class HomeController extends Controller
 
         return redirect()->back();
     }
+    public function favo_delete($id)
+    {
+        $data = Favorites::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
 
 }

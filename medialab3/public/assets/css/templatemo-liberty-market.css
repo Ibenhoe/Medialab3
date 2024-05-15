@@ -119,7 +119,7 @@ Global Styles
 */
 html,
 body {
-  background: #fff;
+  background: #23232b;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -2199,6 +2199,86 @@ margin-bottom: auto;
 .favorietenDiv img {
   margin-top: 40%;
   
+}
+
+.itemBalkje {
+  background-color: rgb(194, 194, 194);
+  width: 80%;
+  height: 3em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+}
+
+.itemBalkje img {
+  width: 2em;
+  height: 2em;
+
+}
+.itemBalkje p {
+  font-weight: 600;
+  margin: 1em;
+  font-size: large;
+  
+  margin-top: auto;
+  margin-bottom: auto;
+  
+}
+.reserveer {
+  background-color: rgb(61, 172, 61);
+  margin-top: auto;
+  margin-bottom: auto;
+  text-decoration: none;
+  padding: 0.4em 1em 0.4em 1em;
+  border-radius: 1em;
+  color: black;
+  font-weight: 600;
+}
+.reserveer:hover {
+  filter: brightness(80%);
+}
+
+.vuilbak {
+  background-color: rgb(255, 78, 78);
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 1em;
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+}
+.vuilbak:hover {
+  filter: brightness(80%);
+}
+.knoppenRechts {
+  display: flex;
+}
+.wisKnop {
+  float: right;
+  text-decoration: none;
+  background-color: rgb(0, 106, 255);
+  color: white;
+  font-size: medium;
+  border-radius: 2em;
+  padding: 0.5em 1em 0.5em 1em;
+  margin-bottom: 8em;
+  margin-right: 8em;
+}
+.wisKnop p {
+  padding: 0;
+  margin: 0;
+}
+.wisKnop:hover {
+  filter: brightness(80%);
+}
+
+.knoppenRechts{
+  display: flex;
 }
 
 

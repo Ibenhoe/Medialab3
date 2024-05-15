@@ -70,6 +70,8 @@ route::get('/show_favorites', [HomeController::class, 'show_favorites'])->middle
 
 route::get('/add_cart/{id}', [HomeController::class, 'add_cart'])->middleware('auth', 'verified');
 
+route::get('/favo_delete/{id}', [HomeController::class, 'favo_delete']);
+
 
 
 
