@@ -29,10 +29,10 @@
                   
                   <div class="line-dec"></div>
                   <span class="bid">
-                    Current Available<br><strong>{{$data1->Quantity}}</strong><br> 
+                    Beschikbaar<br><strong>{{$data1->Quantity}}</strong><br> 
                   </span>
                   <span class="ends">
-                    Total<br><strong>{{$data1->Quantity}}</strong><br>
+                    Totaal<br><strong>{{$data1->Quantity}}</strong><br>
                   </span>
                   <div class="text-button">
                     <a href="{{url('details_product',$data1->id)}}">Bekijk product</a>

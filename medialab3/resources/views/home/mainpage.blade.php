@@ -35,7 +35,7 @@
               <div class="col-lg-3">
                 <fieldset>
                     <select name="Category" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-                        <option selected>All Categories</option>
+                        <option selected>Alle categorieën</option>
                         @foreach($data2 as $data2)
                         <option value="{{$data2->id}}">{{$data2->cat_title}}</option>
                         @endforeach
@@ -45,16 +45,15 @@
               <div class="col-lg-3">
                 <fieldset>
                     <select name="Price" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-                        <option selected>Available</option>
-                        <option value="Ending-Soon">Ending Soon</option>
-                        <option value="Coming-Soon">Coming Soon</option>
-                        <option value="Closed">Closed</option>
+                        <option selected>Beschikbaar</option>
+                        <option value="Ending-Soon">Niet beschikbaar</option>
+                        
                     </select>
                 </fieldset>
               </div>
               <div class="col-lg-2">                        
                 <fieldset>
-                    <button style="background-color: #e30613;border: 1px solid white;" class="main-button">Search</button>
+                    <button style="background-color: #e30613;border: 1px solid white;" class="main-button">Zoeken</button>
                 </fieldset>
               </div>
             </div>
