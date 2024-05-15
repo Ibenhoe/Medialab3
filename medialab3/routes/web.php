@@ -64,9 +64,9 @@ route::get('/search2', [HomeController::class, 'search2']);
 
 route::get('/details_product/{id}', [HomeController::class, 'details_product']);
 
-route::get('/add_favorites/{id}', [HomeController::class, 'add_favorites']);
+route::get('/add_favorites/{id}', [HomeController::class, 'add_favorites'])->middleware('auth', 'verified');
 
-route::get('/show_favorites', [HomeController::class, 'show_favorites']);
+route::get('/show_favorites', [HomeController::class, 'show_favorites'])->middleware('auth', 'verified');
 
 route::get('/add_cart/{id}', [HomeController::class, 'add_cart'])->middleware('auth', 'verified');
 

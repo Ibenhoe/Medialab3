@@ -194,7 +194,7 @@ body {
 
 .main-button a:hover {
   background-color: #fff;
-  color: #7453fc;
+  color: #ffffff;
   border: 1px solid #fff;
 }
 
@@ -227,7 +227,7 @@ section {
 }
 
 .section-heading h2 em {
-  color: #7453fc;
+  color: #e30613;
   font-style: normal;
 }
 
@@ -355,16 +355,16 @@ Header Style
 
 .header-area {
   background-color: transparent;
-  position: absolute;
+  position: fixed;
   height: 70px;
-  top: 30px;
+  top: 0px;
   left: 0;
   right: 0;
   z-index: 100;
-  -webkit-transition: all .5s ease 0s;
+  /* -webkit-transition: all .5s ease 0s;
   -moz-transition: all .5s ease 0s;
   -o-transition: all .5s ease 0s;
-  transition: all .5s ease 0s;
+  transition: all .5s ease 0s; */
 }
 
 .header-area .main-nav {
@@ -390,7 +390,7 @@ Header Style
 }
 
 .header-area .main-nav .logo img {
-  width: 140px!important;
+  width: 105px!important;
 }
 
 .background-header .main-nav .logo {
@@ -447,7 +447,7 @@ Header Style
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
   color: #fff;
-  background-color: #7453fc;
+  background-color: #e30613;
 }
 
 .background-header .main-nav .nav li:hover a,
@@ -481,10 +481,10 @@ Header Style
 .header-area .main-nav .menu-trigger span,
 .header-area .main-nav .menu-trigger span:before,
 .header-area .main-nav .menu-trigger span:after {
-  -moz-transition: all 0.4s;
+  /* -moz-transition: all 0.4s;
   -o-transition: all 0.4s;
   -webkit-transition: all 0.4s;
-  transition: all 0.4s;
+  transition: all 0.4s; */
   background-color: #7453fc;
   display: block;
   position: absolute;
@@ -501,10 +501,10 @@ Header Style
 
 .header-area .main-nav .menu-trigger span:before,
 .header-area .main-nav .menu-trigger span:after {
-  -moz-transition: all 0.4s;
+  /* -moz-transition: all 0.4s;
   -o-transition: all 0.4s;
   -webkit-transition: all 0.4s;
-  transition: all 0.4s;
+  transition: all 0.4s; */
   background-color: #7453fc;
   display: block;
   position: absolute;
@@ -553,10 +553,10 @@ Header Style
 }
 
 .header-area .main-nav .menu-trigger.active span:before {
-  -moz-transform: translateY(6px) translateX(1px) rotate(45deg);
+  /* -moz-transform: translateY(6px) translateX(1px) rotate(45deg);
   -ms-transform: translateY(6px) translateX(1px) rotate(45deg);
   -webkit-transform: translateY(6px) translateX(1px) rotate(45deg);
-  transform: translateY(6px) translateX(1px) rotate(45deg);
+  transform: translateY(6px) translateX(1px) rotate(45deg); */
   background-color: #7453fc;
 }
 
@@ -565,10 +565,10 @@ Header Style
 }
 
 .header-area .main-nav .menu-trigger.active span:after {
-  -moz-transform: translateY(-6px) translateX(1px) rotate(-45deg);
+  /* -moz-transform: translateY(-6px) translateX(1px) rotate(-45deg);
   -ms-transform: translateY(-6px) translateX(1px) rotate(-45deg);
   -webkit-transform: translateY(-6px) translateX(1px) rotate(-45deg);
-  transform: translateY(-6px) translateX(1px) rotate(-45deg);
+  transform: translateY(-6px) translateX(1px) rotate(-45deg); */
   background-color: #7453fc;
 }
 
@@ -654,10 +654,10 @@ Header Style
     float: none;
     width: 100%;
     display: none;
-    -webkit-transition: all 0s ease 0s;
+    /* -webkit-transition: all 0s ease 0s;
     -moz-transition: all 0s ease 0s;
     -o-transition: all 0s ease 0s;
-    transition: all 0s ease 0s;
+    transition: all 0s ease 0s; */
     margin-left: 0px;
   }
   .header-area.header-sticky .nav {
@@ -687,7 +687,7 @@ Header Style
   }
   .header-area .main-nav .nav li a:hover {
     background: #fff !important;
-    color: #7453fc!important;
+    color: #e30613!important;
   }
   .header-area .main-nav .nav li.has-sub ul.sub-menu {
     position: relative;
@@ -794,7 +794,7 @@ Banner Style
   line-height: 46px;
   font-size: 24px;
   display: inline-block;
-  color: #7453fc;
+  color: #e30613;
   background-color: #fff;
   border-radius: 50%;
   opacity: 1;
@@ -866,7 +866,7 @@ Categories & Collections Style
   height: 46px;
   line-height: 46px;
   background-color: #fff;
-  color: #7453fc;
+  color: #e30613;
   border-radius: 50%;
   font-size: 18px;
   position: absolute;
@@ -879,7 +879,7 @@ Categories & Collections Style
 }
 
 .categories .item .icon-button a:hover {
-  background-color: #7453fc;
+  background-color: #e30613;
   color: #fff;
 }
 
@@ -944,7 +944,7 @@ Categories & Collections Style
 .collections .item .main-button a:hover {
   background-color: #fff;
   border: 1px solid #fff;
-  color: #7453fc;
+  color: #ffffff;
 }
 
 .collections .owl-nav {
@@ -1466,8 +1466,8 @@ Explore Style
 .discover-items #search-form button {
   font-size: 14px;
   color: #fff;
-  background-color: #7453fc;
-  border: 1px solid #7453fc;
+  background-color: #ffffff;
+  border: 1px solid #ffffff;
   height: 46px;
   line-height: 46px;
   text-align: center;
@@ -2094,7 +2094,7 @@ padding-bottom: 150px;
 .balkjeOnderFoto p {
   font-size:x-large;
   font-weight: 600;
-  margin: 1em;
+  margin: 0.7em;
 }
 .balkjeOnderFoto a img {
   width: 30px;
@@ -2109,7 +2109,7 @@ padding-bottom: 150px;
   margin-bottom: 150px;
   
 }
-.productBeschrijving p {
+.productBeschrijving p  h1{
   font-size: large;
 }
 .productBeschrijving h1 {

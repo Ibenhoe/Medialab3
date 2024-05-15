@@ -8,13 +8,12 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
+                    <a href="{{url('/')}}" class="logo">
                         <img src="assets/images/eraslogo-white.png" alt="">
                     </a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="{{url('/')}}" class="active"><img src="assets/images/homeIcon-white.png" alt="" style="max-width: 35px;" ></a></li>
                         <li><form id="search-form" name="gs" method="submit" role="search" action="{{url('search2')}}">
                             <div class="row">
                             <div class="col-lg-4">
@@ -23,6 +22,8 @@
                                 </fieldset>
                             </div>
                             </form></li>
+                        <li><a href="{{url('/')}}" class="active"><img src="assets/images/homeIcon-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        
                         <li><a href="{{url('show_favorites')}}"><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></li>
                         <li><a href="{{url('show_favorites')}}"><img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 35px;" ></a></li>
                         <li><a href="author.html"><img src="assets/images/kalender-white.png" alt="" style="max-width: 35px;" ></a></li>

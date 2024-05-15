@@ -23,7 +23,7 @@
                         @if (Route::has('login'))
                        
                             @auth
-                            <li><x-app-layout>
+                            <li><x-app-layout style="margin-top: auto; margin-bottom:auto;">
                                 </x-app-layout>
                             </li>
                             @else

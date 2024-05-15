@@ -21,7 +21,7 @@
         <div class="col-lg-5">
         <div class="section-heading">
             
-            <h2><em>Bekijk</em> alles wat beschikbaar is.</h2>
+            <h2><em style="color: #e30613;">Bekijk</em> alles wat beschikbaar is.</h2>
           </div>
         </div>
         <div class="col-lg-7">
@@ -54,7 +54,7 @@
               </div>
               <div class="col-lg-2">                        
                 <fieldset>
-                    <button class="main-button">Search</button>
+                    <button style="background-color: #e30613;border: 1px solid white;" class="main-button">Search</button>
                 </fieldset>
               </div>
             </div>
