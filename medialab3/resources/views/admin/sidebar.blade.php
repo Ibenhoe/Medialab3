@@ -1,4 +1,5 @@
 
+      
       <!-- Sidebar Navigation-->
       <nav id="sidebar">
         <!-- Sidebar Header-->
@@ -9,18 +10,20 @@
             <p>Web Designer</p>
           </div>
         </div>
-        <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+        <!-- Sidebar Navigation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
                 <li class="active"><a href="{{url('home')}}"> <i class="icon-home"></i>Home </a></li>
                 <li><a href="{{url('categorie_page')}}"> <i class="icon-grid"></i>Categorie</a></li>
                 
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Producten</a>
-                  <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="{{url('add_product')}}">Add product</a></li>
-                    <li><a href="{{url('show_product')}}">Show products</a></li>
-                    
-                  </ul>
-                </li>
+                <li>
+    <a href="#productDropdown" aria-expanded="false" data-toggle="collapse">
+        <i class="icon-windows"></i>Producten
+    </a>
+    <ul id="productDropdown" class="collapse list-unstyled">
+        <li><a href="{{url('add_product')}}">Add product</a></li>
+        <li><a href="{{url('show_product')}}">Show products</a></li>
+    </ul>
+</li>              
                 <li><a href="login.html"> <i class="icon-logout"></i>login</a></li>
         </ul><span class="heading">Extras</span>
         <ul class="list-unstyled">
