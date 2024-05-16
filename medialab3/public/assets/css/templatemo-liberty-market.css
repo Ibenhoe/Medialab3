@@ -2203,6 +2203,7 @@ margin-bottom: auto;
   margin-right: 0;
   margin-bottom: 2.3rem;
   margin-left: 10%;
+  margin-top: 0;
 }
 
 .itemBalkje {
@@ -2227,7 +2228,7 @@ margin-bottom: auto;
   font-weight: 600;
   margin: 1em;
   font-size: large;
-  
+  color: black;
   margin-top: auto;
   margin-bottom: auto;
   
@@ -2244,10 +2245,11 @@ margin-bottom: auto;
 }
 .reserveer:hover {
   filter: brightness(80%);
+  color: black;
 }
 
 .vuilbak {
-  background-color: rgb(255, 78, 78);
+  background-color: #e30613;
   margin-top: auto;
   margin-bottom: auto;
   width: 32px;
@@ -2285,9 +2287,7 @@ margin-bottom: auto;
   display: flex;
 }
 
-.uitleenText {
-  margin-top: 4em;
-}
+
 
 
 

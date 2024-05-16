@@ -76,6 +76,11 @@ route::get('/cart_delete/{id}', [HomeController::class, 'cart_delete']);
 
 route::get('/show_cart', [HomeController::class, 'show_cart'])->middleware('auth', 'verified');
 
+route::get('/show_reservation', [HomeController::class, 'show_reservation'])->middleware('auth', 'verified');
+
+
+
+
 
 
 

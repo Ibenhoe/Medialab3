@@ -134,7 +134,7 @@
             </div>
             <div class="onderDiv2">
               <p class="onderDivTekst2">Uitleendatum: 25/10/2024<br>Retourdatum: 5/11/2024</p>
-              <div class="onderDivKnop2"><a href="#"><img src="../../images/vuilbakje.png"></a></div>
+              <div class="onderDivKnop2"><a href="#"><img src="assets/images/vuilbakje.png"></a></div>
             </div>
           </div>
         </div>

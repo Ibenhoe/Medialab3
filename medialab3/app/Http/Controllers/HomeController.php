@@ -179,5 +179,10 @@ class HomeController extends Controller
         
         return view('home.show_cart');
     }
+    public function show_reservation()
+    {
+        
+        return view('home.show_reservation');
+    }
 
 }
