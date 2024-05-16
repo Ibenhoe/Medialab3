@@ -2080,6 +2080,7 @@ Create Page Style
 .fotoDiv img {
   width: 50%;
   margin: 0.5em;
+  border-radius: 2em;
 }
 .balkjeOnderFoto {
   display: flex;
@@ -2099,17 +2100,23 @@ Create Page Style
 .balkjeOnderFoto a {
   text-decoration: none;
 }
+.balkjeOnderFoto p {
+  color: white;
+}
 
 .productBeschrijving {
   margin: 1em;
   margin-bottom: 150px;
-  
+}
+.productBeschrijving p {
+  color: white;
 }
 .productBeschrijving p  h1{
   font-size: large;
 }
 .productBeschrijving h1 {
   font-size: large;
+  color: white;
 }
 
 .kalenderDiv {
@@ -2124,7 +2131,7 @@ Create Page Style
 }
 .rechterDiv p {
   width: fit-content;
-  font-size: x-large;
+  font-size: large;
   margin-left: 1em;
   margin-bottom: 0.2em;
   margin-top: 0.2em;
@@ -2134,9 +2141,9 @@ Create Page Style
   color: white;
   background-color: rgb(93, 93, 255);
   padding: 0.7em;
-  font-size: xx-large;
+  font-size: large;
   border-radius: 0.7em;
-  width: 12em;
+  width: fit-content;
   text-align: center;
 }
 .knop1 {
@@ -2203,7 +2210,6 @@ margin-bottom: auto;
   margin-right: 0;
   margin-bottom: 2.3rem;
   margin-left: 10%;
-  margin-top: 0;
 }
 
 .itemBalkje {
