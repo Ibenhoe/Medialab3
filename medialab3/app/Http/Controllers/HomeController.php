@@ -174,5 +174,10 @@ class HomeController extends Controller
         $data->delete();
         return redirect()->back();
     }
+    public function show_cart()
+    {
+        
+        return view('home.show_cart');
+    }
 
 }
