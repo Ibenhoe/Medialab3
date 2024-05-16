@@ -2046,7 +2046,7 @@ Create Page Style
   
 }
 .linkerDiv {
-  background-color: rgb(255, 255, 255);
+  background-color: #282b2f;
   width: 63%;
   height:fit-content;
   border-radius: 1.5em;
@@ -2060,21 +2060,17 @@ Create Page Style
   width: 34%;
 }
 .bovenDiv {
-  background-color: rgb(255, 255, 255);
-  height: 30em;
+  background-color: #282b2f;
+  height: fit-content;
   margin: 1em;
   margin-right: 0;
+  padding-bottom: 1em;
   border-radius: 1.5em;
-padding-bottom: 150px;
+  padding-top: 1em;
+
 
 }
-.onderDiv {
-  background-color: rgb(255, 255, 255);
-  height: 30em;
-  margin: 1em;
-  margin-right: 0;
-  border-radius: 1.5em;
-}
+
 
 
 .fotoDiv {
@@ -2207,6 +2203,7 @@ margin-bottom: auto;
   margin-right: 0;
   margin-bottom: 2.3rem;
   margin-left: 10%;
+  margin-top: 0;
 }
 
 .itemBalkje {
@@ -2231,7 +2228,7 @@ margin-bottom: auto;
   font-weight: 600;
   margin: 1em;
   font-size: large;
-  
+  color: black;
   margin-top: auto;
   margin-bottom: auto;
   
@@ -2248,10 +2245,11 @@ margin-bottom: auto;
 }
 .reserveer:hover {
   filter: brightness(80%);
+  color: black;
 }
 
 .vuilbak {
-  background-color: rgb(255, 78, 78);
+  background-color: #e30613;
   margin-top: auto;
   margin-bottom: auto;
   width: 32px;

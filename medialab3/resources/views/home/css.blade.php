@@ -6,7 +6,7 @@
 
     <title>Uitleendienst Ehb</title>
     <link rel="stylesheet" href="medialab3/public/main/ProjectMediaLab-main/css/user/mainPage.css">
-    <link rel="website icon" href="../../images/EhB-logo-transparant(1).png">
+    <link rel="website icon" href="assets/images/eraslogo.png">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
