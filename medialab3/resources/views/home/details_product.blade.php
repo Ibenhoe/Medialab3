@@ -103,19 +103,41 @@
  
         <div class="rechterDiv">
             <div class="bovenDiv">
+            <form action="{{ url('reservation') }}" method="POST" id="reservationForm" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="product_id" value="1"> <!-- Voorbeeld product ID -->
+            <input type="hidden" name="user_id" value="{{ Auth::id() }}"> <!-- Ingelogde user ID -->
+
             <div class="heleKalenderDiv">
-            <div class="bovenKalender">
-              <div><button id="prevMonth">&#60;</button></div>
-              <div><h2 id="monthYear"></h2></div>
-              <div><button id="nextMonth">&gt;</button></div>
+                <div class="bovenKalender">
+                    <div><button type="button" id="prevMonth">&#60;</button></div>
+                    <div><h2 id="monthYear"></h2></div>
+                    <div><button type="button" id="nextMonth">&gt;</button></div>
+                </div>
+                <table id="calendar">
+                    <!-- De kalender wordt hier dynamisch gegenereerd -->
+                </table>
             </div>
-            <table id="calendar">
-                <!-- De kalender wordt hier dynamisch gegenereerd -->
-            </table>
-        </div>
-    
-                <div class="knop1"><a href="">Reserveren en toevoegen aan mandje</a></div>
+            
+            <label for="reason">Reden:</label>
+            <select name="reason" id="reason" required>
+                <option value="">Kies een reden</option>
+                <option value="Project">Project</option>
+                <option value="Vrije tijd">Vrije tijd</option>
+                <option value="Eindwerk">Eindwerk</option>
+            </select>
+
+            <label for="start_date">Begindatum:</label>
+            <input type="date" name="start_date" id="start_date"style="display: none;"  required>
+
+            <label for="end_date">Einddatum:</label>
+            <input type="date" name="end_date" id="end_date"style="display: none;"   required>
+
+            <div class="knop1">
+                <button type="submit">Reserveren en toevoegen aan mandje</button>
             </div>
+        </form>
+          
         </div>
     </div>
 

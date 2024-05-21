@@ -78,6 +78,10 @@ route::get('/show_cart', [HomeController::class, 'show_cart'])->middleware('auth
 
 route::get('/show_reservation', [HomeController::class, 'show_reservation'])->middleware('auth', 'verified');
 
+route::post('/reservation', [HomeController::class, 'reservation'])->middleware('auth', 'verified');
+
+
+
 
 
 

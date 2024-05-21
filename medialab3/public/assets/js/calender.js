@@ -4,11 +4,33 @@ var monthsOfYear = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Jul
 var currentMonth = new Date().getMonth();
 var currentYear = new Date().getFullYear();
 
-//Instellen maand dat iets niet beschikbaar is
+// Instellen maand dat iets niet beschikbaar is
 var blockedStartDate = new Date(currentYear, currentMonth, 13);
 var blockedEndDate = new Date(currentYear, currentMonth, 19);
 
-generateCalendar(currentMonth, currentYear);
+document.addEventListener('DOMContentLoaded', function() {
+    generateCalendar(currentMonth, currentYear);
+
+    document.getElementById('prevMonth').onclick = function() {
+        if (currentMonth > 0) {
+            currentMonth--;
+        } else {
+            currentMonth = 11;
+            currentYear--;
+        }
+        generateCalendar(currentMonth, currentYear);
+    };
+
+    document.getElementById('nextMonth').onclick = function() {
+        if (currentMonth < 11) {
+            currentMonth++;
+        } else {
+            currentMonth = 0;
+            currentYear++;
+        }
+        generateCalendar(currentMonth, currentYear);
+    };
+});
 
 function generateCalendar(month, year) {
     var firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
@@ -29,7 +51,7 @@ function generateCalendar(month, year) {
             var day = i * 7 + j - firstDay + 1;
             if (day > 0 && day <= new Date(year, month + 1, 0).getDate()) {
                 cell.innerText = day;
-                cell.onclick = selectWeek;
+                cell.onclick = selectDate;
             }
         }
     }
@@ -46,7 +68,7 @@ function generateCalendar(month, year) {
     document.getElementById('monthYear').innerText = monthsOfYear[month] + ' ' + year;
 }
 
-function selectWeek(event) {
+function selectDate(event) {
     if (event.target.classList.contains('blocked')) return;
 
     var cells = document.getElementById('calendar').getElementsByTagName('td');
@@ -54,48 +76,14 @@ function selectWeek(event) {
         cells[i].classList.remove('selected');
     }
 
-    var row = event.target.parentElement;
-    var firstDayOfWeek = (new Date(currentYear, currentMonth, 1).getDay() + 6) % 7;
-    var lastDayOfWeek = (new Date(currentYear, currentMonth + 1, 0).getDay() + 6) % 7;
+    event.target.classList.add('selected');
 
-    startDate = parseInt(row.firstElementChild.innerText);
-    endDate = parseInt(row.lastElementChild.innerText); // Verhoog de einddatum met één
+    var selectedDate = new Date(currentYear, currentMonth, parseInt(event.target.innerText));
+    var startOfWeek = new Date(selectedDate);
+    startOfWeek.setDate(selectedDate.getDate() - selectedDate.getDay()); // Set start of week to Sunday
+    var endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(startOfWeek.getDate() + 6); // Set end of week to Saturday
 
-    var startMonth = currentMonth;
-    var endMonth = currentMonth;
-
-    if (isNaN(startDate)) {
-        startDate = new Date(currentYear, currentMonth, 0).getDate() - firstDayOfWeek + 1;
-        startMonth = currentMonth == 0 ? 11 : currentMonth - 1;
-    }
-    if (isNaN(endDate)) {
-        endDate = new Date(currentYear, currentMonth + 2, 1).getDate() + (6 - lastDayOfWeek) - 1; // Verhoog de einddatum met één
-        endMonth = (currentMonth + 1) % 12;
-    }
-
-    for (var i = 0; i < row.children.length; i++) {
-        row.children[i].classList.add('selected');
-    }
-    console.log("begindatum: " + startDate + '/' + (startMonth + 1) + '/' + currentYear);
-    console.log("einddatum: " + endDate + '/' + (endMonth + 1) + '/' + currentYear);
+    document.getElementById('start_date').value = startOfWeek.toISOString().split('T')[0];
+    document.getElementById('end_date').value = endOfWeek.toISOString().split('T')[0]; // Set end date to end of week
 }
-
-document.getElementById('prevMonth').onclick = function() {
-    if (currentMonth > 0) {
-        currentMonth--;
-    } else {
-        currentMonth = 11;
-        currentYear--;
-    }
-    generateCalendar(currentMonth, currentYear);
-};
-
-document.getElementById('nextMonth').onclick = function() {
-    if (currentMonth < 11) {
-        currentMonth++;
-    } else {
-        currentMonth = 0;
-        currentYear++;
-    }
-    generateCalendar(currentMonth, currentYear);
-}; 

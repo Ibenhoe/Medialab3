@@ -5,7 +5,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <title>Uitleendienst Ehb</title>
-    <link rel="stylesheet" href="medialab3/public/main/ProjectMediaLab-main/css/user/mainPage.css">
+    
     <link rel="website icon" href="assets/images/eraslogo.png">
 
     <!-- Bootstrap core CSS -->

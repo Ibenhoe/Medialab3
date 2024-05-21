@@ -10,6 +10,8 @@ use App\Models\Borrow;
 use App\Models\Categorie;
 use App\Models\Favorites;
 use App\Models\Cart;
+use App\Models\Reservation;
+
 
 class HomeController extends Controller
 {
@@ -185,4 +187,45 @@ class HomeController extends Controller
         return view('home.show_reservation');
     }
 
+    public function reservation(Request $request){
+        $request->validate([
+            'product_id' => 'required|integer',
+            'user_id' => 'required|integer',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'reason' => 'required|string|max:255',
+            'Defect' => 'nullable|string|max:255',
+        ]);
+    
+        $product = Product::find($request->product_id);
+
+    // Controleer of het product bestaat en er voorraad beschikbaar is
+    if ($product && $product->Quantity >= 1) {
+        // Controleer of de gebruiker is ingelogd
+        if (Auth::check()) {
+            // Haal de ID van de ingelogde gebruiker op
+            $user_id = Auth::id(); 
+
+            // Maak een nieuwe reservering aan
+            $reservation = new Reservation();
+            $reservation->product_id = $request->product_id;
+            $reservation->user_id = $user_id;
+            $reservation->status = 'pending'; 
+            $reservation->start_date = $request->start_date; 
+            $reservation->end_date = $request->end_date; 
+            $reservation->reason = $request->reason;
+            $reservation->Defect = $request->Defect;
+            $reservation->save();
+
+            
+            return redirect()->back()->with('message', 'Your reservation request has been sent.');
+        } else {
+            
+            return redirect('/login');
+        }
+    } else {
+        
+        return redirect()->back()->with('message', 'This product is out of stock.');
+    }
+    }
 }
