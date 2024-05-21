@@ -67,6 +67,7 @@
         
       }
       button {
+        display: visible;
         border: none;
         font-size: larger;
         background-color: white;
@@ -128,11 +129,13 @@
                 <option value="Andere">Andere</option>
             </select>
 
-            <label for="start_date">Begindatum:</label>
+            <label for="start_date"> </label>
             <input type="date" name="start_date" id="start_date"style="display: none;"  required>
 
-            <label for="end_date">Einddatum:</label>
+            <label for="end_date"> </label>
             <input type="date" name="end_date" id="end_date"style="display: none;"   required>
+            <input type="hidden" name="product_id" value="{{ $data->id}}"> <!-- Gebruik dynamische product ID -->
+            <input type="hidden" name="user_id" value="{{ Auth::id() }}"> <!-- Ingelogde user ID -->
 
             <div class="knop1">
                 <button type="submit">Reserveren en toevoegen aan mandje</button>

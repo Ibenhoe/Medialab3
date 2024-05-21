@@ -183,8 +183,8 @@ class HomeController extends Controller
     }
     public function show_reservation()
     {
-        
-        return view('home.show_reservation');
+        $data = Reservation::where('user_id', Auth::user()->id)->get();
+        return view('home.show_reservation', compact('data'));
     }
 
     public function reservation(Request $request){

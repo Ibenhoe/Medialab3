@@ -17,4 +17,8 @@ class Reservation extends Model
         'Defect',
         'status'
     ];
+    public function Product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
