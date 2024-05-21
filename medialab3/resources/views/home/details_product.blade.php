@@ -125,6 +125,7 @@
                 <option value="Project">Project</option>
                 <option value="Vrije tijd">Vrije tijd</option>
                 <option value="Eindwerk">Eindwerk</option>
+                <option value="Andere">Andere</option>
             </select>
 
             <label for="start_date">Begindatum:</label>
@@ -148,10 +149,7 @@
       </div>
     </div>
   </div>
-  
-  
- 
-
+</div>
   @include('home.footer')
   <script src="assets/js/calender.js"></script>
 

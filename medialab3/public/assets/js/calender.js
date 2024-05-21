@@ -80,9 +80,19 @@ function selectDate(event) {
 
     var selectedDate = new Date(currentYear, currentMonth, parseInt(event.target.innerText));
     var startOfWeek = new Date(selectedDate);
-    startOfWeek.setDate(selectedDate.getDate() - selectedDate.getDay()); // Set start of week to Sunday
+    startOfWeek.setDate(selectedDate.getDate() - selectedDate.getDay()+1); // Set start of week to Sunday
     var endOfWeek = new Date(startOfWeek);
     endOfWeek.setDate(startOfWeek.getDate() + 6); // Set end of week to Saturday
+
+    for (var d = startOfWeek; d <= endOfWeek; d.setDate(d.getDate() + 1)) {
+        for (var i = 0; i < cells.length; i++) {
+            var day = parseInt(cells[i].innerText);
+            var cellDate = new Date(currentYear, currentMonth, day);
+            if (cellDate.toDateString() === d.toDateString()) {
+                cells[i].classList.add('selected');
+            }
+        }
+    }
 
     document.getElementById('start_date').value = startOfWeek.toISOString().split('T')[0];
     document.getElementById('end_date').value = endOfWeek.toISOString().split('T')[0]; // Set end date to end of week
