@@ -92,14 +92,14 @@ class HomeController extends Controller
     if ($category && $category != 'Alle categorieën') {
         $query->where('category_id', $category);
     }
-    if ($availability === 'Niet beschikbaar') {
+    if ($availability === 'Niet_beschikbaar') {
         $query->where('Quantity', 0); // Toon producten waar de hoeveelheid gelijk is aan 0
     } elseif ($availability === 'Beschikbaar') {
         $query->where('Quantity', '>', 0); // Toon producten waar de hoeveelheid groter is dan 0
     }
 
     // Haal de resultaten op en geef deze door naar de view
-    $query->where('Quantity', '>', 0);
+    
     $data = $query->paginate(10);
     $data->appends(['search' => $search, 'Category' => $category]);
     

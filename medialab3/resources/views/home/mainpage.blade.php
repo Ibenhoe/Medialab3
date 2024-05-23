@@ -46,7 +46,7 @@
                 <fieldset>
                     <select name="Beschikbaarheid" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
                         <option value="Beschikbaar" selected>Beschikbaar</option>
-                        <option value="Niet beschikbaar">Niet beschikbaar</option>
+                        <option value="Niet_beschikbaar">Niet beschikbaar</option>
                         
                     </select>
                 </fieldset>
