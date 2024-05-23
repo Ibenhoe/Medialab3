@@ -69,5 +69,6 @@
     </div>
       
     @include('admin.footer')
+    
   </body>
 </html>
