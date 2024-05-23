@@ -87,4 +87,7 @@ https://chat.openai.com/share/4a1cf282-bbd5-47d9-8c40-4b123c854912
 
 Commit functie winkelmandje
 https://www.youtube.com/watch?v=qJLAe8KtBR4&list=PLm8sgxwSZofdmlPxaDB7fRLv_NVe2uFKl&index=22
-https://chat.openai.com/share/4a1cf282-bbd5-47d9-8c40-4b123c854912 
+https://chat.openai.com/share/4a1cf282-bbd5-47d9-8c40-4b123c854912
+
+Commit Kalender
+https://chatgpt.com/share/c2ef519f-6782-4594-b574-090511772cb4
