@@ -17,7 +17,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data = Product::paginate(10);
+        $data = Product::where('Quantity', '>', 0)->paginate(10);
         $data2 = Categorie::all();
 
         return view('home.mainpage', compact('data', 'data2'));
@@ -63,12 +63,14 @@ class HomeController extends Controller
     // Valideer de invoer
     $validatedData = $request->validate([
         'search' => 'nullable|string',
-        'Category' => 'nullable|string', // Pas de validatieregels aan op basis van wat je verwacht
+        'Category' => 'nullable|string',
+        'Beschikbaarheid' => 'nullable|string', // Pas de validatieregels aan op basis van wat je verwacht
     ]);
 
     // Haal de gevalideerde invoer op
     $search = $validatedData['search'] ?? '';
     $category = $validatedData['Category'];
+    $availability = $validatedData['Beschikbaarheid'];
 
     // Haal alle categorieën op
     $data2 = Categorie::all();
@@ -78,8 +80,8 @@ class HomeController extends Controller
     
     if ($search) {
         $query->where(function($query) use ($search) {
-            $query->where('title', 'like', '%'.$search.'%')
-                  ->orWhere('Merk', 'like', '%'.$search.'%')
+            $query->where('Merk', 'like', '%'.$search.'%')
+                  ->orWhere('title', 'like', '%'.$search.'%')
                   ->orWhere(function($query) use ($search) {
                       $query->whereRaw('CONCAT(Merk, " ", title) like ?', ['%'.$search.'%']);
                   });
@@ -87,13 +89,20 @@ class HomeController extends Controller
     }
 
     // Optioneel: Filter op categorie als een specifieke categorie is geselecteerd
-    if ($category && $category != 'All Categories') {
+    if ($category && $category != 'Alle categorieën') {
         $query->where('category_id', $category);
+    }
+    if ($availability === 'Niet beschikbaar') {
+        $query->where('Quantity', 0); // Toon producten waar de hoeveelheid gelijk is aan 0
+    } elseif ($availability === 'Beschikbaar') {
+        $query->where('Quantity', '>', 0); // Toon producten waar de hoeveelheid groter is dan 0
     }
 
     // Haal de resultaten op en geef deze door naar de view
+    $query->where('Quantity', '>', 0);
     $data = $query->paginate(10);
     $data->appends(['search' => $search, 'Category' => $category]);
+    
 
     return view('home.mainpage', compact('data', 'data2'));
 }
@@ -116,8 +125,8 @@ class HomeController extends Controller
         
         if ($search) {
             $query->where(function($query) use ($search) {
-                $query->where('title', 'like', '%'.$search.'%')
-                      ->orWhere('Merk', 'like', '%'.$search.'%')
+                $query->where('Merk', 'like', '%'.$search.'%')
+                      ->orWhere('title', 'like', '%'.$search.'%')
                       ->orWhere(function($query) use ($search) {
                           $query->whereRaw('CONCAT(Merk, " ", title) like ?', ['%'.$search.'%']);
                       });
@@ -127,6 +136,7 @@ class HomeController extends Controller
         // Optioneel: Filter op categorie als een specifieke categorie is geselecteerd
         
         // Haal de resultaten op en geef deze door naar de view
+        $query->where('Quantity', '>', 0);
         $data = $query->paginate(10);
         $data->appends(['search' => $search]);
         $data2 = Categorie::all();

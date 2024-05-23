@@ -44,9 +44,9 @@
               </div>
               <div class="col-lg-3">
                 <fieldset>
-                    <select name="Price" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-                        <option selected>Beschikbaar</option>
-                        <option value="Ending-Soon">Niet beschikbaar</option>
+                    <select name="Beschikbaarheid" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                        <option value="Beschikbaar" selected>Beschikbaar</option>
+                        <option value="Niet beschikbaar">Niet beschikbaar</option>
                         
                     </select>
                 </fieldset>

@@ -43,8 +43,8 @@
         background-color: #abcdef;
       }
       .blocked {
-        background-color: #ff0000;
         pointer-events: none;
+        text-decoration: line-through;
       }
       .heleKalenderDiv {
           width:fit-content;
@@ -60,6 +60,17 @@
           
           
       }
+      .knop1 {
+        background-color: #e30613;
+        width: 92%;
+        color: white;
+        font-size: larger;
+        margin-left: 1em;
+        margin-right: 1em;
+        padding: 1em;
+        border-radius: 1em;
+        font-weight: 600;
+      }
       .bovenKalender {
         display: flex;
         justify-content: space-between;
@@ -67,10 +78,30 @@
         
       }
       button {
-        display: visible;
+        background-color: #e30613;
         border: none;
-        font-size: larger;
-        background-color: white;
+        color: white;
+        font-weight: 600;
+      }
+      .dropDownDingen {
+        margin-top: 1.2em;
+        display: flex;
+        padding-left: 1em;
+        padding-right: 1em;
+        justify-content: space-between;
+      }
+      .leejbel {
+         margin-top: auto;
+          margin-bottom: auto;
+          color: white;
+          font-weight: 600;
+      }
+      ._select select {
+        background-color: #e30613;
+        border: none;
+        border-radius: 2em;
+        color: white;
+        font-weight: 600;
       }
     </style>
     
@@ -121,15 +152,18 @@
                 </table>
             </div>
             
-            <label for="reason">Reden:</label>
-            <select name="reason" id="reason" required>
-                <option value="">Kies een reden</option>
-                <option value="Project">Project</option>
-                <option value="Vrije tijd">Vrije tijd</option>
-                <option value="Eindwerk">Eindwerk</option>
-                <option value="Andere">Andere</option>
-            </select>
-
+            <div class="dropDownDingen">
+              <div class="leejbel"><label>Reden van uitleen:</label></div>
+              <div class="_select">
+                <select name="reason" id="reason" required>
+                    <option value="">Kies een optie...&nbsp;&nbsp;&nbsp;</option>
+                    <option value="Project">Project</option>
+                    <option value="Vrije tijd">Vrije tijd</option>
+                    <option value="Eindwerk">Eindwerk</option>
+                    <option value="Andere">Andere</option>
+                </select>
+              </div>
+            </div>
             <label for="start_date"> </label>
             <input type="date" name="start_date" id="start_date"style="display: none;"  required>
 
@@ -144,11 +178,6 @@
           
         </div>
     </div>
-
-    
-      
-
-
       </div>
     </div>
   </div>
