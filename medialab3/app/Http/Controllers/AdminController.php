@@ -184,4 +184,28 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Product Returned Successfully');
         }
     }
+    public function show_user()
+    {
+        $data = User::all();
+        return view('admin.show_user', compact('data'));
+    }
+    public function blacklist($id)
+    {
+        $data = User::find($id);
+        $data->blacklist = 1;
+        $data->save();
+        return redirect()->back()->with('message', 'User Blacklisted Successfully');
+    }
+    public function unblacklist($id)
+    {
+        $data = User::find($id);
+        $data->blacklist = 0;
+        $data->save();
+        return redirect()->back()->with('message', 'User Unblacklisted Successfully');
+    }
+    public function show_blacklist()
+    {
+        $data = User::where('blacklist', 1)->get();
+        return view('admin.show_blacklist', compact('data'));
+    }
 }

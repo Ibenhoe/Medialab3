@@ -82,6 +82,18 @@ route::post('/reservation', [HomeController::class, 'reservation'])->middleware(
 
 route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware('auth', 'verified');
 
+route::get('/show_user', [AdminController::class, 'show_user']);
+
+route::get('/blacklist/{id}', [AdminController::class, 'blacklist']);
+
+route::get('/unblacklist/{id}', [AdminController::class, 'unblacklist']);
+
+
+route::get('/show_blacklist', [AdminController::class, 'show_blacklist']);
+
+
+
+
 
 Route::post('/confirm_reservation', [HomeController::class, 'confirmReservation'])->name('confirm_reservation');
 
