@@ -34,6 +34,14 @@
     height: 40%;
     padding: 1em;
   }
+  .imgDiv2 img {
+    width: max-content;
+    border-radius: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
   .tekstDiv2 {
     display: grid;
     border-left: 1px solid gray;
@@ -62,6 +70,9 @@
     margin-bottom: auto;
     margin-right: 2em;
     border-radius: 2em;
+    margin: 0.3em;
+    margin-left: auto;
+    margin-right: 2em;
   }
   .onderDivKnop2:hover {
     filter: brightness(80%);
@@ -90,6 +101,14 @@
     display: flex;
     justify-content: center;
     border-radius: 1em;
+    font-size: x-large;
+    color: white;
+    font-weight: 600;
+  }
+  .knopDiv2 button {
+    padding: 1em;
+    width: 100%;
+    height: 100%;
   }
   .knopDiv2:hover {
     filter: brightness(80%);
@@ -104,6 +123,23 @@
   .winkelmandText {
     font-size: xx-large;
     margin-left: 1em;
+  }
+  .datumselectDiv {
+    display: flex;
+  }
+  .begindatumDiv input {
+    width: 17em;
+    border: none;
+    border-radius: 2em;
+  }
+  .einddatumDiv input{
+    width: 17em;
+    border: none;
+    border-radius: 2em;
+  }
+  select {
+    border: none;
+    border-radius: 2em;
   }
 </style>
 
@@ -126,10 +162,16 @@
                       <h2>{{ $datas->product->Merk }} {{ $datas->product->title }}</h2>
                       <p>{!! Str::limit($datas->product->description, 90) !!}</p>
                       <input type="hidden" name="product_ids[]" value="{{ $datas->product->id }}">
-                      <label for="start_date_{{ $datas->id }}">Startdatum:</label>
-                      <input type="date" id="start_date_{{ $datas->id }}" name="start_date[{{ $datas->product->id }}]" required>
-                      <label for="end_date_{{ $datas->id }}">Einddatum:</label>
-                      <input type="date" id="end_date_{{ $datas->id }}" name="end_date[{{ $datas->product->id }}]" required>
+                      <div class="datumselectDiv">
+                        <div class="begindatumDiv">
+                          <label for="start_date_{{ $datas->id }}">Startdatum:</label>
+                          <input type="date" id="start_date_{{ $datas->id }}" name="start_date[{{ $datas->product->id }}]" required>
+                        </div>
+                        <div class="einddatumDiv">
+                          <label for="end_date_{{ $datas->id }}">Einddatum:</label>
+                          <input type="date" id="end_date_{{ $datas->id }}" name="end_date[{{ $datas->product->id }}]" required>
+                        </div>
+                      </div>
                       <label for="reason">Reden:</label>
                       <select name="reason" id="reason" required>
                         <option value="">Kies een reden</option>
@@ -145,11 +187,10 @@
                   </div>
                 </div>
                 @endforeach
-                <div class="knopDiv2">
-                  <button type="submit">Reservering bevestigen</button>
-                </div>
-              </form>
+                
+              
             </div>
+            
           </div>
           <div class="rechterDiv2">
             <div class="rechterDivje2">
@@ -157,9 +198,14 @@
               <div class="artikelLijst2">
                 <p class="artikelNaam2">{{ $datas->product->Merk }} {{ $datas->product->title }}</p>
               </div>
+              
               @endforeach
+              <div class="knopDiv2">
+                  <button type="submit">Reservering bevestigen</button>
+                </div>
             </div>
           </div>
+          </form>
         </div>
       </div>
     </div>
