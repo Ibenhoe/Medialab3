@@ -54,6 +54,7 @@
     color: white;
 }
 
+
     </style>
   </head>
 <body>
@@ -64,12 +65,16 @@
       <div class="row">
   <div class="allesDiv">
     <h1 class="titel">Mijn reserveringen</h1>
+    @foreach($data as $datas)
     <div class="lijstDiv">
+      
       <div class="naamDiv">
-        <p>Iphone Xr</p>
-        <p class="uitleenDatum" href="#">Uitgeleend tot: 25/04/2024</p>
+        <p>{{$datas->product->Merk}} {{$datas->product->title}}</p>
+        <p class="uitleenDatum" href="#">Uitgeleend tot: {{$datas->end_date}}</p>
+        
       </div>
     </div>
+    @endforeach
     </div>
     </div>
     </div>

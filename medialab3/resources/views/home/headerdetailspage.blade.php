@@ -18,7 +18,7 @@
                             <div class="row">
                             <div class="col-lg-4">
                                 <fieldset>
-                                    <input type="search" name="search" class="searchText" placeholder="Zoeken..." autocomplete="on" style="border-radius: 25px;" >
+                                    <input type="search" name="search" class="searchText" placeholder="Zoeken..." autocomplete="on" style="border-radius: 25px; height:2.3em; margin-top:0.455em;" >
                                 </fieldset>
                             </div>
                             </form></li>
@@ -26,7 +26,7 @@
                         
                         <li><a href="{{url('show_favorites')}}" class="{{ Request::is('show_favorites') ? 'active' : '' }}"><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></li>
                         <li><a href="{{url('show_cart')}}"class="{{ Request::is('show_cart') ? 'active' : '' }}"><img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 35px;" ></a></li>
-                        <li><a href="{{url('show_cart')}}" class="{{ Request::is('show_reservation') ? 'active' : '' }}"><img src="assets/images/kalender-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        <li><a href="{{url('show_reservation')}}" class="{{ Request::is('show_reservation') ? 'active' : '' }}"><img src="assets/images/kalender-white.png" alt="" style="max-width: 35px;" ></a></li>
                         
                         
 
