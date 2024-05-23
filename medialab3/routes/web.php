@@ -80,6 +80,13 @@ route::get('/show_reservation', [HomeController::class, 'show_reservation'])->mi
 
 route::post('/reservation', [HomeController::class, 'reservation'])->middleware('auth', 'verified');
 
+route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware('auth', 'verified');
+
+
+Route::post('/confirm_reservation', [HomeController::class, 'confirmReservation'])->name('confirm_reservation');
+
+
+
 
 
 

@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Cart extends Model
 {
     use HasFactory;
-    
+    public function Product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+    public function Reservation()
+    {
+        return $this->belongsTo(Reservation::class);
+    }
 }

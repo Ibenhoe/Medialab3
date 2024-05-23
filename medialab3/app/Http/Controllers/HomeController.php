@@ -178,8 +178,9 @@ class HomeController extends Controller
     }
     public function show_cart()
     {
-        
-        return view('home.show_cart');
+        $user_id = Auth::user()->id;
+        $data = Cart::where('user_id', $user_id)->with('product')->get();
+        return view('home.show_cart', compact('data'));
     }
     public function show_reservation()
     {
@@ -228,4 +229,46 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'This product is out of stock.');
     }
     }
+    public function delete_cart($id)
+    {
+        $data = Cart::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
+    // In je controller
+
+
+
+    public function confirmReservation(Request $request)
+    {
+        $user_id = Auth::id();
+
+        // Validatie van de input
+        $request->validate([
+            'start_date' => 'required|array',
+            'start_date.*' => 'required|date',
+            'end_date' => 'required|array',
+            'end_date.*' => 'required|date|after_or_equal:start_date.*',
+            'reason' => 'required|string',
+        ]);
+
+        // Loop door de startdatums heen en maak reserveringen aan
+        foreach ($request->start_date as $product_id => $startDate) {
+            $reservation = new Reservation();
+            $reservation->product_id = $product_id; // Gebruik de juiste product_id
+            $reservation->user_id = $user_id;
+            $reservation->status = 'pending';
+            $reservation->start_date = $startDate;
+            $reservation->end_date = $request->end_date[$product_id];
+            $reservation->reason = $request->reason;
+            $reservation->defect = null; // Defect is niet meegegeven, dus blijft null
+            $reservation->save();
+
+            // Verwijder het item uit de winkelwagen
+            Cart::where('product_id', $product_id)->where('user_id', $user_id)->delete();
+        }
+
+        return redirect()->back()->with('message', 'Reserveringen succesvol aangemaakt en items verwijderd uit de winkelwagen.');
+    }
 }
+

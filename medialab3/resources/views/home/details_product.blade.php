@@ -106,8 +106,9 @@
             <div class="bovenDiv">
             <form action="{{ url('reservation') }}" method="POST" id="reservationForm" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="product_id" value="1"> <!-- Voorbeeld product ID -->
+            <input type="hidden" name="product_id" value="{{ $data->id}}"> <!-- Gebruik dynamische product ID -->
             <input type="hidden" name="user_id" value="{{ Auth::id() }}"> <!-- Ingelogde user ID -->
+            
 
             <div class="heleKalenderDiv">
                 <div class="bovenKalender">
@@ -134,8 +135,7 @@
 
             <label for="end_date"> </label>
             <input type="date" name="end_date" id="end_date"style="display: none;"   required>
-            <input type="hidden" name="product_id" value="{{ $data->id}}"> <!-- Gebruik dynamische product ID -->
-            <input type="hidden" name="user_id" value="{{ Auth::id() }}"> <!-- Ingelogde user ID -->
+            
 
             <div class="knop1">
                 <button type="submit">Reserveren en toevoegen aan mandje</button>
