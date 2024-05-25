@@ -16,25 +16,31 @@
 <body>
 
   @include('home.header')
-  <!-- ***** Header Area End ***** -->
+  
 
   <div class="discover-items">
     <div class="container">
       <div class="row">
         <div class="col-lg-5">
         <div class="section-heading">
-            
             <h2><em>Bekijk</em> alles wat beschikbaar is.</h2>
           </div>
         </div>
+
+        
+        <!-- Searchbar mainpage -->
         <div class="col-lg-7">
           <form id="search-form" name="gs" method="submit" role="search" action="{{url('search')}}">
             <div class="row">
               <div class="col-lg-4">
+
                 <fieldset>
                     <input type="search" name="search" class="searchText" placeholder="Zoeken..." autocomplete="on" >
                 </fieldset>
+
               </div>
+
+              <!-- Category selector -->
               <div class="col-lg-3">
                 <fieldset>
                     <select name="Category" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
@@ -45,20 +51,24 @@
                     </select>
                 </fieldset>
               </div>
+
+              <!-- Available selector -->
               <div class="col-lg-3">
                 <fieldset>
-                    <select name="Price" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-                        <option selected>Available</option>
-                        <option value="Ending-Soon">Ending Soon</option>
-                        <option value="Coming-Soon">Coming Soon</option>
-                        <option value="Closed">Closed</option>
-                    </select>
+                  <select name="Beschikbaarheid" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                    <option value="Beschikbaar" selected>Beschikbaar</option>
+                    <option value="Niet_beschikbaar">Niet beschikbaar</option>
+
+                  </select>
                 </fieldset>
               </div>
+
+              <!-- Search button -->
               <div class="col-lg-2">                        
                 <fieldset>
                     <button class="main-button">Search</button>
                 </fieldset>
+
               </div>
             </div>
           </form>
@@ -68,7 +78,7 @@
 
   
 
-  @include('home.book')
+  @include('home.product')
 
   @include('home.footer')
 

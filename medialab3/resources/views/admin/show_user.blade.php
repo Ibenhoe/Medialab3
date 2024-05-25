@@ -3,7 +3,6 @@
   <head> 
     @include('admin.css')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     <style type="text/css">
       
         th{
@@ -16,6 +15,7 @@
             padding: 20px;
             border-bottom: 1px solid grey;
         }
+        
     </style>
   </head>
   <body>
@@ -26,6 +26,7 @@
         <div class="page-header">
           <div class="container-fluid">
           <div>
+              <!-- Alert message -->
               <div>
                 @if(session()->has('message'))
                   <div class="alert alert-success">
@@ -34,15 +35,16 @@
                   </div>
                 @endif
               </div>
+
+              <!-- User list -->
               </div>
                 <h1>User lijst</h1>
                 <table class="div_left">
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        
-            
                     </tr>
+
                     @foreach($data as $datas)
                     <tr>
                         <td>{{$datas->name}}</td>
@@ -52,23 +54,16 @@
                       </tr>
                     @endforeach
 
-
                 </table>
-
-
             </div>
-
-
-
-          </div>
-        
-
-
           </div>
         </div>
+      </div>
     </div>
       
     @include('admin.footer')
+
+    <!-- Sweetalert for confirmation(event) -->
     <script type="text/javascript">
             function confirmation(ev){
               ev.preventDefault();
@@ -86,6 +81,6 @@
                 window.location.href = urlToRedirect
               }});
             }
-            </script>
+    </script>
   </body>
 </html>

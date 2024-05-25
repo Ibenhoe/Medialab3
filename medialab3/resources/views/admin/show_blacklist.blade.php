@@ -34,6 +34,7 @@
                   </div>
                 @endif
               </div>
+              <!-- Blacklist users -->
               </div>
                 <h1>Blacklist user list</h1>
                 <table class="div_left">
@@ -69,6 +70,25 @@
     </div>
       
     @include('admin.footer')
-    
+
+    <!-- Sweetalert for confirmation(event) -->
+    <script type="text/javascript">
+            function confirmation(ev){
+              ev.preventDefault();
+              var urlToRedirect = ev.currentTarget.getAttribute('href');
+              console.log(urlToRedirect);
+          swal({
+                title: "Are you sure?",
+                text: "Once blacklist, the user will not be able to reserve a product!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willCancel) => {
+              if (willCancel) {
+                window.location.href = urlToRedirect
+              }});
+            }
+      </script>
   </body>
 </html>

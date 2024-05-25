@@ -1,7 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
     var startDate, endDate;
-    var daysOfWeek = ['Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za', 'Zo'];
-    var monthsOfYear = ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'];
+    var daysOfWeek = ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"];
+    var monthsOfYear = [
+        "Januari",
+        "Februari",
+        "Maart",
+        "April",
+        "Mei",
+        "Juni",
+        "Juli",
+        "Augustus",
+        "September",
+        "Oktober",
+        "November",
+        "December",
+    ];
     var currentMonth = new Date().getMonth();
     var currentYear = new Date().getFullYear();
 
@@ -14,14 +27,22 @@ document.addEventListener('DOMContentLoaded', function() {
     startOfCurrentWeek.setDate(today.getDate() - ((today.getDay() + 6) % 7)); // Start van de huidige week (maandag)
 
     // Voeg alle datums tot en met de huidige week toe aan de geblokkeerde datums
-    for (var d = new Date(currentYear, 0, 1); d <= startOfCurrentWeek; d.setDate(d.getDate() + 1)) {
+    for (
+        var d = new Date(currentYear, 0, 1);
+        d <= startOfCurrentWeek;
+        d.setDate(d.getDate() + 1)
+    ) {
         blockedDates.push(new Date(d));
     }
 
     // Voeg alle datums tot en met de rest van de week toe aan de geblokkeerde datums
     var endOfCurrentWeek = new Date(startOfCurrentWeek);
     endOfCurrentWeek.setDate(endOfCurrentWeek.getDate() + 6); // Eind van de huidige week (zondag)
-    for (var d = new Date(today); d <= endOfCurrentWeek; d.setDate(d.getDate() + 1)) {
+    for (
+        var d = new Date(today);
+        d <= endOfCurrentWeek;
+        d.setDate(d.getDate() + 1)
+    ) {
         blockedDates.push(new Date(d));
     }
 
@@ -33,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
     generateCalendar(currentMonth, currentYear);
 
     // Event listeners voor maandnavigatie
-    document.getElementById('prevMonth').onclick = function() {
+    document.getElementById("prevMonth").onclick = function () {
         changeMonth(-1);
     };
 
-    document.getElementById('nextMonth').onclick = function() {
+    document.getElementById("nextMonth").onclick = function () {
         changeMonth(1);
     };
 
@@ -58,8 +79,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function generateCalendar(month, year) {
         var firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
 
-        var calendar = document.getElementById('calendar');
-        calendar.innerHTML = '';
+        var calendar = document.getElementById("calendar");
+        calendar.innerHTML = "";
 
         var headerRow = calendar.insertRow();
         for (var i = 0; i < 7; i++) {
@@ -80,32 +101,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Markeer geblokkeerde datums
-        var cells = calendar.getElementsByTagName('td');
+        var cells = calendar.getElementsByTagName("td");
         for (var blocked of blockedDates) {
             for (var i = 0; i < cells.length; i++) {
                 var day = parseInt(cells[i].innerText);
                 var cellDate = new Date(year, month, day);
                 if (blocked.toDateString() === cellDate.toDateString()) {
-                    cells[i].classList.add('blocked');
+                    cells[i].classList.add("blocked");
                 }
             }
         }
 
-        document.getElementById('monthYear').innerText = monthsOfYear[month] + ' ' + year;
+        document.getElementById("monthYear").innerText =
+            monthsOfYear[month] + " " + year;
     }
 
     // Datum selecteren
     function selectDate(event) {
-        if (event.target.classList.contains('blocked')) return;
+        if (event.target.classList.contains("blocked")) return;
 
-        var cells = document.getElementById('calendar').getElementsByTagName('td');
+        var cells = document
+            .getElementById("calendar")
+            .getElementsByTagName("td");
         for (var i = 0; i < cells.length; i++) {
-            cells[i].classList.remove('selected');
+            cells[i].classList.remove("selected");
         }
 
-        event.target.classList.add('selected');
+        event.target.classList.add("selected");
 
-        var selectedDate = new Date(currentYear, currentMonth, parseInt(event.target.innerText));
+        var selectedDate = new Date(
+            currentYear,
+            currentMonth,
+            parseInt(event.target.innerText)
+        );
         var dayOfWeek = selectedDate.getDay();
         var startOfWeek = new Date(selectedDate);
         startOfWeek.setDate(selectedDate.getDate() - ((dayOfWeek + 6) % 7)); // Set start of week to Monday
@@ -113,18 +141,26 @@ document.addEventListener('DOMContentLoaded', function() {
         endOfWeek.setDate(startOfWeek.getDate() + 6); // Set end of week to Sunday
 
         // Markeer de geselecteerde week
-        for (var d = new Date(startOfWeek); d <= endOfWeek; d.setDate(d.getDate() + 1)) {
+        for (
+            var d = new Date(startOfWeek);
+            d <= endOfWeek;
+            d.setDate(d.getDate() + 1)
+        ) {
             for (var i = 0; i < cells.length; i++) {
                 var day = parseInt(cells[i].innerText);
                 var cellDate = new Date(currentYear, currentMonth, day);
                 if (cellDate.toDateString() === d.toDateString()) {
-                    cells[i].classList.add('selected');
+                    cells[i].classList.add("selected");
                 }
             }
         }
 
         // Stel de start- en einddatum in
-        document.getElementById('start_date').value = startOfWeek.toISOString().split('T')[0];
-        document.getElementById('end_date').value = endOfWeek.toISOString().split('T')[0];
+        document.getElementById("start_date").value = startOfWeek
+            .toISOString()
+            .split("T")[0];
+        document.getElementById("end_date").value = endOfWeek
+            .toISOString()
+            .split("T")[0];
     }
 });

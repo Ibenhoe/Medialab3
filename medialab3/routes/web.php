@@ -18,6 +18,8 @@ use App\Http\Controllers\HomeController;
 
 route::get('/', [HomeController::class, 'index']);;
 
+
+//Admin dashboard
 route::get('/home', [AdminController::class, 'index']);
 
 route::get('/categorie_page', [AdminController::class, 'categorie_page']);
@@ -38,20 +40,28 @@ route::get('/product_delete/{id}', [AdminController::class, 'product_delete']);
 
 route::get('/update_product/{id}', [AdminController::class, 'update_product']);
 
-
-
 route::post('/store_product', [AdminController::class, 'store_product']);
 
-
 route::post('/update_product/{id}', [AdminController::class, 'update_product1']);
-
-route::get('/borrow_product/{id}', [HomeController::class, 'borrow_product']);
 
 route::get('/approved_product/{id}', [AdminController::class, 'approve_product']);
 
 route::get('/rejected_product/{id}', [AdminController::class, 'rejected_product']);
 
 route::get('/returned_product/{id}', [AdminController::class, 'returned_product']);
+
+route::get('/show_user', [AdminController::class, 'show_user']);
+
+route::get('/blacklist/{id}', [AdminController::class, 'blacklist']);
+
+route::get('/unblacklist/{id}', [AdminController::class, 'unblacklist']);
+
+route::get('/show_blacklist', [AdminController::class, 'show_blacklist']);
+
+
+
+//User page's
+route::get('/borrow_product/{id}', [HomeController::class, 'borrow_product']);
 
 route::get('/mainpage', [HomeController::class, 'mainpage']);
 
@@ -60,7 +70,6 @@ route::get('/home2', [HomeController::class, 'index']);
 route::get('/search', [HomeController::class, 'search']);
 
 route::get('/search2', [HomeController::class, 'search2']);
-
 
 route::get('/details_product/{id}', [HomeController::class, 'details_product']);
 
@@ -82,41 +91,7 @@ route::post('/reservation', [HomeController::class, 'reservation'])->middleware(
 
 route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware('auth', 'verified');
 
-route::get('/show_user', [AdminController::class, 'show_user']);
-
-route::get('/blacklist/{id}', [AdminController::class, 'blacklist']);
-
-route::get('/unblacklist/{id}', [AdminController::class, 'unblacklist']);
-
-
-route::get('/show_blacklist', [AdminController::class, 'show_blacklist']);
-
-
-
-
-
 Route::post('/confirm_reservation', [HomeController::class, 'confirmReservation'])->name('confirm_reservation');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 Route::middleware([
