@@ -60,6 +60,36 @@
     .uitleenDatum:last-child {
       color: white;
     }
+    .rechterStuk{
+      display: flex;
+    }
+    .verlengKnop{
+      background-color: #7453fc;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding: 0.5em;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: 600;
+    }
+    .verlengKnop:hover{
+      filter: brightness(80%);
+      color: white;
+    }
+    .schadeKnop{
+      background-color: #7453fc;
+      margin-left: 0.3em;
+      margin-top: auto;
+      margin-bottom: auto;
+      padding: 0.5em;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: 600;
+    }
+    .schadeKnop:hover{
+      filter: brightness(80%);
+      color: white;
+    }
   </style>
 </head>
 
@@ -79,7 +109,11 @@
           <div class="lijstDiv">
             <div class="naamDiv">
               <p>{{$datas->product->Merk}} {{$datas->product->title}}</p>
-              <p class="uitleenDatum" href="#">Uitgeleend tot: {{$datas->end_date}}</p>
+              <div class="rechterStuk">
+                <a href="#" class="verlengKnop">Verlengen</a>
+                <a href="#" class="schadeKnop">Schade melden</a>
+                <p class="uitleenDatum" href="#">Uitgeleend tot: {{$datas->end_date}}</p>
+              </div>
             </div>
           </div>
 
