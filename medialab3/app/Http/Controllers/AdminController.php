@@ -18,9 +18,7 @@ class AdminController extends Controller
 {
     public function __construct()
     {
-
         $this->middleware('admin'); // Voeg een custom 'admin' middleware toe om te controleren of de gebruiker een admin is
-
     }
 
     public function index()
@@ -132,7 +130,6 @@ class AdminController extends Controller
             $request->product_image->move('producten_images', $product_image_name);
             $data->product_img = $product_image_name;
         }
-
 
         $data->save();
         return redirect('/show_product');

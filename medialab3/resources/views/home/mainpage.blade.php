@@ -41,8 +41,8 @@
                 <fieldset>
                   <select name="Category" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
                     <option selected>Alle categorieën</option>
-                    @foreach($data2 as $data2)
-                    <option value="{{$data2->id}}">{{$data2->cat_title}}</option>
+                    @foreach($categories as $categories)
+                    <option value="{{$categories->id}}">{{$categories->cat_title}}</option>
                     @endforeach
                   </select>
                 </fieldset>

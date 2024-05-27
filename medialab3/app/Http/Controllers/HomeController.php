@@ -20,10 +20,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data = Product::where('Quantity', '>', 0)->paginate(10);
-        $data2 = Categorie::all();
+        $products = Product::withCount(['items as remaining' => function ($query) {
+            $query->where('availability', 1);
+        }])->paginate(10);
 
-        return view('home.mainpage', compact('data', 'data2'));
+        $categories = Categorie::all();
+
+        return view('home.mainpage', compact('products', 'categories'));
     }
     public function borrow_product($id)
     {

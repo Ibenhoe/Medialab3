@@ -100,7 +100,7 @@
               <div>
                 <table class="center2">
                   <tr>
-                    <th>Categorie naaam</th>
+                    <th>Categorie naam</th>
                     <th>Actie</th>
                   </tr>
                   @foreach($data as $datas)

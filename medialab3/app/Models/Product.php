@@ -14,4 +14,12 @@ class Product extends Model
     {
         return $this->belongsTo(Categorie::class,'category_id');
     }
+
+    public function items(){
+        return $this->hasMany(Item::class, 'product_id');
+    }
+
+    public function getRemainingAttribute(){
+        return $this->items()->where('availability', 1)->count();
+    }
 }

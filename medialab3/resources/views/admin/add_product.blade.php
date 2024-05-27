@@ -48,13 +48,6 @@
                 <label for="">Product Title</label>
                 <input type="text" name="product_title">
             </div>
-
-            
-            <div class="div_pad">
-                <label for="">Product quantity</label>
-                <input value="1" type="number" name="product_quantity">
-            </div>
-
             
             <div class="div_pad">
                 <label for="">Product category</label>

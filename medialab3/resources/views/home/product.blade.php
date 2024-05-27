@@ -17,42 +17,34 @@
             
 
 
-            @foreach($data as $data1)
-
+            @foreach($products as $product)
             <div class="col-lg-6 currently-market-item all msc">
               <div class="item">
                 <div class="left-image">
-                  <img src="producten_images/{{$data1->product_img}}" alt="" style="border-radius: 20px; min-width: 195px; max-width: 195px">
+                  <img src="producten_images/{{$product->product_img}}" alt="" style="border-radius: 20px; min-width: 195px; max-width: 195px">
                 </div>
                 <div class="right-content">
-                  <h4>{{$data1->Merk}} {{$data1->title}}</h4>
+                  <h4>{{$product->Merk}} {{$product->title}}</h4>
                   
                   <div class="line-dec"></div>
                   <span class="bid">
-                    Beschikbaar<br><strong>{{$data1->Quantity}}</strong><br> 
+                    Beschikbaar<br><strong>{{$product->remaining}}</strong><br> 
                   </span>
                   <span class="ends">
-                    Totaal<br><strong>{{$data1->Quantity}}</strong><br>
+                    Totaal<br><strong>{{$product->Quantity}}</strong><br>
                   </span>
                   <div class="text-button">
-                    <a href="{{url('details_product',$data1->id)}}">Bekijk product</a>
-                    <a style="color: white;float: right; display:flex; background-color: #e30613; border: 1px solid #e30613;" class="btn btn-primary" href="{{url('add_cart', $data1->id)}}" >+<img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 25px;" ></a>
-                    
+                    <a href="{{url('details_product',$product->id)}}">Bekijk product</a>
+                    <a style="color: white;float: right; display:flex; background-color: #e30613; border: 1px solid #e30613;" class="btn btn-primary" href="{{url('add_cart', $product->id)}}" >+<img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 25px;" ></a>
                   </div>
                   <br>
                 </div>
-                
               </div>
             </div>
             @endforeach
-            
-
-            
-
           </div>
-          
         </div>
-        {{$data->links()}}
+        {{$products->links()}}
       </div>
     </div>
   </div>
