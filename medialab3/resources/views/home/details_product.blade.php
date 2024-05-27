@@ -139,6 +139,7 @@
             @csrf
             <input type="hidden" name="product_id" value="{{ $data->id}}"> <!-- Gebruik dynamische product ID -->
             <input type="hidden" name="user_id" value="{{ Auth::id() }}"> <!-- Ingelogde user ID -->
+            <input type="hidden" id="unavailable_dates" value="{{ json_encode($unavailable_dates) }}">
             
 
             <div class="heleKalenderDiv">

@@ -51,7 +51,9 @@
                     <tr>
                         <td>{{$datas->name}}</td>
                         <td>{{$datas->email}}</td>
-                        
+                        @if ($datas->blacklist == 1)
+                          <td><button class="btn btn-secondary " disabled>blacklisted</button></td>
+                        @else
                         <td><a onclick="confirmation(event)" href="{{url('blacklist', $datas->id)}}"class="btn btn-info">Blacklist</a></td>
                       </tr>
                     @endforeach
