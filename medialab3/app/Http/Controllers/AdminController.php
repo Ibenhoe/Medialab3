@@ -6,21 +6,21 @@ use Illuminate\Http\Request;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 use App\Models\Categorie;
 
 use App\Models\Product;
-use App\Models\Borrow;
 use App\Models\Reservation;
 
 class AdminController extends Controller
 {
     public function __construct()
     {
-        
+
         $this->middleware('admin'); // Voeg een custom 'admin' middleware toe om te controleren of de gebruiker een admin is
-        
+
     }
 
     public function index()
@@ -28,21 +28,21 @@ class AdminController extends Controller
         $data = Reservation::paginate(10);
         return view('admin.index', compact('data'));
     }
-    
 
     public function categorie_page()
     {
         $data = Categorie::paginate(10);
         return view('admin.categorie', compact('data'));
     }
+
     public function add_category(Request $request)
     {
-       $data = new Categorie;
-       $data->cat_title = $request->category;
-       $data->save();
-       return redirect()->back()->with('message', 'Category Added Successfully');
-        
+        $data = new Categorie;
+        $data->cat_title = $request->category;
+        $data->save();
+        return redirect()->back()->with('message', 'Category Added Successfully');
     }
+
     public function cat_delete($id)
     {
         $data = Categorie::find($id);
@@ -62,14 +62,15 @@ class AdminController extends Controller
         $data->cat_title = $request->cat_name;
         $data->save();
         return redirect('/categorie_page')->with('message', 'Category Updated Successfully');
-        
     }
+
     public function add_product()
     {
         $data = Categorie::all();
 
         return view('admin.add_product', compact('data'));
     }
+
     public function store_product(Request $request)
     {
         $data = new Product;
@@ -84,14 +85,13 @@ class AdminController extends Controller
         $data->description = $request->product_description;
         $product_image = $request->product_image;
 
-        if($product_image){
-            $product_image_name = time().'.'.$product_image->getClientOriginalExtension();
+        if ($product_image) {
+            $product_image_name = time() . '.' . $product_image->getClientOriginalExtension();
             $request->product_image->move('producten_images', $product_image_name);
             $data->product_img = $product_image_name;
-            
         }
 
-    
+
         $data->save();
         return redirect()->back()->with('message', 'Product Added Successfully');
     }
@@ -113,7 +113,7 @@ class AdminController extends Controller
     {
         $data = Product::find($id);
         $category = Categorie::all();
-        
+
         return view('admin.update_product', compact('data', 'category'));
     }
 
@@ -127,25 +127,24 @@ class AdminController extends Controller
         $data->description = $request->product_description;
         $product_image = $request->product_image;
 
-        if($product_image){
-            $product_image_name = time().'.'.$product_image->getClientOriginalExtension();
+        if ($product_image) {
+            $product_image_name = time() . '.' . $product_image->getClientOriginalExtension();
             $request->product_image->move('producten_images', $product_image_name);
             $data->product_img = $product_image_name;
-            
         }
 
-    
+
         $data->save();
         return redirect('/show_product');
     }
 
     public function approve_product($id)
     {
-        $data = Borrow::find($id);
-        
-        if($data->status == 'approved'){
+        $data = reservation::find($id);
+
+        if ($data->status == 'approved') {
             return redirect()->back()->with('message', 'Product Already Approved');
-        }else{
+        } else {
             $productid = $data->product_id;
             $product = Product::find($productid);
             $product->Quantity = $product->Quantity - 1;
@@ -153,42 +152,43 @@ class AdminController extends Controller
             $data->status = 'approved';
             $data->save();
             return redirect()->back()->with('message', 'Product Approved Successfully');
-        }}
-        
-
-        
+        }
+    }
 
     public function rejected_product($id)
     {
-        $data = Borrow::find($id);
-        $data->status = 'rejected';
-        $data->save();
-        return redirect()->back()->with('message', 'Product Rejected Successfully');
+        $deleted = DB::table('reservations')->where('id', $id)->delete();
+
+        if ($deleted)
+            return redirect()->back()->with('message', 'Product Rejected Successfully');
+        else
+            return redirect()->back()->with('error', 'Product not found');
     }
 
     public function returned_product($id)
     {
-        $data = Borrow::find($id);
-        
-        if($data->status == 'returned'){
-            return redirect()->back()->with('message', 'Product Already Returned');
-        }else{
+        $data = reservation::find($id);
 
-        $productid = $data->product_id;
-        $product = Product::find($productid);
-        $product->Quantity = $product->Quantity + 1;
-        $product->save();
-        $data->status = 'returned';
-        $data->save();
-        
-        return redirect()->back()->with('message', 'Product Returned Successfully');
+        if ($data->status == 'returned') {
+            return redirect()->back()->with('message', 'Product Already Returned');
+        } else {
+            $productid = $data->product_id;
+            $product = Product::find($productid);
+            $product->Quantity = $product->Quantity + 1;
+            $product->save();
+
+            DB::table('reservations')->where('id', $id)->delete();
+
+            return redirect()->back()->with('message', 'Product Returned Successfully');
         }
     }
+
     public function show_user()
     {
         $data = User::all();
         return view('admin.show_user', compact('data'));
     }
+
     public function blacklist($id)
     {
         $data = User::find($id);
@@ -196,6 +196,7 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back()->with('message', 'User Blacklisted Successfully');
     }
+
     public function unblacklist($id)
     {
         $data = User::find($id);
@@ -203,6 +204,7 @@ class AdminController extends Controller
         $data->save();
         return redirect()->back()->with('message', 'User Unblacklisted Successfully');
     }
+
     public function show_blacklist()
     {
         $data = User::where('blacklist', 1)->get();

@@ -49,18 +49,21 @@
                 <td>{{$borrow->product->Quantity}}</td>
                 <td>{{$borrow->status}}</td>
                 <td><img src="producten_images/{{$borrow->product->product_img}}" style="width: 100px; height: 100px;"></td>
-                <td><a class="btn btn-warning" href="{{url('approved_product',$borrow->id)}}">Approved</a>
-                    <a class="btn btn-danger" href="{{url('rejected_product',$borrow->id)}}">Rejected</a>
-                    <a class="btn btn-info" href="{{url('returned_product',$borrow->id)}}">Returned</a>
+
+                @if ($borrow->status == 'approved')
+                    <td><a class="btn btn-warning" disabled>Approved</a>
+                      <a class="btn btn-danger"disabled>Rejected</a>
+                      <a class="btn btn-info" href="{{url('returned_product',$borrow->id)}}">Returned</a></td>
+                @elseif ($borrow->status == 'pending')
+                    <td><a class="btn btn-warning" href="{{url('approved_product',$borrow->id)}}">Approved</a>
+                      <a class="btn btn-danger" href="{{url('rejected_product',$borrow->id)}}">Rejected</a>
+                      <a class="btn btn-info" disabled>Returned</a></td>
+                @endif
                 </td>
-
-
               </tr>
               @endforeach
             </table>
             </div>
-
-
           </div>
         </div>
       </div>
