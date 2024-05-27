@@ -15,7 +15,9 @@
         .div_pad{
             padding: 10px;
         }
-        
+        .page-content {
+          background-color: #2d3035;
+        }
 
 
 

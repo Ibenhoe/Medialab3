@@ -16,6 +16,9 @@
             padding: 20px;
             border-bottom: 1px solid grey;
         }
+        .page-content {
+          background-color: #2d3035;
+        }
     </style>
   </head>
   <body>

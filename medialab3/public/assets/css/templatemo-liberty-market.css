@@ -2165,6 +2165,9 @@ footer {
   height: 100%;
   padding: 1em;
 }
+.footer {
+  background-color: black;
+}
 .volledigeFooter {
 display: flex;
 justify-content: space-between;

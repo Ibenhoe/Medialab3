@@ -3,13 +3,13 @@
       <nav id="sidebar">
         <!-- Sidebar Header-->
         <div class="sidebar-header d-flex align-items-center">
-          <div class="avatar"><img src="admin/img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
+          <div class="avatar"><img src="admin/img/EmptyAvatar.jpg" alt="..." class="img-fluid rounded-circle"></div>
           <div class="title">
-            <h1 class="h5">Iben Vanthournout</h1>
-            <p>Web Designer</p>
+            <h1 class="h5">Persoon x</h1>
+            <p>Administrator</p>
           </div>
         </div>
-        <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+        <!-- Sidebar Navidation Menus-->
         <ul class="list-unstyled">
                 <li class="active"><a href="{{url('home')}}"> <i class="icon-home"></i>Home </a></li>
                 <li><a href="{{url('categorie_page')}}"> <i class="icon-grid"></i>Categorie</a></li>
