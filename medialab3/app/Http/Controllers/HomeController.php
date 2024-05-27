@@ -5,12 +5,13 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
-use App\Models\Product;
+
 use App\Models\Borrow;
 use App\Models\Categorie;
 use App\Models\Favorites;
 use App\Models\Cart;
 use App\Models\Reservation;
+use App\Models\Product;
 
 
 class HomeController extends Controller
@@ -147,7 +148,28 @@ class HomeController extends Controller
     public function details_product($id)
     {
         $data = Product::find($id);
-        return view('home.details_product', compact('data'));
+        $reservations = Reservation::where('product_id', $id)->get();
+        $quantity = $data->Quantity; // Beschikbaarheid wordt bijgehouden met de 'Quantity'-kolom
+
+        // Initialiseer de variabele om de onbeschikbare datums op te slaan
+        $unavailable_dates = [];
+
+        if ($quantity == 0) {
+            // Haal reserveringen op voor het product
+            foreach ($reservations as $reservation) {
+                // Voeg de datums van de reservering toe aan de lijst met geblokkeerde datums
+                $start_date = new \DateTime($reservation->start_date);
+                $end_date = new \DateTime($reservation->end_date);
+                $interval = new \DateInterval('P1D');
+                $daterange = new \DatePeriod($start_date, $interval, $end_date);
+                foreach ($daterange as $date) {
+                    $unavailable_dates[] = $date->format("Y-m-d");
+                }
+            }
+        }
+        
+        return view('home.details_product', compact('data', 'reservations', 'quantity', 'unavailable_dates'));
+
     }
 
     public function add_favorites($id)
