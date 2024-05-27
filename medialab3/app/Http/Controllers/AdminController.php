@@ -12,7 +12,7 @@ use App\Models\Categorie;
 
 use App\Models\Product;
 use App\Models\Borrow;
-
+use App\Models\Reservation;
 
 class AdminController extends Controller
 {
@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $data = Borrow::paginate(10);
+        $data = Reservation::paginate(10);
         return view('admin.index', compact('data'));
     }
     

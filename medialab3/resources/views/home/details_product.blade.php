@@ -172,7 +172,7 @@
             
 
             <div class="knop1">
-                <button type="submit">Reserveren en toevoegen aan mandje</button>
+                <button type="submit">Reserveren</button>
             </div>
         </form>
           

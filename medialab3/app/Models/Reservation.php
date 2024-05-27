@@ -21,4 +21,8 @@ class Reservation extends Model
     {
         return $this->belongsTo(Product::class);
     }
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
