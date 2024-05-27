@@ -140,7 +140,7 @@ class AdminController extends Controller
 
     public function approve_product($id)
     {
-        $data = reservation::find($id);
+        $data = Reservation::find($id);
 
         if ($data->status == 'approved') {
             return redirect()->back()->with('message', 'Product Already Approved');
@@ -157,7 +157,7 @@ class AdminController extends Controller
 
     public function rejected_product($id)
     {
-        $deleted = DB::table('reservations')->where('id', $id)->delete();
+        $deleted = DB::table('Reservations')->where('id', $id)->delete();
 
         if ($deleted)
             return redirect()->back()->with('message', 'Product Rejected Successfully');
@@ -167,7 +167,7 @@ class AdminController extends Controller
 
     public function returned_product($id)
     {
-        $data = reservation::find($id);
+        $data = Reservation::find($id);
 
         if ($data->status == 'returned') {
             return redirect()->back()->with('message', 'Product Already Returned');
@@ -177,7 +177,7 @@ class AdminController extends Controller
             $product->Quantity = $product->Quantity + 1;
             $product->save();
 
-            DB::table('reservations')->where('id', $id)->delete();
+            DB::table('Reservations')->where('id', $id)->delete();
 
             return redirect()->back()->with('message', 'Product Returned Successfully');
         }
