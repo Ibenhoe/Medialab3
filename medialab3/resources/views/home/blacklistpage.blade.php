@@ -27,6 +27,7 @@ h1{
 h3{
     text-align: center;
     margin: 0 auto;
+    margin-bottom: 20px;
 
 }
 img{
@@ -36,6 +37,10 @@ img{
     width: 20%;
     margin-top: 50px;
 
+}
+a{
+    
+    color:red;
 }
 
 
