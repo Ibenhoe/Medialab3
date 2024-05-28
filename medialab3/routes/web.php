@@ -60,6 +60,8 @@ route::get('/show_blacklist', [AdminController::class, 'show_blacklist']);
 
 route::get('/add_item', [AdminController::class, 'add_item']);
 
+Route::post('generate_serial', [AdminController::class, 'generateSerial'])->name('generate_serial');
+
 
 
 //User page's

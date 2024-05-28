@@ -204,10 +204,31 @@ class AdminController extends Controller
         return view('admin.show_blacklist', compact('data'));
     }
 
-    public function add_item(Request $request, $id)
+    public function add_item()
     {
         $data = Product::all();
-
         return view('admin.add_item', compact('data'));
+    }
+
+    public function generateSerial(Request $request){
+        $request->validate([
+            'product_name' => 'required|integer|min:1',
+        ]);
+
+        $serialNumber = $this->generateSerialNumber($request->product_name);
+
+        $item = new Item();
+        $item->product_id = $request->product_name;
+        $item->serial_number = $serialNumber;
+        $item->availability = 1;
+        $item->save();
+        
+        return redirect()->back()->with('serial_number', $serialNumber);
+    }
+    
+    private function generateSerialNumber($productId){
+
+        $serialNumber = 'SN' . strtoupper((uniqid()));
+        return $serialNumber;
     }
 }
