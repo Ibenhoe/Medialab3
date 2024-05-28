@@ -112,8 +112,9 @@ Route::middleware([
 });
 
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     Mail::to('andreipredaa11@gmail.com')
         ->send(new HelloMail());
 });
+*/
 

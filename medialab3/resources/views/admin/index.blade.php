@@ -71,6 +71,7 @@
                 <th>Gebruikernaam</th>
                 <th>Email</th>
                 <th>Product titel</th>
+                <th>Serial nummer</th>
                 <th>Hoeveelheid</th>
                 <th>Status</th>
                 <th>Product afbeelding</th>
@@ -82,6 +83,7 @@
                 <td>{{$borrow->user->name}}</td>
                 <td>{{$borrow->user->email}}</td>
                 <td>{{$borrow->product->Merk}} {{$borrow->product->title}}</td>
+                <td>{{$borrow->item->serial_number}}</td>
                 <td>{{$borrow->product->getRemainingAttribute()}}</td>
                 <td>{{$borrow->status}}</td>
                 <td><img src="producten_images/{{$borrow->product->product_img}}" style="width: 100px; height: 100px;"></td>

@@ -17,6 +17,7 @@ use App\Models\Item;
 use Carbon\Carbon;
 
 
+
 class HomeController extends Controller
 {
     public function index()
@@ -219,27 +220,35 @@ class HomeController extends Controller
 
     public function reservation(Request $request)
     {
-        $request->validate([
-            'product_id' => 'required|integer',
-            'user_id' => 'required|integer',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after_or_equal:start_date',
-            'reason' => 'required|string|max:255',
-            'Defect' => 'nullable|string|max:255',
-        ]);
+    $request->validate([
+        'product_id' => 'required|integer',
+        'start_date' => 'required|date',
+        'end_date' => 'required|date|after_or_equal:start_date',
+        'reason' => 'required|string|max:255',
+        'Defect' => 'nullable|string|max:255',
+    ]);
 
-        $product = Product::find($request->product_id);
+    $product = Product::find($request->product_id);
 
-        // Controleer of het product bestaat en er voorraad beschikbaar is
-        if ($product && $product->Quantity >= 1) {
-            // Controleer of de gebruiker is ingelogd
-            if (Auth::check()) {
-                // Haal de ID van de ingelogde gebruiker op
-                $user_id = Auth::id();
+    // Check if the product exists and has available items
+    if ($product && $product->remaining >= 1) {
+        // Check if the user is logged in
+        if (Auth::check()) {
+            // Retrieve the ID of the logged-in user
+            $user_id = Auth::id();
 
-                // Maak een nieuwe reservering aan
+            // Find an available item for the product
+            $item = Item::where('product_id', $request->product_id)
+                    ->where('availability', 1)
+                    
+                    ->first();
+
+
+            // Create a new reservation
+            if ($item) {
                 $reservation = new Reservation();
                 $reservation->product_id = $request->product_id;
+                $reservation->item_id = $item->item_id; // Associate the item
                 $reservation->user_id = $user_id;
                 $reservation->status = 'pending';
                 $reservation->start_date = $request->start_date;
@@ -247,18 +256,24 @@ class HomeController extends Controller
                 $reservation->reason = $request->reason;
                 $reservation->Defect = $request->Defect;
                 $reservation->save();
-
+                $item->availability = 0;
+                $item->save();
 
                 return redirect()->back()->with('message', 'Your reservation request has been sent.');
             } else {
-
-                return redirect('/login');
+                // Handle the case where no available item is found
+                return redirect()->back()->with('message', 'No available item found for the selected dates.');
             }
         } else {
-
-            return redirect()->back()->with('message', 'This product is out of stock.');
+            // User is not logged in
+            return redirect('/login');
         }
+    } else {
+        // Product is out of stock
+        return redirect()->back()->with('message', 'This product is out of stock.');
     }
+}
+
 
     public function delete_cart($id)
     {
@@ -279,32 +294,42 @@ class HomeController extends Controller
             'end_date' => 'required|array',
             'end_date.*' => 'required|date|after_or_equal:start_date.*',
             'reason' => 'required|string',
-            'item_id' => 'required',
+            
         ]);
 
         // Loop door de startdatums heen en maak reserveringen aan
         foreach ($request->start_date as $product_id => $startDate) {
-            $availableItem = Item::where('product_id', $product_id)->where('availability', 1)->first();
-            if (!$availableItem) {
-                // Handle the case where no available item is found
-                // For example, you can return a response indicating unavailability.
-                return redirect()->back()->with('error', 'No available item found for product ID: ' . $product_id);
-            }
-            
-            $reservation = new Reservation();
-            $reservation->product_id = $product_id; // Gebruik de juiste product_id
-            $reservation->user_id = $user_id;
-            $$reservation->item_id = $availableItem->id; // Gebruik het item_id van het beschikbare item
-            $reservation->status = 'pending';
-            $reservation->start_date = $startDate;
-            $reservation->end_date = $request->end_date[$product_id];
-            $reservation->reason = $request->reason;
-            $reservation->defect = null; // Defect is niet meegegeven, dus blijft null
-            $reservation->save();
 
-            // Verwijder het item uit de winkelwagen
-            Cart::where('product_id', $product_id)->where('user_id', $user_id)->delete();
-        }
+                $product = Product::find($product_id);
+
+                    // Check if the product exists and has available items
+                    if ($product && $product->remaining >= 1) {
+                        // Find an available item for the product
+                        $item = Item::where('product_id', $product_id)
+                                    ->where('availability', 1)
+                                    ->first();
+
+                        // Create a new reservation
+                        if ($item) {
+                            $reservation = new Reservation();
+                            $reservation->product_id = $product_id;
+                            $reservation->item_id = $item->item_id; // Associate the item
+                            $reservation->user_id = $user_id;
+                            $reservation->status = 'pending';
+                            $reservation->start_date = $startDate;
+                            $reservation->end_date = $request->end_date[$product_id];
+                            $reservation->reason = $request->reason;
+                            $reservation->defect =  null;
+                            $reservation->save();
+
+                            // Update item availability
+                            $item->availability = 0;
+                            $item->save();
+                        }
+                    } 
+                    Cart::where('user_id', $user_id)->where('product_id', $product_id)->delete();
+            }
+    
 
         return redirect()->back()->with('message', 'Reserveringen succesvol aangemaakt en items verwijderd uit de winkelwagen.');
     }
