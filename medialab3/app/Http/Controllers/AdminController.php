@@ -203,4 +203,11 @@ class AdminController extends Controller
         $data = User::where('blacklist', 1)->get();
         return view('admin.show_blacklist', compact('data'));
     }
+
+    public function add_item(Request $request, $id)
+    {
+        $data = Product::all();
+
+        return view('admin.add_item', compact('data'));
+    }
 }

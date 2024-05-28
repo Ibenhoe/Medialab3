@@ -58,6 +58,8 @@ route::get('/unblacklist/{id}', [AdminController::class, 'unblacklist']);
 
 route::get('/show_blacklist', [AdminController::class, 'show_blacklist']);
 
+route::get('/add_item', [AdminController::class, 'add_item']);
+
 
 
 //User page's
