@@ -22,4 +22,8 @@ class Product extends Model
     public function getRemainingAttribute(){
         return $this->items()->where('availability', 1)->count();
     }
+
+    public function getAllAttribute(){
+        return $this->items()->count();
+    }
 }

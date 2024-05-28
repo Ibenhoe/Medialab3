@@ -141,13 +141,28 @@ class AdminController extends Controller
         if ($data->status == 'approved') {
             return redirect()->back()->with('message', 'Product Already Approved');
         } else {
-            $productid = $data->product_id;
-            $product = Product::find($productid);
-            $product->Quantity = $product->Quantity - 1;
-            $product->save();
+            $item = Item::find($data->item_id);
+            $item->availability = 0;
+            $item->save();
             $data->status = 'approved';
             $data->save();
             return redirect()->back()->with('message', 'Product Approved Successfully');
+        }
+    }
+
+    public function returned_product($id)
+    {
+        $data = Reservation::find($id);
+
+        if ($data->status == 'returned') {
+            return redirect()->back()->with('message', 'Product Already Returned');
+        } else {
+            $item = Item::find($data->item_id);
+            $item->availability = 1;
+            $item->save();
+            DB::table('reservations')->where('id', $id)->delete();
+
+            return redirect()->back()->with('message', 'Product Returned Successfully');
         }
     }
 
@@ -159,24 +174,6 @@ class AdminController extends Controller
             return redirect()->back()->with('message', 'Product Rejected Successfully');
         else
             return redirect()->back()->with('error', 'Product not found');
-    }
-
-    public function returned_product($id)
-    {
-        $data = Reservation::find($id);
-
-        if ($data->status == 'returned') {
-            return redirect()->back()->with('message', 'Product Already Returned');
-        } else {
-            $productid = $data->product_id;
-            $product = Product::find($productid);
-            $product->Quantity = $product->Quantity + 1;
-            $product->save();
-
-            DB::table('Reservations')->where('id', $id)->delete();
-
-            return redirect()->back()->with('message', 'Product Returned Successfully');
-        }
     }
 
     public function show_user()

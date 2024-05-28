@@ -13,6 +13,7 @@ use App\Models\Favorites;
 use App\Models\Cart;
 use App\Models\Reservation;
 use App\Models\Product;
+use App\Models\Item;
 use Carbon\Carbon;
 
 
@@ -278,13 +279,22 @@ class HomeController extends Controller
             'end_date' => 'required|array',
             'end_date.*' => 'required|date|after_or_equal:start_date.*',
             'reason' => 'required|string',
+            'item_id' => 'required',
         ]);
 
         // Loop door de startdatums heen en maak reserveringen aan
         foreach ($request->start_date as $product_id => $startDate) {
+            $availableItem = Item::where('product_id', $product_id)->where('availability', 1)->first();
+            if (!$availableItem) {
+                // Handle the case where no available item is found
+                // For example, you can return a response indicating unavailability.
+                return redirect()->back()->with('error', 'No available item found for product ID: ' . $product_id);
+            }
+            
             $reservation = new Reservation();
             $reservation->product_id = $product_id; // Gebruik de juiste product_id
             $reservation->user_id = $user_id;
+            $$reservation->item_id = $availableItem->id; // Gebruik het item_id van het beschikbare item
             $reservation->status = 'pending';
             $reservation->start_date = $startDate;
             $reservation->end_date = $request->end_date[$product_id];

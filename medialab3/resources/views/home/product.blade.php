@@ -23,10 +23,10 @@
                   
                   <div class="line-dec"></div>
                   <span class="bid">
-                    Beschikbaar<br><strong>{{$data1->remaining}}</strong><br> 
+                    Beschikbaar<br><strong>{{$data1->getRemainingAttribute()}}</strong><br> 
                   </span>
                   <span class="ends">
-                    Totaal<br><strong>{{$data1->Quantity}}</strong><br>
+                    Totaal<br><strong>{{$data1->getAllAttribute()}}</strong><br>
                   </span>
                   <div class="text-button">
                     <a href="{{url('details_product',$data1->id)}}">Bekijk product</a>

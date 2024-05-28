@@ -70,8 +70,13 @@
               <tr>
                 <th>Gebruikernaam</th>
                 <th>Email</th>
+<<<<<<< Updated upstream
                 <th>Product titel</th>
                 <th>Hoeveelheid</th>
+=======
+                <th>Product title</th>
+                <th>Remaining Quantity</th>
+>>>>>>> Stashed changes
                 <th>Status</th>
                 <th>Product afbeelding</th>
                 <th>Verander status</th>
@@ -82,7 +87,7 @@
                 <td>{{$borrow->user->name}}</td>
                 <td>{{$borrow->user->email}}</td>
                 <td>{{$borrow->product->Merk}} {{$borrow->product->title}}</td>
-                <td>{{$borrow->product->Quantity}}</td>
+                <td>{{$borrow->product->getRemainingAttribute()}}</td>
                 <td>{{$borrow->status}}</td>
                 <td><img src="producten_images/{{$borrow->product->product_img}}" style="width: 100px; height: 100px;"></td>
 
