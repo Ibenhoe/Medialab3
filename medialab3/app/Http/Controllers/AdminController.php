@@ -168,7 +168,7 @@ class AdminController extends Controller
 
     public function rejected_product($id)
     {
-        $deleted = DB::table('Reservations')->where('id', $id)->delete();
+        $deleted = DB::table('reservations')->where('id', $id)->delete();
 
         if ($deleted)
             return redirect()->back()->with('message', 'Product Rejected Successfully');

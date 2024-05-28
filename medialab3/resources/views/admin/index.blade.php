@@ -70,13 +70,8 @@
               <tr>
                 <th>Gebruikernaam</th>
                 <th>Email</th>
-<<<<<<< Updated upstream
                 <th>Product titel</th>
                 <th>Hoeveelheid</th>
-=======
-                <th>Product title</th>
-                <th>Remaining Quantity</th>
->>>>>>> Stashed changes
                 <th>Status</th>
                 <th>Product afbeelding</th>
                 <th>Verander status</th>
