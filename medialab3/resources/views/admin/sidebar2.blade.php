@@ -11,7 +11,7 @@
         </div>
         <!-- Sidebar Navidation Menus-->
         <ul class="list-unstyled">
-                <li ><a href="{{url('home')}}"> <i class="icon-home"></i>Startpagina</a></li>
+                <li><a href="{{url('home')}}"> <i class="icon-home"></i>Startpagina</a></li>
                 <li class="active"><a href="{{url('categorie_page')}}"> <i class="icon-grid"></i>Categorie</a></li>
                 
                 <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Producten</a>
