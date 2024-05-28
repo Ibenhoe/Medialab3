@@ -30,7 +30,7 @@
                   </span>
                   <div class="text-button">
                     <a href="{{url('details_product',$data1->id)}}">Bekijk product</a>
-                    <a style="color: white;float: right; display:flex; background-color: #e30613; border: 1px solid #e30613;" class="btn btn-primary" href="{{url('add_cart', $product->id)}}" >+<img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 25px;" ></a>
+                    <a style="color: white;float: right; display:flex; background-color: #e30613; border: 1px solid #e30613;" class="btn btn-primary" href="{{url('add_cart', $data1->id)}}" >+<img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 25px;" ></a>
                   </div>
                   <br>
                 </div>
