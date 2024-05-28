@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 
 use App\Models\Categorie;
-
+use App\Models\Item;
 use App\Models\Product;
 use App\Models\Reservation;
 
@@ -88,9 +88,8 @@ class AdminController extends Controller
             $request->product_image->move('producten_images', $product_image_name);
             $data->product_img = $product_image_name;
         }
-
-
         $data->save();
+        
         return redirect()->back()->with('message', 'Product Added Successfully');
     }
 
