@@ -298,4 +298,9 @@ class HomeController extends Controller
 
         return redirect()->back()->with('message', 'Reserveringen succesvol aangemaakt en items verwijderd uit de winkelwagen.');
     }
+    public function blacklistview()
+    {
+        
+        return view('home.blacklistpage');
+    }
 }

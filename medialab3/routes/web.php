@@ -92,6 +92,7 @@ route::post('/reservation', [HomeController::class, 'reservation'])->middleware(
 route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware('auth', 'verified');
 
 Route::post('/confirm_reservation', [HomeController::class, 'confirmReservation'])->name('confirm_reservation');
+Route::get('/blacklistview', [HomeController::class, 'blacklistview'])->name('blacklistview');
 
 
 Route::middleware([
