@@ -91,3 +91,7 @@ https://chat.openai.com/share/4a1cf282-bbd5-47d9-8c40-4b123c854912
 
 Commit Kalender
 https://chatgpt.com/share/c2ef519f-6782-4594-b574-090511772cb4
+
+Youtube tutorial Laravel mail en ChatGPT chatlog voor error oplossing
+https://www.youtube.com/watch?v=PeK_tD4T3Og
+https://chatgpt.com/c/6ba718bc-d338-49c9-a485-21ef4a99aae6

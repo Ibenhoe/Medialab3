@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Mail\HelloMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -110,9 +112,8 @@ Route::middleware([
 });
 
 
-
-
-
-
-
+Route::get('/', function () {
+    Mail::to('andreipredaa11@gmail.com')
+        ->send(new HelloMail());
+});
 
