@@ -49,14 +49,14 @@
                 <h1>Producten lijst</h1>
                 <table class="div_left">
                     <tr>
-                        <th>Product Brand</th>
-                        <th>Product title</th>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>Category</th>
-                        <th>Product image</th>
-                        <th>Delete</th>
-                        <th>Update</th>
+                        <th>Product merk</th>
+                        <th>Product titel</th>
+                        <th>Beschrijving</th>
+                        <th>Hoeveelheid</th>
+                        <th>Categorie</th>
+                        <th>Product afeelding</th>
+                        <th>Verwijderen</th>
+                        <th>Bijwerken</th>
                         
                     </tr>
                     @foreach($products as $product)
@@ -67,8 +67,8 @@
                         <td>{{$product->Quantity}}</td>
                         <td>{{$product->categorie->cat_title}}</td>
                         <td><img src="producten_images/{{$product->product_img}}" style="width: 100px; height: 100px;"></td>
-                        <td><a onclick="confirmation(event)" href="{{url('product_delete', $product->id)}}" class="btn btn-danger">Delete</a></td>
-                        <td><a href="{{url('update_product', $product->id)}}"class="btn btn-info">Update</a></td>
+                        <td><a onclick="confirmation(event)" href="{{url('product_delete', $product->id)}}" class="btn btn-danger">Verwijder</a></td>
+                        <td><a href="{{url('update_product', $product->id)}}"class="btn btn-info">Bijwerken</a></td>
                       </tr>
                     @endforeach
 

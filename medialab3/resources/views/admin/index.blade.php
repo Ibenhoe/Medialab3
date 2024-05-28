@@ -17,6 +17,42 @@
         .page-content {
           background-color: #2d3035;
         }
+        .btn-btn-warning {
+          color: white;
+          background-color: green;
+          padding: 5px 10px;
+          border-radius: 5px;
+          margin-bottom: 5px;
+        }
+        .btn-btn-warning:hover {
+          color: white;
+          text-decoration: none;
+          filter: brightness(80%);
+        }
+        .btn-btn-danger {
+          color: white;
+          background-color: red;
+          padding: 5px 10px;
+          border-radius: 5px;
+          margin-bottom: 5px;
+        }
+        .btn-btn-danger:hover {
+          color: white;
+          text-decoration: none;
+          filter: brightness(80%);
+        }
+        .btn-btn-info {
+          color: white;
+          background-color: #f0ad4e;
+          padding: 5px 10px;
+          border-radius: 5px;
+          margin-bottom: 5px;
+        }
+        .btn-btn-info:hover {
+          color: white;
+          text-decoration: none;
+          filter: brightness(80%);
+        }
     </style>
   </head>
   <body>
@@ -32,13 +68,13 @@
             <div class="table_request">
             <table >
               <tr>
-                <th>User name</th>
+                <th>Gebruikernaam</th>
                 <th>Email</th>
-                <th>Product title</th>
-                <th>Quantity</th>
+                <th>Product titel</th>
+                <th>Hoeveelheid</th>
                 <th>Status</th>
-                <th>Product image</th>
-                <th>Change status</th>
+                <th>Product afbeelding</th>
+                <th>Verander status</th>
               </tr>
 
               @foreach($data as $borrow)
@@ -51,13 +87,13 @@
                 <td><img src="producten_images/{{$borrow->product->product_img}}" style="width: 100px; height: 100px;"></td>
 
                 @if ($borrow->status == 'approved')
-                    <td><a class="btn btn-warning" disabled>Approved</a>
-                      <a class="btn btn-danger"disabled>Rejected</a>
-                      <a class="btn btn-info" href="{{url('returned_product',$borrow->id)}}">Returned</a></td>
+                    <td><a class="btn-btn-warning" disabled>Accepteren</a>
+                      <a class="btn-btn-danger"disabled>Afwijzen</a>
+                      <a class="btn-btn-info" href="{{url('returned_product',$borrow->id)}}">Terug gebracht</a></td>
                 @elseif ($borrow->status == 'pending')
-                    <td><a class="btn btn-warning" href="{{url('approved_product',$borrow->id)}}">Approved</a>
-                      <a class="btn btn-danger" href="{{url('rejected_product',$borrow->id)}}">Rejected</a>
-                      <a class="btn btn-info" disabled>Returned</a></td>
+                    <td><a class="btn-btn-warning" href="{{url('approved_product',$borrow->id)}}">Accepteren</a>
+                      <a class="btn-btn-danger" href="{{url('rejected_product',$borrow->id)}}">Afwijzen</a>
+                      <a class="btn-btn-info" disabled>Terug gebracht</a></td>
                 @endif
                 </td>
               </tr>

@@ -33,7 +33,7 @@
           <div class="container-fluid">
 
           <div class="div_left">
-            <h1 class="h2">Add Product</h1>
+            <h1 class="h2">Product toevoegen</h1>
             
             <form action="{{url('store_product')}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -45,14 +45,14 @@
 
             
             <div class="div_pad">
-                <label for="">Product Title</label>
+                <label for="">Product Titel</label>
                 <input type="text" name="product_title">
             </div>
             
             <div class="div_pad">
-                <label for="">Product category</label>
+                <label for="">Product categorie</label>
                 <select name="product_category" required >
-                    <option >Select a Category</option>
+                    <option >Select een Categorie</option>
                     @foreach($data as $data)
                     <option value="{{$data->id}}">{{$data->cat_title}}</option>
                     @endforeach
@@ -61,13 +61,13 @@
 
             
             <div class="div_pad">
-                <label for="">Product description</label>
+                <label for="">Product beschrijving</label>
                 <textarea name="product_description" cols="30" rows="5"></textarea>
             </div>
 
 
             <div class="div_pad">
-                <label for="">Product images</label>
+                <label for="">Product afbeelding</label>
                 <input type="file" name="product_image">
             </div>
 

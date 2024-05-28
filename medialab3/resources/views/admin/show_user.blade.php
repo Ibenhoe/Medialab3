@@ -40,10 +40,10 @@
 
               <!-- User list -->
               </div>
-                <h1>User lijst</h1>
+                <h1>Gebruiker lijst</h1>
                 <table class="div_left">
                     <tr>
-                        <th>Name</th>
+                        <th>Naam</th>
                         <th>Email</th>
                     </tr>
 
@@ -52,7 +52,7 @@
                         <td>{{$datas->name}}</td>
                         <td>{{$datas->email}}</td>
                         @if ($datas->Blacklist == 1)
-                          <td><button class="btn btn-secondary " disabled>blacklisted</button></td>
+                          <td><button class="btn btn-secondary " disabled>geblacklist</button></td>
                         @else
                         <td><a onclick="confirmation(event)" href="{{url('blacklist', $datas->id)}}"class="btn btn-info">Blacklist</a></td>
                       </tr>
@@ -75,9 +75,9 @@
               var urlToRedirect = ev.currentTarget.getAttribute('href');
               console.log(urlToRedirect);
           swal({
-                title: "Are you sure?",
-                text: "Once blacklist, the user will not be able to reserve a product!",
-                icon: "warning",
+                title: "Ben je zeker?",
+                text: "Eens blacklist zal de gebruiker niet meer het recht hebben om uit te lenen.",
+                icon: "Waarschuwing",
                 buttons: true,
                 dangerMode: true,
             })

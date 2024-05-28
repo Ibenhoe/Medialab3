@@ -30,28 +30,28 @@
           <div class="container-fluid">
 
             <div>
-                <h1>Update product</h1>
+                <h1>Product bijwerken</h1>
 
                 <form action="{{url('update_product', $data->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="div_pad">
-                    <label for="">Product brand</label>
+                    <label for="">Product merk</label>
                     <input type="text" name="product_merk" value="{{$data->Merk}}">
                     </div>
 
                     <div class="div_pad">
-                    <label for="">Product title</label>
+                    <label for="">Product titel</label>
                     <input type="text" name="product_title" value="{{$data->title}}">
                     </div>
 
                     <div class="div_pad">
-                    <label for="">Quantity</label>
+                    <label for="">Hoeveelheid</label>
                     <input type="number" name="product_quantity" value="{{$data->Quantity}}">
                     </div>
 
                     <div class="div_pad">
-                        <label for="">Category</label>
+                        <label for="">Categorie</label>
                         <select name="product_category" required >
                             <option value="{{$data->category_id}}">{{$data->categorie->cat_title}}</option>
                             
@@ -62,18 +62,18 @@
                     </div>
 
                     <div lass="div_pad">
-                    <label for="">Product description</label>
+                    <label for="">Product beschrijving</label>
                     
                     <textarea name="product_description" cols="30" rows="5">{{$data->description}}</textarea>
                     </div>
 
                     <div class="div_pad">
-                        <label for="">Current product photo</label>
+                        <label for="">Huidige product afbeelding</label>
                         <img src="/producten_images/{{$data->product_img}}" style="width: 100px; height: 100px;">
                     </div>
 
                     <div class="div_pad">
-                        <label for="">Update product photo</label>
+                        <label for="">Werk product afbeelding bij</label>
                         <input type="file" name="product_image">
                     </div>
 

@@ -1601,7 +1601,6 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 .login-page .form-holder div[class*='col-'] {
   padding: 0;
 }
-
 .login-page .form-holder .info {
   background: rgba(55, 207, 220, 0.95);
   color: #fff;
