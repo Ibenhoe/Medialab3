@@ -18,6 +18,7 @@
                   <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                     <li><a href="{{url('add_product')}}">Product toevoegen</a></li>
                     <li><a href="{{url('show_product')}}">Producten bekijken</a></li>
+                    <li><a href="{{url('add_item')}}">Items bekijken</a></li>
                   </ul>
                 </li>
                 <li><a href="{{url('show_user')}}"> <i class="icon-user"></i>Gebruikers</a></li>

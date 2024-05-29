@@ -64,7 +64,7 @@
                         <td>{{$product->Merk}}</td>
                         <td>{{$product->title}}</td>
                         <td>{!!Str::limit($product->description, 50)!!}</td>
-                        <td>{{$product->Quantity}}</td>
+                        <td>{{$product->all}}</td>
                         <td>{{$product->categorie->cat_title}}</td>
                         <td><img src="producten_images/{{$product->product_img}}" style="width: 100px; height: 100px;"></td>
                         <td><a onclick="confirmation(event)" href="{{url('product_delete', $product->id)}}" class="btn btn-danger">Verwijder</a></td>

@@ -64,6 +64,9 @@ route::get('/add_item', [AdminController::class, 'add_item']);
 
 Route::post('generate_serial', [AdminController::class, 'generateSerial'])->name('generate_serial');
 
+route::get('/delete_item/{item_id}', [AdminController::class, 'delete_item']);
+
+
 
 
 //User page's

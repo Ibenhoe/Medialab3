@@ -45,10 +45,7 @@
                     <input type="text" name="product_title" value="{{$data->title}}">
                     </div>
 
-                    <div class="div_pad">
-                    <label for="">Hoeveelheid</label>
-                    <input type="number" name="product_quantity" value="{{$data->Quantity}}">
-                    </div>
+                  
 
                     <div class="div_pad">
                         <label for="">Categorie</label>

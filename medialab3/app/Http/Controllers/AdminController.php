@@ -119,7 +119,6 @@ class AdminController extends Controller
         $data = Product::find($id);
         $data->Merk = $request->product_merk;
         $data->title = $request->product_title;
-        $data->Quantity = $request->product_quantity;
         $data->category_id = $request->product_category;
         $data->description = $request->product_description;
         $product_image = $request->product_image;
@@ -204,10 +203,15 @@ class AdminController extends Controller
         return view('admin.show_blacklist', compact('data'));
     }
 
-    public function add_item()
+    public function add_item(Request $request)
     {
         $data = Product::all();
-        return view('admin.add_item', compact('data'));
+        $items = collect(); // Create an empty collection
+
+        if ($request->has('product_name') && $request->input('product_name') != 0) {
+            $items = Item::where('product_id', $request->input('product_name'))->get();
+        }
+        return view('admin.add_item', compact('data', 'items'));
     }
 
     public function generateSerial(Request $request){
@@ -230,5 +234,18 @@ class AdminController extends Controller
 
         $serialNumber = 'SN' . strtoupper((uniqid()));
         return $serialNumber;
+    }
+
+    public function delete_item($item_id)
+    {
+        $item = Item::find($item_id);
+        if ($item && $item->availability) {
+            $item->delete();
+            return redirect()->back()->with('message', 'Item Deleted Successfully');
+        } elseif ($item) {
+            return redirect()->back()->with('error', 'Item cannot be deleted because it is unavailable');
+        } else {
+            return redirect()->back()->with('error', 'Item not found');
+        }
     }
 }
