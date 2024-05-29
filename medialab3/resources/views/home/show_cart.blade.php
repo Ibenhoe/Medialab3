@@ -249,6 +249,7 @@
   </div>
   @include('home.footer')
   
+  
 </body>
 
 </html>
