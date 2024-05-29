@@ -49,7 +49,7 @@ class HomeController extends Controller
                 return redirect('/login');
             }
         } else {
-            return redirect()->back()->with('message', 'Product is out of stock');
+            return redirect()->back()->with('message', 'Product niet beschikbaar.');
         }
     }
 
@@ -179,7 +179,7 @@ class HomeController extends Controller
         $favorites->product_id = $product_id;
         $favorites->user_id = $user_id;
         $favorites->save();
-        return redirect()->back()->with('message', 'Product added to favorites');
+        return redirect()->back()->with('message', 'Product toegevoegd aan favorieten.');
     }
     public function show_favorites()
     {
@@ -198,7 +198,7 @@ class HomeController extends Controller
         $data->user_id = $user_id;
         $data->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Product toegevoegd aan winkelwagen.');
     }
     public function favo_delete($id)
     {

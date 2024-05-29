@@ -1,15 +1,8 @@
 <div class="currently-market">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6">
-          
+        <div class="col-lg-6">  
         </div>
-
-        
-          @if(session()->has('message'))
-          <div class="alert alert-success">
-            <button type="button" class="close" data-bs-dissmis="alert" aria-hidden="true" >x</button>
-          @endif
         <div class="col-lg-12">
           <div class="row grid">
             @foreach($data as $data1)

@@ -113,6 +113,14 @@
   <!-- ***** Header Area End ***** -->
   <div class="discover-items">
     <div class="container">
+              <div>
+                @if(session()->has('message'))
+                  <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                    
+                  </div>
+                @endif
+              </div>
     <div class="volledigeDiv">
         <div class="linkerDiv">
             <div class="fotoDiv"><img src="/producten_images/{{$data->product_img}}"></div>
@@ -185,7 +193,13 @@
 </div>
   @include('home.footer')
   <script src="assets/js/calender.js"></script>
-
+  <script>
+        $(document).ready(function(){
+            setTimeout(function(){
+                $(".alert").alert('close');
+            }, 3000); // 5000 milliseconden = 5 seconden
+        });
+    </script>
 
   </body>
 </html>

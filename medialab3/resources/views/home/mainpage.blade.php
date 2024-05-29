@@ -66,12 +66,25 @@
             </div>
           </form>
         </div>
+        <div>
+          @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}    
+            </div>
+          @endif
+        </div>
 
 
   @include('home.product')
 
   @include('home.footer')
-
+  <script>
+        $(document).ready(function(){
+            setTimeout(function(){
+                $(".alert").alert('close');
+            }, 3000); // 5000 milliseconden = 5 seconden
+        });
+    </script>
 </body>
 
 </html>
