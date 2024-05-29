@@ -158,7 +158,12 @@
             <div class="naamDiv">
               <p>{{$datas->product->Merk}} {{$datas->product->title}}</p>
               <div class="rechterStuk">
-                <a href="#" class="verlengKnop">Verlengen</a>
+                @if($datas->extended == 1)
+                  <a href="{{ route('extend.reservation', ['id' => $datas->id]) }}" class="verlengKnop" disable>Verlengen</a>
+                @else
+                  <a href="{{ route('extend.reservation', ['id' => $datas->id]) }}" class="verlengKnop">Verlengen</a>
+                @endif
+              
                 <a href="" class="schadeKnop" onclick="openModal('schadeModal-{{ $datas->id }}')">Schade melden</a>
                 <p class="uitleenDatum" href="#">Uitgeleend tot: {{$datas->end_date}}</p>
               </div>

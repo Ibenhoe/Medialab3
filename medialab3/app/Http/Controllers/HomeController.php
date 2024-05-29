@@ -339,7 +339,7 @@ class HomeController extends Controller
         return view('home.blacklistpage');
     }
     public function schadeMelden(Request $request, $id)
-{
+    {
     $request->validate([
         'schadeOmschrijving' => 'required|string|max:255',
     ]);
@@ -350,7 +350,23 @@ class HomeController extends Controller
     $reservation->save();
 
     return redirect()->back()->with('message', 'Schade is gemeld.');
-}
+    }
+    public function extended($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        // Controleer of de reservering al verlengd is
+        if ($reservation->extended) {
+            return redirect()->back()->with('message', 'Reservering is al verlengd.');
+        }
+
+        // Verleng de reservering met 7 dagen
+        $reservation->end_date = Carbon::parse($reservation->end_date)->addDays(7);
+        $reservation->extended = 1; // Zet de extended flag op true
+        $reservation->save();
+
+        return redirect()->back()->with('message', 'Reservering succesvol verlengd.');
+    }
 }
 
 

@@ -102,6 +102,9 @@ Route::get('/blacklistview', [HomeController::class, 'blacklistview'])->name('bl
 
 Route::post('/schade-melden/{id}', [HomeController::class, 'schadeMelden'])->name('schade.melden');
 
+Route::get('/extend-reservation/{id}', [HomeController::class, 'extended'])->name('extend.reservation');
+
+
 
 
 Route::middleware([
