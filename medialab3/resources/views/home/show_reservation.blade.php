@@ -150,6 +150,14 @@
   <div class="discover-items" style="padding-top: 140px;">
     <div class="container">
       <div class="row">
+              <div>
+                @if(session()->has('message'))
+                  <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >x</button>
+                  </div>
+                @endif
+              </div>
         <div class="allesDiv">
           <h1 class="titel">Mijn reserveringen</h1>
 
@@ -230,6 +238,14 @@
               }});
             }
     </script>
+    <script>
+        $(document).ready(function(){
+            setTimeout(function(){
+                $(".alert").alert('close');
+            }, 3000); // 5000 milliseconden = 5 seconden
+        });
+    </script>
+    
 </body>
 
 </html>

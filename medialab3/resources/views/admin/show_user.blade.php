@@ -27,7 +27,7 @@
     <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
-          <div>
+          
               <!-- Alert message -->
               <div>
                 @if(session()->has('message'))
