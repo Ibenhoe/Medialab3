@@ -14,7 +14,9 @@ use App\Models\Cart;
 use App\Models\Reservation;
 use App\Models\Product;
 use App\Models\Item;
+use App\Mail\HelloMail;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -248,6 +250,7 @@ class HomeController extends Controller
                 $item->availability = 0;
                 $item->save();
 
+                Mail::to('dejaynyo@gmail.com')->send(new HelloMail());
                 return redirect()->back()->with('message', 'Your reservation request has been sent.');
             } else {
                 // Handle the case where no available item is found

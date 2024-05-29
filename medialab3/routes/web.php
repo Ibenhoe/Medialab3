@@ -122,7 +122,6 @@ Route::middleware([
 
 /*
 Route::get('/', function () {
-    Mail::to('dejaynyo@gmail.com')
-        ->send(new HelloMail());
+    Mail::to('dejaynyo@gmail.com')->send(new HelloMail());
 });
 */
