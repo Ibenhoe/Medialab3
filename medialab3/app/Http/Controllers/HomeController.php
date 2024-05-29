@@ -22,40 +22,23 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data = Product::withCount(['items as remaining' => function ($query) {
-            $query->where('availability', 1);
+        $data = Product::whereHas('items', function ($query) {
+            $query->where('availability', '>', 0);
+        })->withCount(['items as remaining' => function ($query) {
+            $query->where('availability', '>', 0);
         }])->paginate(10);
 
         $data2 = Categorie::all();
 
         return view('home.mainpage', compact('data', 'data2'));
     }
-    public function borrow_product($id)
-    {
-        $data = Product::find($id);
-        $quantity = $data->Quantity;
-        $product_id = $id;
-
-        if ($quantity >= 1) {
-            if (Auth::id()) {
-                $user_id = Auth::user()->id;
-                $borrow = new Borrow();
-                $borrow->product_id = $product_id;
-                $borrow->user_id = $user_id;
-                $borrow->status = 'pending';
-                $borrow->save();
-                return redirect()->back()->with('message', 'A request has been sent to the admin for approval.');
-            } else {
-                return redirect('/login');
-            }
-        } else {
-            return redirect()->back()->with('message', 'Product niet beschikbaar.');
-        }
-    }
-
     public function mainpage()
     {
-        $data = Product::paginate(10);
+        $data = Product::whereHas('items', function ($query) {
+            $query->where('availability', '>', 0);
+        })->withCount(['items as remaining' => function ($query) {
+            $query->where('availability', '>', 0);
+        }])->paginate(10);
         $data2 = Categorie::all();
         return view('home.mainpage', compact('data', 'data2'));
     }
@@ -95,9 +78,13 @@ class HomeController extends Controller
             $query->where('category_id', $category);
         }
         if ($availability === 'Niet_beschikbaar') {
-            $query->where('Quantity', 0); // Toon producten waar de hoeveelheid gelijk is aan 0
+            $query->whereDoesntHave('items', function ($query) {
+                $query->where('availability', '>', 0);
+            }); // Toon producten waar de hoeveelheid gelijk is aan 0
         } elseif ($availability === 'Beschikbaar') {
-            $query->where('Quantity', '>', 0); // Toon producten waar de hoeveelheid groter is dan 0
+            $query->whereHas('items', function ($query) {
+                $query->where('availability', '>', 0);
+            }); // Toon producten waar de hoeveelheid groter is dan 0
         }
 
         // Haal de resultaten op en geef deze door naar de view
@@ -138,7 +125,9 @@ class HomeController extends Controller
         // Optioneel: Filter op categorie als een specifieke categorie is geselecteerd
 
         // Haal de resultaten op en geef deze door naar de view
-        $query->where('Quantity', '>', 0);
+        $query->whereHas('items', function ($query) {
+            $query->where('availability', '>', 0);
+        });
         $data = $query->paginate(10);
         $data->appends(['search' => $search]);
         $data2 = Categorie::all();
