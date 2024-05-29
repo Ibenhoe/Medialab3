@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
   @include('home.css')
-  <style>
+  <style type="text/css">
     .logo {
       width: 3.5rem;
     }
@@ -161,7 +163,7 @@
                 @if($datas->extended == 1)
                   <a href="{{ route('extend.reservation', ['id' => $datas->id]) }}" class="verlengKnop" disable>Verlengen</a>
                 @else
-                  <a href="{{ route('extend.reservation', ['id' => $datas->id]) }}" class="verlengKnop">Verlengen</a>
+                  <a onclick="confirmation(event)" href="{{ route('extend.reservation', ['id' => $datas->id]) }}" class="verlengKnop">Verlengen</a>
                 @endif
               
                 <a href="" class="schadeKnop" onclick="openModal('schadeModal-{{ $datas->id }}')">Schade melden</a>
@@ -210,6 +212,24 @@
       }
     }
   </script>
+  <script type="text/javascript">
+            function confirmation(ev){
+              ev.preventDefault();
+              var urlToRedirect = ev.currentTarget.getAttribute('href');
+              console.log(urlToRedirect);
+          swal({
+                title: "Ben je zeker?",
+                text: "Je kan maximaal 1 keer verlengen.",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willCancel) => {
+              if (willCancel) {
+                window.location.href = urlToRedirect
+              }});
+            }
+    </script>
 </body>
 
 </html>
