@@ -169,7 +169,7 @@
               <p>{{$datas->product->Merk}} {{$datas->product->title}}</p>
               <div class="rechterStuk">
                 @if($datas->extended == 1)
-                  <a href="{{ route('extend.reservation', ['id' => $datas->id]) }}" class="verlengKnop" disable>Verlengen</a>
+                  <a href="{{ route('extend.reservation', ['id' => $datas->id]) }}" class="verlengKnop" disable style="filter: brightness(60%); cursor: default;">Verlengd</a>   
                 @else
                   <a onclick="confirmation(event)" href="{{ route('extend.reservation', ['id' => $datas->id]) }}" class="verlengKnop">Verlengen</a>
                 @endif
