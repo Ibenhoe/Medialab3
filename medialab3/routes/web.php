@@ -100,6 +100,9 @@ route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart'])->middlew
 Route::post('/confirm_reservation', [HomeController::class, 'confirmReservation'])->name('confirm_reservation');
 Route::get('/blacklistview', [HomeController::class, 'blacklistview'])->name('blacklistview');
 
+Route::post('/schade-melden/{id}', [HomeController::class, 'schadeMelden'])->name('schade.melden');
+
+
 
 Route::middleware([
     'auth:sanctum',

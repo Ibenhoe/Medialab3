@@ -338,4 +338,19 @@ class HomeController extends Controller
         
         return view('home.blacklistpage');
     }
+    public function schadeMelden(Request $request, $id)
+{
+    $request->validate([
+        'schadeOmschrijving' => 'required|string|max:255',
+    ]);
+
+    $reservation = Reservation::findOrFail($id);
+    $reservation->defect = $request->schadeOmschrijving;
+    $reservation->status = 'schade gemeld'; // Eventueel een status bijwerken
+    $reservation->save();
+
+    return redirect()->back()->with('message', 'Schade is gemeld.');
 }
+}
+
+
