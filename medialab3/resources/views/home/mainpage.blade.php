@@ -22,7 +22,7 @@
 
           <!-- Header -->
           <div class="section-heading">
-            <h2><em style="color: #e30613;">Bekijk</em> alles wat beschikbaar is.</h2>
+            <h2><em style="color: #e30613;">Bekijk</em> alle producten</h2>
           </div>
         </div>
 

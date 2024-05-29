@@ -4,12 +4,12 @@
         <div class="col-lg-6">  
         </div>
         <div class="col-lg-12">
-          <div class="row grid">
+          <div class="row justify-content-center">
             @foreach($data as $data1)
             <div class="col-lg-6 currently-market-item all msc">
               <div class="item">
                 <div class="left-image">
-                  <img src="producten_images/{{$data1->product_img}}" alt="" style="border-radius: 20px; min-width: 195px; max-width: 195px">
+                  <img src="producten_images/{{$data1->product_img}}" alt="" style="border-radius: 20px; min-width: 195px; max-width: 195px; max-height: 220px;">
                 </div>
                 <div class="right-content">
                   <h4>{{$data1->Merk}} {{$data1->title}}</h4>
