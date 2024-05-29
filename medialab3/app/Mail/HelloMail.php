@@ -32,7 +32,7 @@ class HelloMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Hello Mail',
+            subject: 'Bevestiging van uw uitleenaanvraag',
         );
     }
 

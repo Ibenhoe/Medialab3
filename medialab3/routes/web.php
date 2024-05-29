@@ -114,10 +114,9 @@ Route::middleware([
     })->name('dashboard');
 });
 
-
-/*Route::get('/', function () {
-    Mail::to('andreipredaa11@gmail.com')
+/*
+Route::get('/', function () {
+    Mail::to('dejaynyo@gmail.com')
         ->send(new HelloMail());
 });
 */
-
