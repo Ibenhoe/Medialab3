@@ -13,12 +13,12 @@ class HelloMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
+    public $user;
+    public $itmes;
+    public function __construct($user, $items)
     {
-        //
+        $this->user = $user;
+        $this->items = $items;
     }
 
     public function build()

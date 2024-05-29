@@ -1,8 +1,10 @@
 @component('mail::message')
-<p>Beste [NAAM],</p>
+<p>Beste {{ $user->name }},</p>
 <p>Hartelijk dank voor het gebruikmaken van onze uitleendienst. Dit is een bevestiging van de items die u heeft geleend.</p>
 
-[ITEMS]
+
+<p>{{ $reservation->items }}</p>
+
 
 <p>U kan deze items de eerst volgende maandag komen oppikken in het MediaLab.</p>
 

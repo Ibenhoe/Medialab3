@@ -250,7 +250,9 @@ class HomeController extends Controller
                 $item->availability = 0;
                 $item->save();
 
-                Mail::to('dejaynyo@gmail.com')->send(new HelloMail());
+                $user = Auth::user();
+                $items = $reservation->items;
+                Mail::to('dejaynyo@gmail.com')->send(new HelloMail($user, $items));
                 return redirect()->back()->with('message', 'Your reservation request has been sent.');
             } else {
                 // Handle the case where no available item is found
