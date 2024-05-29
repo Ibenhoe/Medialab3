@@ -77,7 +77,7 @@
           swal({
                 title: "Ben je zeker?",
                 text: "Eens blacklist zal de gebruiker niet meer het recht hebben om uit te lenen.",
-                icon: "Waarschuwing",
+                icon: "warning",
                 buttons: true,
                 dangerMode: true,
             })
