@@ -6,7 +6,7 @@
     <div class="container-fluid d-flex align-items-center justify-content-between">
       <div class="navbar-header">
         <!-- Navbar Header -->
-        <a href="index.html" class="navbar-brand">
+        <a href="home" class="navbar-brand">
           <img src="assets/images/eraslogo-white.png" style="width: 100px; height: auto;">
         </a>
       </div>
