@@ -8,7 +8,9 @@
       .logo{
         width: 3.5rem;
       }
-      
+      .searchText {
+        width: 400px !important;
+      }
     </style>
     
   </head>

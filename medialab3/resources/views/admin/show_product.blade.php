@@ -8,11 +8,11 @@
     <style>
         .div_left{
             margin-left: 20px;
-            
-            
         }
         h1{
             margin-left: 20px;
+            font-size: x-large !important;
+            margin-right: 120px !important;
         }
         th{
             padding: 20px;
@@ -23,6 +23,15 @@
         td{
             padding: 20px;
             border-bottom: 1px solid grey;
+        }
+        .balkje {
+          display: flex;
+        }
+        .searchText{
+          background-color: #282b2f !important;
+          border-radius: 2em !important;
+          height: 2.1em !important;
+          width: 500px !important;
         }
         
     </style>
@@ -46,7 +55,10 @@
                 @endif
               </div>
               </div>
-                <h1>Producten lijst</h1>
+                <div class="balkje">
+                  <h1>Producten lijst</h1>
+                  <input type="search" name="search" class="searchText" placeholder="Zoeken..." autocomplete="on">
+                </div>
                 <table class="div_left">
                     <tr>
                         <th>Product merk</th>
