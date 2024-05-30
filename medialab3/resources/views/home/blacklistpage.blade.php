@@ -19,10 +19,10 @@ h1{
     color: white;
     text-align: center;
     font-size: 50px;
-    margin-top: 200px;
+    margin-top: 150px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 200px;
+    margin-bottom: 150px;
 }
 h3{
     text-align: center;

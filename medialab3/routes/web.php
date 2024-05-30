@@ -80,32 +80,32 @@ route::get('/search', [HomeController::class, 'search']);
 
 route::get('/search2', [HomeController::class, 'search2']);
 
-route::get('/details_product/{id}', [HomeController::class, 'details_product']);
+route::get('/details_product/{id}', [HomeController::class, 'details_product'])->middleware('auth', 'verified', 'blacklist');
 
-route::get('/add_favorites/{id}', [HomeController::class, 'add_favorites'])->middleware('auth', 'verified');
+route::get('/add_favorites/{id}', [HomeController::class, 'add_favorites'])->middleware('auth', 'verified', 'blacklist');
 
-route::get('/show_favorites', [HomeController::class, 'show_favorites'])->middleware('auth', 'verified');
+route::get('/show_favorites', [HomeController::class, 'show_favorites'])->middleware('auth', 'verified', 'blacklist');
 
-route::get('/add_cart/{id}', [HomeController::class, 'add_cart'])->middleware('auth', 'verified');
+route::get('/add_cart/{id}', [HomeController::class, 'add_cart'])->middleware('auth', 'verified', 'blacklist');
 
-route::get('/favo_delete/{id}', [HomeController::class, 'favo_delete']);
+route::get('/favo_delete/{id}', [HomeController::class, 'favo_delete'])->middleware('auth', 'verified', 'blacklist');
 
-route::get('/cart_delete/{id}', [HomeController::class, 'cart_delete']);
+route::get('/cart_delete/{id}', [HomeController::class, 'cart_delete'])->middleware('auth', 'verified', 'blacklist');
 
-route::get('/show_cart', [HomeController::class, 'show_cart'])->middleware('auth', 'verified');
+route::get('/show_cart', [HomeController::class, 'show_cart'])->middleware('auth', 'verified', 'blacklist');
 
-route::get('/show_reservation', [HomeController::class, 'show_reservation'])->middleware('auth', 'verified');
+route::get('/show_reservation', [HomeController::class, 'show_reservation'])->middleware('auth', 'verified', 'blacklist');
 
-route::post('/reservation', [HomeController::class, 'reservation'])->middleware('auth', 'verified');
+route::post('/reservation', [HomeController::class, 'reservation'])->middleware('auth', 'verified', 'blacklist');
 
-route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware('auth', 'verified');
+route::get('/delete_cart/{id}', [HomeController::class, 'delete_cart'])->middleware('auth', 'verified', 'blacklist');
 
-Route::post('/confirm_reservation', [HomeController::class, 'confirmReservation'])->name('confirm_reservation');
-Route::get('/blacklistview', [HomeController::class, 'blacklistview'])->name('blacklistview');
+Route::post('/confirm_reservation', [HomeController::class, 'confirmReservation'])->name('confirm_reservation')->middleware('auth', 'verified', 'blacklist');
+Route::get('/blacklistpage', [HomeController::class, 'blacklistview'])->name('blacklistview');
 
-Route::post('/schade-melden/{id}', [HomeController::class, 'schadeMelden'])->name('schade.melden');
+Route::post('/schade-melden/{id}', [HomeController::class, 'schadeMelden'])->name('schade.melden')->middleware('auth', 'verified', 'blacklist');
 
-Route::get('/extend-reservation/{id}', [HomeController::class, 'extended'])->name('extend.reservation');
+Route::get('/extend-reservation/{id}', [HomeController::class, 'extended'])->name('extend.reservation')->middleware('auth', 'verified', 'blacklist');
 
 
 
