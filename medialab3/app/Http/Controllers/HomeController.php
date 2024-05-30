@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
-
-use App\Models\Borrow;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Categorie;
 use App\Models\Favorites;
 use App\Models\Cart;
@@ -211,9 +210,10 @@ class HomeController extends Controller
 
     public function reservation(Request $request)
     {
+        $today = Carbon::today();
         $request->validate([
-            'product_id' => 'required|integer',
-            'start_date' => 'required|date',
+            'product_id' => 'required|integer|exists:products,id',
+            'start_date' => 'required|date|after_or_equal:'.$today,
             'end_date' => 'required|date|after_or_equal:start_date',
             'reason' => 'required|string|max:255',
             'Defect' => 'nullable|string|max:255',
@@ -280,14 +280,30 @@ class HomeController extends Controller
         $user_id = Auth::id();
 
         // Validatie van de input
-        $request->validate([
+        $today = Carbon::today();
+        $validator = Validator::make($request->all(), [
             'start_date' => 'required|array',
-            'start_date.*' => 'required|date',
+            'start_date.*' => 'required|date|after_or_equal:'.$today,
             'end_date' => 'required|array',
             'end_date.*' => 'required|date|after_or_equal:start_date.*',
-            'reason' => 'required|string',
-
+            'reason' => 'required|string|max:255',
         ]);
+    
+        // Aangepaste validatie: controleer of elke einddatum na de bijbehorende startdatum is
+        $validator->after(function ($validator) use ($request) {
+            $start_dates = $request->start_date;
+            $end_dates = $request->end_date;
+    
+            foreach ($start_dates as $product_id => $start_date) {
+                if (isset($end_dates[$product_id]) && Carbon::parse($end_dates[$product_id])->lt(Carbon::parse($start_date))) {
+                    $validator->errors()->add("end_date.$product_id", "The end date must be after or equal to the start date.");
+                }
+            }
+        });
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         // Loop door de startdatums heen en maak reserveringen aan
         foreach ($request->start_date as $product_id => $startDate) {
