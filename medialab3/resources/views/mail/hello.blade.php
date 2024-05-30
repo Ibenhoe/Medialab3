@@ -2,12 +2,13 @@
 <p>Beste {{ $user->name }},</p>
 <p>Hartelijk dank voor het gebruikmaken van onze uitleendienst. Dit is een bevestiging van de items die u heeft geleend.</p>
 
-    <p>Item: {{ $product->Merk }} {{ $product->title }} </p>
-    <p>Startdatum: {{ $reservation->start_date }} </p>
-    <p>Einddatum: {{ $reservation->end_date }} </p>
-    <p>Reason: {{ $reservation->reason }} </p>
-    <p>Status: {{ $reservation->status }} </p>
-    <p>Serial Number: {{ $item->serial_number }} </p>
+    <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
+        <p><strong>Product:</strong> {{ $product->Merk }} {{ $product->title }}</p>
+        <p><strong>Reden:</strong> {{ $reservation->reason }}</p>
+        <p><strong>Serienummer:</strong> {{ $item->serial_number }}</p>
+        <p><strong>Begindatum:</strong> {{ $reservation->start_date }}</p>
+        <p><strong>Retourdatum:</strong> {{ $reservation->end_date }}</p>
+    </div>
 
 
 <p>U kan deze items de eerst volgende maandag komen oppikken in het MediaLab.</p>
