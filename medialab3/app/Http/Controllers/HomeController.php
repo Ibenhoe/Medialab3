@@ -251,7 +251,7 @@ class HomeController extends Controller
                     $user = Auth::user();
                     $item->item = $item->serial_number;
 
-                    Mail::to('dejaynyo@gmail.com')->send(new HelloMail($user, $item, $product, $reservation));
+                    Mail::to($user->email)->send(new HelloMail($user, $item, $product, $reservation));
                     return redirect()->back()->with('message', 'Your reservation request has been sent.');
                 } else {
                     // Handle the case where no available item is found
