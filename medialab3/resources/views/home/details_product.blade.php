@@ -178,11 +178,8 @@
 
             <label for="end_date"> </label>
             <input type="date" name="end_date" id="end_date"style="display: none;"   required>
+            <button class="knop1" type="submit">Reserveren</button>
             
-
-            <div class="knop1">
-                <button type="submit">Reserveren</button>
-            </div>
         </form>
           
         </div>
