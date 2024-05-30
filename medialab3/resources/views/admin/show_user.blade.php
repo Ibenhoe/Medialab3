@@ -18,6 +18,19 @@
         .page-content {
           background-color: #2d3035;
         }
+        .balkje {
+          display: flex;
+        }
+        .balkje h1 {
+          font-size: 20px !important;
+          margin-right: 120px !important;
+        }
+        .searchText{
+          background-color: #282b2f !important;
+          border-radius: 2em !important;
+          height: 2.1em !important;
+          width: 500px !important;
+        }
     </style>
   </head>
   <body>
@@ -40,7 +53,12 @@
 
               <!-- User list -->
               </div>
-                <h1>Gebruiker lijst</h1>
+                <div class="balkje">
+                  <h1>Gebruiker lijst</h1>
+                  <form id="search-form" name="gs" method="submit" role="search" action="{{url('search_product')}}">
+                    <input type="search" name="search" class="searchText" placeholder="Zoeken..." autocomplete="on">
+                  </form>
+                </div>
                 <table class="div_left">
                     <tr>
                         <th>Naam</th>

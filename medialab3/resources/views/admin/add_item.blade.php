@@ -44,6 +44,13 @@
             width: 40px;
             width: 40px;
         }
+        .product-naam {
+            font-size: 20px !important;
+        }
+        #product_name {
+            background-color: #282b2f !important;
+            border-radius: 2em !important;
+        }
     </style>
 </head>
 
@@ -56,16 +63,16 @@
             <div class="page-header">
                 <div class="container-fluid">
                     <div class="div_left">
-                        <h1 class="h2">Generate Serial Number for item</h1>
+                        <h1 class="h2">Genereer een serienummer voor een item</h1>
                         <form method="GET" action="{{ url('add_item') }}">
                             @csrf
                             <div class="div_pad">
-                                <label for="product_name">Product name</label>
+                                <label class="product-naam" for="product_name">Product naam</label>
                                 <select name="product_name" id="product_name" required onchange="this.form.submit()">
-                                    <option value="0" {{ old('product_name', request('product_name')) == 0 ? 'selected' : '' }}>Select a Product</option>
+                                    <option value="0" {{ old('product_name', request('product_name')) == 0 ? 'selected' : '' }}>Selecteer een Product</option>
                                     @foreach ($data as $item)
                                         <option value="{{ $item->id }}" {{ old('product_name', request('product_name')) == $item->id ? 'selected' : '' }}>
-                                            {{ $item->title }} {{ $item->Merk }}
+                                            {{ $item->Merk }} {{ $item->title }} 
                                         </option>
                                     @endforeach
                                 </select>
@@ -76,8 +83,8 @@
                             <table class="table mt-3">
                                 <thead>
                                     <tr>
-                                        <th>Serial Number</th>
-                                        <th>Availability</th>
+                                        <th>Serienummer</th>
+                                        <th>Beschikbaarheid</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -85,7 +92,7 @@
                                     @foreach ($items as $item)
                                         <tr>
                                             <td>{{ $item->serial_number }}</td>
-                                            <td>{{ $item->availability ? 'Available' : 'Unavailable' }}</td>
+                                            <td>{{ $item->availability ? 'Beschikbaar' : 'Niet beschikbaar' }}</td>
                                             <td><div class="onderDivKnop2"><a onclick="confirmation(event)" href="{{ url('delete_item', $item->item_id)}}"><img src="assets/images/vuilbakje.png"></a></div></td>
                                         </tr>
                                     @endforeach
@@ -96,15 +103,15 @@
                                 @csrf
                                 <input type="hidden" name="product_name" value="{{ request('product_name') }}">
                                 <div class="div_pad">
-                                    <label for="serial_number">Generate Serial Number</label>
-                                    <button type="submit" class="btn btn-primary">Generate</button>
+                                    <label for="serial_number">Genereer serienummer</label>
+                                    <button type="submit" class="btn btn-primary">Genereer</button>
                                 </div>
                             </form>
                         @endif
 
                         @if (session('serial_number'))
                             <div class="alert alert-success mt-3">
-                                Serial Number Generated: {{ session('serial_number') }}
+                                Serienummer gegenereerd: {{ session('serial_number') }}
                             </div>
                         @endif
                         
