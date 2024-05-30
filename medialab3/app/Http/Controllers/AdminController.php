@@ -248,4 +248,58 @@ class AdminController extends Controller
             return redirect()->back()->with('error', 'Item not found');
         }
     }
+    public function search_product(Request $request)
+    {
+        $search = $request->input('search');
+        $query = Product::query();
+
+        if ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('Merk', 'like', '%' . $search . '%')
+                    ->orWhere('title', 'like', '%' . $search . '%')
+                    ->orWhere(function ($query) use ($search) {
+                        $query->whereRaw('CONCAT(Merk, " ", title) like ?', ['%' . $search . '%']);
+                    })
+                    ->orWhereHas('items', function ($query) use ($search) {
+                        $query->where('serial_number', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+        
+
+        $products = $query->get();
+        return view('admin.show_product', compact('products'));
+    }
+
+    public function search_user(Request $request)
+    {
+        $search = $request->input('search');
+        $query = User::query();
+
+        if ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        $data = $query->get();
+        return view('admin.show_user', compact('data'));
+    }
+
+    public function search_blacklist(Request $request)
+    {
+        $search = $request->input('search');
+        $query = User::query();
+
+        if ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+
+        $data = $query->where('blacklist', 1)->get();
+        return view('admin.show_blacklist', compact('data'));
+    }
 }

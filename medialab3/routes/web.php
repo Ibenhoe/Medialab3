@@ -66,6 +66,14 @@ Route::post('generate_serial', [AdminController::class, 'generateSerial'])->name
 
 route::get('/delete_item/{item_id}', [AdminController::class, 'delete_item']);
 
+route::get('/search_product', [AdminController::class, 'search_product']);
+
+route::get('/search_user', [AdminController::class, 'search_user']);
+
+route::get('/search_blacklist', [AdminController::class, 'search_blacklist']);
+
+
+
 
 
 
@@ -106,6 +114,8 @@ Route::get('/blacklistpage', [HomeController::class, 'blacklistview'])->name('bl
 Route::post('/schade-melden/{id}', [HomeController::class, 'schadeMelden'])->name('schade.melden')->middleware('auth', 'verified', 'blacklist');
 
 Route::get('/extend-reservation/{id}', [HomeController::class, 'extended'])->name('extend.reservation')->middleware('auth', 'verified', 'blacklist');
+
+
 
 
 

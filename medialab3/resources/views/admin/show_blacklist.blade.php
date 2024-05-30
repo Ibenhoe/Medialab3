@@ -54,7 +54,7 @@
               </div>
                 <div class="balkje">
                   <h1>Blacklist user list</h1>
-                  <form id="search-form" name="gs" method="submit" role="search" action="{{url('search_product')}}">
+                  <form id="search-form" name="gs" method="submit" role="search" action="{{url('search_blacklist')}}">
                     <input type="search" name="search" class="searchText" placeholder="Zoeken..." autocomplete="on">
                   </form>
                 </div>
