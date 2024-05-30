@@ -14,17 +14,28 @@ class HelloMail extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
-    public $itmes;
-    public function __construct($user, $items)
+    public $item;
+    public $product;
+    public $reservation;
+
+    public function __construct($user, $item, $product, $reservation)
     {
         $this->user = $user;
-        $this->items = $items;
+        $this->item = $item;
+        $this->product = $product;
+        $this->reservation = $reservation;
     }
 
     public function build()
     {       
-        return $this->view('mail.hello');
-    }   
+        return $this->view('mail.hello')
+            ->with([
+                'user' => $this->user,
+                'items' => $this->item,
+                'product' => $this->product,
+                'reservation' => $this->reservation,
+            ]);
+    }
 
     /**
      * Get the message envelope.

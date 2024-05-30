@@ -18,7 +18,7 @@ use App\Mail\HelloMail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
-
+use function PHPUnit\Framework\isNull;
 
 class HomeController extends Controller
 {
@@ -211,63 +211,61 @@ class HomeController extends Controller
 
     public function reservation(Request $request)
     {
-    $request->validate([
-        'product_id' => 'required|integer',
-        'start_date' => 'required|date',
-        'end_date' => 'required|date|after_or_equal:start_date',
-        'reason' => 'required|string|max:255',
-        'Defect' => 'nullable|string|max:255',
-    ]);
+        $request->validate([
+            'product_id' => 'required|integer',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
+            'reason' => 'required|string|max:255',
+            'Defect' => 'nullable|string|max:255',
+        ]);
 
-    $product = Product::find($request->product_id);
+        $product = Product::find($request->product_id);
 
-    // Check if the product exists and has available items
-    if ($product && $product->remaining >= 1) {
-        // Check if the user is logged in
-        if (Auth::check()) {
-            // Retrieve the ID of the logged-in user
-            $user_id = Auth::id();
+        // Check if the product exists and has available items
+        if ($product && $product->remaining >= 1) {
+            // Check if the user is logged in
+            if (Auth::check()) {
+                // Retrieve the ID of the logged-in user
+                $user_id = Auth::id();
 
-            // Find an available item for the product
-            $item = Item::where('product_id', $request->product_id)
+                // Find an available item for the product
+                $item = Item::where('product_id', $request->product_id)
                     ->where('availability', 1)
-                    
                     ->first();
 
+                // Create a new reservation
+                if ($item) {
+                    $reservation = new Reservation();
+                    $reservation->product_id = $request->product_id;
+                    $reservation->item_id = $item->item_id; // Associate the item
+                    $reservation->user_id = $user_id;
+                    $reservation->status = 'pending';
+                    $reservation->start_date = $request->start_date;
+                    $reservation->end_date = $request->end_date;
+                    $reservation->reason = $request->reason;
+                    $reservation->Defect = $request->Defect;
+                    $item->availability = 0;
+                    // Get user details
+                    $reservation->save();
+                    $item->save();
+                    $user = Auth::user();
+                    $item->item = $item->serial_number;
 
-            // Create a new reservation
-            if ($item) {
-                $reservation = new Reservation();
-                $reservation->product_id = $request->product_id;
-                $reservation->item_id = $item->item_id; // Associate the item
-                $reservation->user_id = $user_id;
-                $reservation->status = 'pending';
-                $reservation->start_date = $request->start_date;
-                $reservation->end_date = $request->end_date;
-                $reservation->reason = $request->reason;
-                $reservation->Defect = $request->Defect;
-                $reservation->save();
-                $item->availability = 0;
-                $item->save();
-
-                $user = Auth::user();
-                $items = $reservation->items;
-                Mail::to('dejaynyo@gmail.com')->send(new HelloMail($user, $items));
-                return redirect()->back()->with('message', 'Your reservation request has been sent.');
+                    Mail::to('dejaynyo@gmail.com')->send(new HelloMail($user, $item, $product, $reservation));
+                    return redirect()->back()->with('message', 'Your reservation request has been sent.');
+                } else {
+                    // Handle the case where no available item is found
+                    return redirect()->back()->with('message', 'No available item found for the selected dates.');
+                }
             } else {
-                // Handle the case where no available item is found
-                return redirect()->back()->with('message', 'No available item found for the selected dates.');
+                // User is not logged in
+                return redirect('/login');
             }
         } else {
-            // User is not logged in
-            return redirect('/login');
+            // Product is out of stock
+            return redirect()->back()->with('message', 'This product is out of stock.');
         }
-    } else {
-        // Product is out of stock
-        return redirect()->back()->with('message', 'This product is out of stock.');
     }
-}
-
 
     public function delete_cart($id)
     {
@@ -288,61 +286,61 @@ class HomeController extends Controller
             'end_date' => 'required|array',
             'end_date.*' => 'required|date|after_or_equal:start_date.*',
             'reason' => 'required|string',
-            
+
         ]);
 
         // Loop door de startdatums heen en maak reserveringen aan
         foreach ($request->start_date as $product_id => $startDate) {
 
-                $product = Product::find($product_id);
+            $product = Product::find($product_id);
 
-                    // Check if the product exists and has available items
-                    if ($product && $product->remaining >= 1) {
-                        // Find an available item for the product
-                        $item = Item::where('product_id', $product_id)
-                                    ->where('availability', 1)
-                                    ->first();
+            // Check if the product exists and has available items
+            if ($product && $product->remaining >= 1) {
+                // Find an available item for the product
+                $item = Item::where('product_id', $product_id)
+                    ->where('availability', 1)
+                    ->first();
 
-                        // Create a new reservation
-                        if ($item) {
-                            $reservation = new Reservation();
-                            $reservation->product_id = $product_id;
-                            $reservation->item_id = $item->item_id; // Associate the item
-                            $reservation->user_id = $user_id;
-                            $reservation->status = 'pending';
-                            $reservation->start_date = $startDate;
-                            $reservation->end_date = $request->end_date[$product_id];
-                            $reservation->reason = $request->reason;
-                            $reservation->defect =  null;
-                            $reservation->save();
+                // Create a new reservation
+                if ($item) {
+                    $reservation = new Reservation();
+                    $reservation->product_id = $product_id;
+                    $reservation->item_id = $item->item_id; // Associate the item
+                    $reservation->user_id = $user_id;
+                    $reservation->status = 'pending';
+                    $reservation->start_date = $startDate;
+                    $reservation->end_date = $request->end_date[$product_id];
+                    $reservation->reason = $request->reason;
+                    $reservation->defect =  null;
+                    $reservation->save();
 
-                            // Update item availability
-                            $item->availability = 0;
-                            $item->save();
-                        }
-                    } 
-                    Cart::where('user_id', $user_id)->where('product_id', $product_id)->delete();
+                    // Update item availability
+                    $item->availability = 0;
+                    $item->save();
+                }
             }
-    
+            Cart::where('user_id', $user_id)->where('product_id', $product_id)->delete();
+        }
+
 
         return redirect()->back()->with('message', 'Reserveringen succesvol aangemaakt en items verwijderd uit de winkelwagen.');
     }
     public function blacklistview()
     {
-        
+
         return view('home.blacklistpage');
     }
     public function schadeMelden(Request $request, $id)
     {
-    $request->validate([
-        'schadeOmschrijving' => 'required|string|max:255',
-    ]);
+        $request->validate([
+            'schadeOmschrijving' => 'required|string|max:255',
+        ]);
 
-    $reservation = Reservation::findOrFail($id);
-    $reservation->defect = $request->schadeOmschrijving;
-    $reservation->save();
+        $reservation = Reservation::findOrFail($id);
+        $reservation->defect = $request->schadeOmschrijving;
+        $reservation->save();
 
-    return redirect()->back()->with('message', 'Schade is gemeld.');
+        return redirect()->back()->with('message', 'Schade is gemeld.');
     }
     public function extended($id)
     {
@@ -361,5 +359,3 @@ class HomeController extends Controller
         return redirect()->back()->with('message', 'Reservering succesvol verlengd.');
     }
 }
-
-
