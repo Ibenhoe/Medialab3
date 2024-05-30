@@ -55,7 +55,7 @@
               </div>
                 <div class="balkje">
                   <h1>Gebruiker lijst</h1>
-                  <form id="search-form" name="gs" method="submit" role="search" action="{{url('search_product')}}">
+                  <form id="search-form" name="gs" method="submit" role="search" action="{{url('search_user')}}">
                     <input type="search" name="search" class="searchText" placeholder="Zoeken..." autocomplete="on">
                   </form>
                 </div>
