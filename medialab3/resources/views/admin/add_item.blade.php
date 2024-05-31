@@ -58,11 +58,12 @@
 @include('admin.header')
     <div class="d-flex align-items-stretch">
         @include('admin.sidebar')
-        <!-- Sidebar Navigation end-->
         <div class="page-content">
             <div class="page-header">
                 <div class="container-fluid">
                     <div class="div_left">
+
+                        <!-- Genereer een serienummer voor een item -->
                         <h1 class="h2">Genereer een serienummer voor een item</h1>
                         <form method="GET" action="{{ url('add_item') }}">
                             @csrf
@@ -138,7 +139,7 @@
                 window.location.href = urlToRedirect
               }});
             }
-            </script>
+    </script>
 </body>
 
 </html>

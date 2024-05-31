@@ -19,13 +19,13 @@
 
         @foreach($data as $datas)
 
-        <div class="itemBalkje">
-          <p>{{$datas->product->Merk}} {{$datas->product->title}}</p>
-          <div class="knoppenRechts">
-            <a href="{{url('details_product',$datas->product->id)}}" class="reserveer">Reserveer</a>
-            <a onclick="confirmation(event)" href="{{url('favo_delete',$datas->id)}}" class="vuilbak"><img src="assets/images/vuilbakje.png"></a>
+          <div class="itemBalkje">
+            <p>{{$datas->product->Merk}} {{$datas->product->title}}</p>
+            <div class="knoppenRechts">
+              <a href="{{url('details_product',$datas->product->id)}}" class="reserveer">Reserveer</a>
+              <a onclick="confirmation(event)" href="{{url('favo_delete',$datas->id)}}" class="vuilbak"><img src="assets/images/vuilbakje.png"></a>
+            </div>
           </div>
-        </div>
 
         @endforeach
 

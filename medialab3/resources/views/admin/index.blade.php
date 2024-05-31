@@ -101,10 +101,10 @@
               </tr>
               @endforeach
             </table>
-            </div>
           </div>
         </div>
       </div>
+    </div>
       
     @include('admin.footer')
   </body>

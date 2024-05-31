@@ -12,14 +12,12 @@
     @include('admin.header')
     <div class="d-flex align-items-stretch">
     @include('admin.sidebar2')
-      <!-- Sidebar Navigation end-->
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
-            <div >
+            <div>
+                <!-- Update Category -->
                 <h2>Update Category</h2>
-
-
                 <form action="{{url('update_category', $data->id)}}" method="post">
                     @csrf
                     <label for="">Category name</label>
@@ -27,14 +25,7 @@
                     <input type="submit" class="btn btn-info" value="Update">
 
                 </form>
-
-
             </div>
-
-
-
-
-
           </div>
         </div>
     </div>
