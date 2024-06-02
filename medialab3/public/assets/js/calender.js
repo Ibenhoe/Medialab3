@@ -23,27 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Check of unavailable_dates is ingesteld en zo ja, converteer naar een array van Date-objecten
     var unavailable_dates_input = document.getElementById("unavailable_dates");
-if (unavailable_dates_input) {
-    var unavailable_dates = JSON.parse(unavailable_dates_input.value);
-    blockedDates = unavailable_dates.flatMap(function (dateString) {
-        var date = new Date(dateString);
-        // Voeg de huidige onbeschikbare datum toe
-        var blockedDates = [date];
-        // Voeg zes dagen voor de huidige onbeschikbare datum toe
-        var sixDaysBefore = new Date(date);
-        sixDaysBefore.setDate(date.getDate() - 5);
-        blockedDates.push(sixDaysBefore);
+    if (unavailable_dates_input) {
+        var unavailable_dates = JSON.parse(unavailable_dates_input.value);
+        blockedDates = unavailable_dates.flatMap(function (dateString) {
+            var date = new Date(dateString);
+            // Voeg de huidige onbeschikbare datum toe
+            var blockedDates = [date];
+            // Voeg zes dagen voor de huidige onbeschikbare datum toe
+            var sixDaysBefore = new Date(date);
+            sixDaysBefore.setDate(date.getDate() - 5);
+            blockedDates.push(sixDaysBefore);
 
-        var endDate = new Date(date);
-        endDate.setDate(date.getDate()); // Einddatum is 6 dagen na de onbeschikbare datum
-        while (sixDaysBefore < endDate) {
-            sixDaysBefore.setDate(sixDaysBefore.getDate() + 1);
-            blockedDates.push(new Date(sixDaysBefore)); // Voeg de tussenliggende datum toe
-        }
-        return blockedDates;
-    });
-}
-
+            var endDate = new Date(date);
+            endDate.setDate(date.getDate()); // Einddatum is 6 dagen na de onbeschikbare datum
+            while (sixDaysBefore < endDate) {
+                sixDaysBefore.setDate(sixDaysBefore.getDate() + 1);
+                blockedDates.push(new Date(sixDaysBefore)); // Voeg de tussenliggende datum toe
+            }
+            return blockedDates;
+        });
+    }
 
     // Bepaal de huidige datum en bereken de start van de huidige week (maandag)
     var today = new Date();
@@ -69,7 +68,6 @@ if (unavailable_dates_input) {
     ) {
         blockedDates.push(new Date(d));
     }
-    
 
     // Kalender genereren bij het laden van de pagina
     generateCalendar(currentMonth, currentYear);

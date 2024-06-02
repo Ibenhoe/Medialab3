@@ -17,7 +17,10 @@ use App\Mail\HelloMail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
+<<<<<<< Updated upstream
 use function PHPUnit\Framework\isNull;
+=======
+>>>>>>> Stashed changes
 
 class HomeController extends Controller
 {
@@ -56,7 +59,7 @@ class HomeController extends Controller
         // Haal de gevalideerde invoer op
         $search = $validatedData['search'] ?? '';
         $category = $validatedData['Category'];
-        $availability = $validatedData['Beschikbaarheid'];
+        $availability = $validatedData['Beschikbaarheid'] ?? null;
 
         // Haal alle categorieën op
         $data2 = Categorie::all();
@@ -228,8 +231,17 @@ class HomeController extends Controller
                 // Retrieve the ID of the logged-in user
                 $user_id = Auth::id();
 
+<<<<<<< Updated upstream
                 // Find an available item for the product
                 $item = Item::where('product_id', $request->product_id)
+=======
+            if ($request->start_date < Carbon::now()->toDateString()) {
+                return redirect()->back()->with('message', 'The start date must be today or later.');
+            }
+            
+            // Find an available item for the product
+            $item = Item::where('product_id', $request->product_id)
+>>>>>>> Stashed changes
                     ->where('availability', 1)
                     ->first();
 
