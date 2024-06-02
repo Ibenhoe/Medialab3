@@ -47,16 +47,16 @@
                   </select>
                 </fieldset>
               </div>
-              <!-- Available selector -->
-              <div class="col-lg-3">
+                <!-- Available selector -->
+                <div class="col-lg-3">
                 <fieldset>
                   <select name="Beschikbaarheid" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-                    <option value="Beschikbaar" selected>Beschikbaar</option>
-                    <option value="Niet_beschikbaar">Niet beschikbaar</option>
-
+                  <option value="Alle_producten">Alle Producten</option>
+                  <option value="Beschikbaar" selected>Beschikbaar</option>
+                  <option value="Niet_beschikbaar">Niet beschikbaar</option>
                   </select>
-                </fieldset>
-              </div>
+                </fieldset> 
+                </div>
               <!-- Search button -->
               <div class="col-lg-2">
                 <fieldset>
