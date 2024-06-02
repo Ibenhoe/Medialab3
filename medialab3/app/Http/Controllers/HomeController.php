@@ -139,7 +139,7 @@ class HomeController extends Controller
     public function details_product($id)
     {
         $data = Product::find($id);
-        $quantity = $data->Quantity; // Beschikbaarheid wordt bijgehouden met de 'Quantity'-kolom
+        $quantity = $data->getRemainingAttribute(); // Beschikbaarheid wordt bijgehouden met de 'Quantity'-kolom
 
         // Initialiseer de variabele om de onbeschikbare datums op te slaan
         $unavailable_dates = [];
