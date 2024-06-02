@@ -65,6 +65,10 @@
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
+          <div class="actions">
+                <a href="{{ url('outgoing_products') }}" class="btn btn-primary">Uitgaande Producten</a>
+                <a href="{{ url('incoming_products') }}" class="btn btn-success">Binnenkomende Producten</a>
+            </div>
             <div class="table_request">
             <table >
               <tr>

@@ -9,9 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var blockedDates = [];
 
-    // Blokkeer alle datums voor vandaag
+    // Blokkeer alle datums voor vandaag en meer dan twee weken in de toekomst
     var today = new Date();
+    var twoWeeksLater = new Date();
+    twoWeeksLater.setDate(today.getDate() + 14);
+
     for (var d = new Date(currentYear, 0, 1); d < today; d.setDate(d.getDate() + 1)) {
+        blockedDates.push(new Date(d));
+    }
+    for (var d = new Date(twoWeeksLater.getTime() + (24 * 60 * 60 * 1000)); d <= new Date(currentYear, 11, 31); d.setDate(d.getDate() + 1)) {
         blockedDates.push(new Date(d));
     }
 

@@ -302,4 +302,14 @@ class AdminController extends Controller
         $data = $query->where('blacklist', 1)->get();
         return view('admin.show_blacklist', compact('data'));
     }
+    public function showOutgoingProducts()
+    {
+        $data = Reservation::where('status', 'approved')->paginate(10);
+        return view('admin.index', compact('data'));
+    }
+    public function showIncomingProducts()
+    {
+        $data = Reservation::where('status', 'pending')->paginate(10);
+        return view('admin.index', compact('data'));
+    }
 }

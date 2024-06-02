@@ -72,6 +72,11 @@ route::get('/search_user', [AdminController::class, 'search_user']);
 
 route::get('/search_blacklist', [AdminController::class, 'search_blacklist']);
 
+route::get('/outgoing_products', [AdminController::class, 'showOutgoingProducts']);
+
+route::get('/incoming_products', [AdminController::class, 'showIncomingProducts']);
+
+
 
 
 
