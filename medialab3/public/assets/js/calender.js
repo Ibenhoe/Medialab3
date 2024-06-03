@@ -27,15 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
         var unavailable_dates = JSON.parse(unavailable_dates_input.value);
         unavailable_dates.forEach(function (dateString) {
             var date = new Date(dateString);
-            var sixDaysBefore = new Date(date);
-            sixDaysBefore.setDate(date.getDate() - 5);
+            var startOfWeek = new Date(date);
+            var dayOfWeek = startOfWeek.getDay();
+            startOfWeek.setDate(startOfWeek.getDate() - ((dayOfWeek + 6) % 7));
+            var endOfWeek = new Date(startOfWeek);
+            endOfWeek.setDate(startOfWeek.getDate() + 4);
 
-            var endDate = new Date(date);
-            endDate.setDate(date.getDate() + 6);
-
-            while (sixDaysBefore <= endDate) {
-                blockedDates.push(new Date(sixDaysBefore));
-                sixDaysBefore.setDate(sixDaysBefore.getDate() + 1);
+            while (startOfWeek <= endOfWeek) {
+                blockedDates.push(new Date(startOfWeek));
+                startOfWeek.setDate(startOfWeek.getDate() + 1);
             }
         });
     }
@@ -65,7 +65,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function generateCalendar(month, year) {
-        var firstDay = (new Date(year, month, 1).getDay() + 6) % 7;
+        var firstDay = new Date(year, month, 1).getDay();
+        firstDay = (firstDay + 6) % 7;  // Zorg ervoor dat de week begint op maandag
+        var daysInMonth = new Date(year, month + 1, 0).getDate();
 
         var calendar = document.getElementById("calendar");
         calendar.innerHTML = "";
@@ -76,25 +78,29 @@ document.addEventListener("DOMContentLoaded", function () {
             cell.innerText = daysOfWeek[i];
         }
 
-        for (var i = 0; i < 6; i++) {
-            var row = calendar.insertRow();
-            for (var j = 0; j < 7; j++) {
-                var cell = row.insertCell();
-                var day = i * 7 + j - firstDay + 1;
-                if (day > 0 && day <= new Date(year, month + 1, 0).getDate()) {
-                    cell.innerText = day;
-                    cell.onclick = selectDate;
-                }
-            }
+        var row = calendar.insertRow();
+        for (var i = 0; i < firstDay; i++) {
+            row.insertCell();
         }
 
-        var cells = calendar.getElementsByTagName("td");
-        for (var blocked of blockedDates) {
-            for (var i = 0; i < cells.length; i++) {
-                var day = parseInt(cells[i].innerText);
-                var cellDate = new Date(year, month, day);
-                if (!isNaN(day) && blocked.toDateString() === cellDate.toDateString()) {
-                    cells[i].classList.add("blocked");
+        for (var day = 1; day <= daysInMonth; day++) {
+            if (row.cells.length == 7) {
+                row = calendar.insertRow();
+            }
+            var cell = row.insertCell();
+            var date = new Date(year, month, day);
+
+            cell.innerText = day;
+            if (date.getDay() === 1) {  // Alleen maandagen
+                cell.onclick = selectDate;
+            } else {
+                cell.classList.add("blocked");
+            }
+
+            // Controleer of datum geblokkeerd is
+            for (var blocked of blockedDates) {
+                if (blocked.toDateString() === date.toDateString()) {
+                    cell.classList.add("blocked");
                 }
             }
         }
@@ -113,11 +119,11 @@ document.addEventListener("DOMContentLoaded", function () {
         event.target.classList.add("selected");
 
         var selectedDate = new Date(currentYear, currentMonth, parseInt(event.target.innerText));
-        var dayOfWeek = selectedDate.getDay();
         var startOfWeek = new Date(selectedDate);
-        startOfWeek.setDate(selectedDate.getDate() - ((dayOfWeek + 6) % 7));
+        var dayOfWeek = startOfWeek.getDay();
+        startOfWeek.setDate(startOfWeek.getDate() - ((dayOfWeek + 6) % 7)); // Zorg ervoor dat het op maandag begint
         var endOfWeek = new Date(startOfWeek);
-        endOfWeek.setDate(startOfWeek.getDate() + 6);
+        endOfWeek.setDate(startOfWeek.getDate() + 4);  // Maandag tot Vrijdag
 
         for (var d = new Date(startOfWeek); d <= endOfWeek; d.setDate(d.getDate() + 1)) {
             for (var i = 0; i < cells.length; i++) {
@@ -129,7 +135,12 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        document.getElementById("start_date").value = startOfWeek.toISOString().split("T")[0];
-        document.getElementById("end_date").value = endOfWeek.toISOString().split("T")[0];
+        var adjustedStartOfWeek = new Date(startOfWeek);
+        var adjustedEndOfWeek = new Date(endOfWeek);
+        adjustedStartOfWeek.setDate(adjustedStartOfWeek.getDate() + 1);
+        adjustedEndOfWeek.setDate(adjustedEndOfWeek.getDate() + 1);
+
+        document.getElementById("start_date").value = adjustedStartOfWeek.toISOString().split("T")[0];
+        document.getElementById("end_date").value = adjustedEndOfWeek.toISOString().split("T")[0];
     }
 });
