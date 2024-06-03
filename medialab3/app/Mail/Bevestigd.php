@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class HelloMail extends Mailable
+class Bevestigd extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,12 +28,12 @@ class HelloMail extends Mailable
 
     public function build()
     {       
-        return $this->view('mail.hello')
+        return $this->view('mail.bevestigd')
             ->with([
                 'user' => $this->user,
                 'items' => $this->item,
                 'product' => $this->product,
-                'reservation' => $this->reservation,        
+                'reservation' => $this->reservation,
             ]);
     }
 
@@ -43,17 +43,17 @@ class HelloMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Bevestiging van uw uitleenaanvraag',
+            subject: 'Uw uitleenaanvraag is bevestigd',
         );
     }
-
+    
     /**
      * Get the message content definition.
      */
     public function content(): Content
     {
         return new Content(
-            view: 'mail.hello',
+            view: 'mail.bevestigd',
         );
     }
 

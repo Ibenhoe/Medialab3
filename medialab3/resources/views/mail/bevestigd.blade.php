@@ -5,7 +5,7 @@
     <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
         <p><strong>Product:</strong> {{ $product->Merk }} {{ $product->title }}</p>
         <p><strong>Reden:</strong> {{ $reservation->reason }}</p>
-        <p><strong>Serienummer:</strong> {{ $item->serial_number }}</p>
+        <br>
         <p><strong>Begindatum:</strong> {{ $reservation->start_date }}</p>
         <p><strong>Retourdatum:</strong> {{ $reservation->end_date }}</p>
     </div>

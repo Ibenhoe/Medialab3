@@ -213,7 +213,7 @@ class HomeController extends Controller
         $today = Carbon::today();
         $request->validate([
             'product_id' => 'required|integer|exists:products,id',
-            'start_date' => 'required|date|after_or_equal:'.$today,
+            'start_date' => 'required|date|after_or_equal:' . $today,
             'end_date' => 'required|date|after_or_equal:start_date',
             'reason' => 'required|string|max:255',
             'Defect' => 'nullable|string|max:255',
@@ -283,24 +283,24 @@ class HomeController extends Controller
         $today = Carbon::today();
         $validator = Validator::make($request->all(), [
             'start_date' => 'required|array',
-            'start_date.*' => 'required|date|after_or_equal:'.$today,
+            'start_date.*' => 'required|date|after_or_equal:' . $today,
             'end_date' => 'required|array',
             'end_date.*' => 'required|date|after_or_equal:start_date.*',
             'reason' => 'required|string|max:255',
         ]);
-    
+
         // Aangepaste validatie: controleer of elke einddatum na de bijbehorende startdatum is
         $validator->after(function ($validator) use ($request) {
             $start_dates = $request->start_date;
             $end_dates = $request->end_date;
-    
+
             foreach ($start_dates as $product_id => $start_date) {
                 if (isset($end_dates[$product_id]) && Carbon::parse($end_dates[$product_id])->lt(Carbon::parse($start_date))) {
                     $validator->errors()->add("end_date.$product_id", "The end date must be after or equal to the start date.");
                 }
             }
         });
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }

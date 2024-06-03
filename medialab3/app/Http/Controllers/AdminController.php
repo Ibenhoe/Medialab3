@@ -13,6 +13,11 @@ use App\Models\Categorie;
 use App\Models\Item;
 use App\Models\Product;
 use App\Models\Reservation;
+use App\Mail\Weigeren;
+use App\Mail\HelloMail;
+use App\Mail\Bevestigd;
+use Illuminate\Support\Facades\Mail;
+
 
 class AdminController extends Controller
 {
@@ -24,14 +29,15 @@ class AdminController extends Controller
     public function index()
     {
         $data = Reservation::paginate(10);
-        $data2 = auth()->user()->name;
-        return view('admin.index', compact('data', 'data2'));
+        $user = auth()->user()->name;
+        return view('admin.index', compact('data', 'user'));
     }
 
     public function categorie_page()
     {
         $data = Categorie::paginate(10);
-        return view('admin.categorie', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.categorie', compact('data', 'user'));
     }
 
     public function add_category(Request $request)
@@ -66,8 +72,8 @@ class AdminController extends Controller
     public function add_product()
     {
         $data = Categorie::all();
-
-        return view('admin.add_product', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.add_product', compact('data', 'user'));
     }
 
     public function store_product(Request $request)
@@ -97,7 +103,8 @@ class AdminController extends Controller
     public function show_product()
     {
         $products = Product::all();
-        return view('admin.show_product', compact('products'));
+        $user = auth()->user()->name;
+        return view('admin.show_product', compact('products', 'user'));
     }
 
     public function product_delete($id)
@@ -137,18 +144,32 @@ class AdminController extends Controller
     public function approve_product($id)
     {
         $data = Reservation::find($id);
-
+    
         if ($data->status == 'approved') {
             return redirect()->back()->with('message', 'Product Already Approved');
         } else {
             $item = Item::find($data->item_id);
             $item->availability = 0;
             $item->save();
+    
             $data->status = 'approved';
-            $data->save();
+    
+            $product = Product::find($item->product_id);
+    
+            // Retrieve the user associated with the reservation
+            $user = User::find($data->user_id);
+    
+            if ($user) {
+                Mail::to($user->email)->send(new Bevestigd($user, $item, $product, $data));
+                $data->save();
+            }
+            else
+                return redirect()->back()->with('error', 'User not found');
+    
             return redirect()->back()->with('message', 'Product Approved Successfully');
         }
     }
+    
 
     public function returned_product($id)
     {
@@ -179,7 +200,8 @@ class AdminController extends Controller
     public function show_user()
     {
         $data = User::all();
-        return view('admin.show_user', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.show_user', compact('data', 'user'));
     }
 
     public function blacklist($id)
@@ -201,18 +223,19 @@ class AdminController extends Controller
     public function show_blacklist()
     {
         $data = User::where('blacklist', 1)->get();
-        return view('admin.show_blacklist', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.show_blacklist', compact('data', 'user'));
     }
 
     public function add_item(Request $request)
     {
         $data = Product::all();
         $items = collect(); // Create an empty collection
-
+        $user = auth()->user()->name;
         if ($request->has('product_name') && $request->input('product_name') != 0) {
             $items = Item::where('product_id', $request->input('product_name'))->get();
         }
-        return view('admin.add_item', compact('data', 'items'));
+        return view('admin.add_item', compact('data', 'items', 'user'));
     }
 
     public function generateSerial(Request $request){
