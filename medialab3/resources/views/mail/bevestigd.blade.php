@@ -1,6 +1,7 @@
 @component('mail::message')
 <p>Beste {{ $user->name }},</p>
-<p>Hartelijk dank voor het gebruikmaken van onze uitleendienst. Dit is een bevestiging van de items die u heeft geleend.</p>
+<p>Uw aanvraag tot uitlenen is geaccepteerd.</p>
+<p>Hartelijk dank voor het gebruikmaken van onze uitleendienst. Hierbij ontvangt u een bevestiging van de items die u heeft geleend.</p>
 
     <div style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
         <p><strong>Product:</strong> {{ $product->Merk }} {{ $product->title }}</p>
@@ -11,7 +12,7 @@
     </div>
 
 
-<p>U kan deze items de eerst volgende maandag komen oppikken in het MediaLab.</p>
+<p>U kunt deze items komen ophalen op de eerstvolgende maandag in het MediaLab.</p>
 
 <p><b>Uitleenvoorwaarden:</p></b>   
 
@@ -31,4 +32,4 @@
 
 <p>Met vriendelijke groet,</p>
 
-<p>Uitleendienst Erasmushogeschool Brussel.</p>
+<p>Uitleendienst Erasmushogeschool Brussel</p>

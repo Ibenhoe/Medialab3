@@ -43,7 +43,7 @@ class Bevestigd extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Uw uitleenaanvraag is bevestigd',
+            subject: 'Uw uitleenaanvraag is geaccepteerd',
         );
     }
     
