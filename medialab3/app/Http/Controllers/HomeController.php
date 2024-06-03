@@ -198,9 +198,11 @@ class HomeController extends Controller
     }
     public function show_cart()
     {
+        //$today = date('Y-m-d');
         $user_id = Auth::user()->id;
         $data = Cart::where('user_id', $user_id)->with('product')->get();
         return view('home.show_cart', compact('data'));
+        //return view('home.show_cart', ['today' => $today, 'data' => $data]);
     }
     public function show_reservation()
     {

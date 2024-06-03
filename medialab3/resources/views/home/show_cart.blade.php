@@ -168,10 +168,14 @@
     border: none;
     border-radius: 2em;
   }
+  .labeltjes {
+    color: white;
+  }
 </style>
 
 <body>
   @include('home.header')
+  $today = date("Y-m-d");
   <div class="discover-items" style="padding-top: 140px;">
     <div class="container">
       <div class="row">
@@ -195,17 +199,17 @@
                       <!-- Date selector -->
                       <div class="datumselectDiv">
                         <div class="begindatumDiv">
-                          <label for="start_date_{{ $datas->id }}">Startdatum:</label>
-                          <input type="date" id="start_date_{{ $datas->id }}" name="start_date[{{ $datas->product->id }}]" required>
+                          <label class="labeltjes" for="start_date_{{ $datas->id }}">Startdatum:</label>
+                          <input type="date" id="start_date_{{ $datas->id }}" name="start_date[{{ $datas->product->id }}]" class="start-date" min="{{ $today }}" required>
                         </div>
                         <div class="einddatumDiv">
-                          <label for="end_date_{{ $datas->id }}">Einddatum:</label>
-                          <input type="date" id="end_date_{{ $datas->id }}" name="end_date[{{ $datas->product->id }}]" required>
+                          <label class="labeltjes" for="end_date_{{ $datas->id }}">Einddatum:</label>
+                          <input type="date" id="end_date_{{ $datas->id }}" name="end_date[{{ $datas->product->id }}]" class="end-date" min="{{ $today }}" required>
                         </div>
                       </div>
 
                       <!-- Reason selector -->
-                      <label for="reason">Reden:</label>
+                      <label class="labeltjes" for="reason">Reden:</label>
                       <select name="reason" id="reason" required>
                         <option value="">Kies een reden</option>
                         <option value="Project">Project</option>
@@ -249,7 +253,56 @@
   </div>
   @include('home.footer')
   
-  
+  <script>
+    window.onload = function() {
+        var startDateInputs = document.querySelectorAll('.start-date');
+        startDateInputs.forEach(function(input) {
+            input.onchange = function() {
+                var selectedDate = new Date(this.value + 'T00:00:00');
+                var day = selectedDate.getUTCDay();
+                // Days in JavaScript start from 0 (Sunday), so 1 is Monday
+                if (day !== 0) {
+                    this.setCustomValidity('Selecteer een maandag alfublieft');
+                    this.reportValidity();
+                } else {
+                    this.setCustomValidity('');
+                }
+            };
+        });
+
+        var endDateInputs = document.querySelectorAll('.end-date');
+        endDateInputs.forEach(function(input) {
+            input.onchange = function() {
+                var selectedDate = new Date(this.value + 'T00:00:00');
+                var day = selectedDate.getUTCDay();
+                // Days in JavaScript start from 0 (Sunday), so 5 is Friday
+                if (day !== 4) {
+                    this.setCustomValidity('Selecteer een vrijdag alstublieft');
+                    this.reportValidity();
+                } else {
+                    this.setCustomValidity('');
+                }
+            };
+        });
+
+        var form = document.querySelector('form');
+        form.onsubmit = function(e) {
+            startDateInputs.forEach(function(input) {
+                if (!input.checkValidity()) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+            endDateInputs.forEach(function(input) {
+                if (!input.checkValidity()) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        };
+    };
+</script>
+
 </body>
 
 </html>
