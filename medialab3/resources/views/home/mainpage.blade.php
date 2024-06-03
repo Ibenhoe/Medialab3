@@ -51,6 +51,7 @@
               <div class="col-lg-3">
                 <fieldset>
                   <select name="Beschikbaarheid" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                    <option value="Alle_producten" selected>Alle producten</option>
                     <option value="Beschikbaar" selected>Beschikbaar</option>
                     <option value="Niet_beschikbaar">Niet beschikbaar</option>
 

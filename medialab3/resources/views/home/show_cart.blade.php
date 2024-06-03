@@ -1,46 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   @include('home.css')
 </head>
-
 <style>
   .volledigeDiv2 {
     display: flex;
   }
-
   .containerDiv2 {
     width: 58%;
     margin-top: 1em;
   }
-
   .linkerDiv2 {
     width: 100%;
     height: fit-content;
   }
-
   .artikelDiv2 {
     background-color: #282b2f;
     border-radius: 2em;
     margin: 1em;
     margin-top: 0;
   }
-
   .bovenDiv2 {
     display: flex;
   }
-
   .bovenDiv2 img {
     width: 100%;
   }
-
   .imgDiv2 {
     width: 40%;
     height: 40%;
     padding: 1em;
   }
-
   .imgDiv2 img {
     width: max-content;
     border-radius: 1em;
@@ -49,32 +40,26 @@
     margin-top: auto;
     margin-bottom: auto;
   }
-
   .tekstDiv2 {
     display: grid;
     border-left: 1px solid gray;
     padding: 1em;
   }
-
   .tekstDiv2 h2 {
     font-size: x-large;
   }
-
   .tekstDiv2 p {
     font-size: larger;
   }
-
   .onderDiv2 {
     border-top: 1px solid gray;
     display: flex;
     justify-content: space-between;
   }
-
   .onderDivTekst2 {
     font-size: larger;
     padding: 0em 1em 0.5em 1em;
   }
-
   .onderDivKnop2 {
     background-color: #e30613;
     width: 40px;
@@ -87,16 +72,13 @@
     margin-left: auto;
     margin-right: 2em;
   }
-
   .onderDivKnop2:hover {
     filter: brightness(80%);
   }
-
   .onderDivKnop2 img {
     width: 40px;
     width: 40px;
   }
-
   .rechterDiv2 {
     background-color: #282b2f;
     border-radius: 2em;
@@ -105,16 +87,13 @@
     padding: 1em;
     margin-top: 1em;
   }
-
   .artikelLijst2 {
     margin: 1em;
   }
-
   .artikelNaam2 {
     font-size: larger;
     border-bottom: 1px solid gray;
   }
-
   .knopDiv2 {
     background-color: #e30613;
     display: flex;
@@ -124,17 +103,14 @@
     color: white;
     font-weight: 600;
   }
-
   .knopDiv2 button {
     padding: 1em;
     width: 100%;
     height: 100%;
   }
-
   .knopDiv2:hover {
     filter: brightness(80%);
   }
-
   .knopDiv2 a {
     text-decoration: none;
     color: white;
@@ -142,47 +118,37 @@
     font-weight: 700;
     padding: 1em;
   }
-
   .winkelmandText {
     font-size: xx-large;
     margin-left: 1em;
   }
-
   .datumselectDiv {
     display: flex;
   }
-
   .begindatumDiv input {
     width: 17em;
     border: none;
     border-radius: 2em;
   }
-
   .einddatumDiv input {
     width: 17em;
     border: none;
     border-radius: 2em;
   }
-
   select {
     border: none;
     border-radius: 2em;
   }
-  .labeltjes {
-    color: white;
-  }
+  
 </style>
-
 <body>
   @include('home.header')
-  $today = date("Y-m-d");
   <div class="discover-items" style="padding-top: 140px;">
     <div class="container">
       <div class="row">
         <h1 class="winkelmandText">Uitleen mandje</h1>
         <div class="volledigeDiv2">
           <div class="containerDiv2">
-
             <!-- Reservation cart -->
             <div class="linkerDiv2">
               <form action="{{ url('confirm_reservation') }}" method="POST">
@@ -195,21 +161,19 @@
                       <h2>{{ $datas->product->Merk }} {{ $datas->product->title }}</h2>
                       <p>{!! Str::limit($datas->product->description, 90) !!}</p>
                       <input type="hidden" name="product_ids[]" value="{{ $datas->product->id }}">
-
                       <!-- Date selector -->
                       <div class="datumselectDiv">
                         <div class="begindatumDiv">
-                          <label class="labeltjes" for="start_date_{{ $datas->id }}">Startdatum:</label>
-                          <input type="date" id="start_date_{{ $datas->id }}" name="start_date[{{ $datas->product->id }}]" class="start-date" min="{{ $today }}" required>
+                          <label for="start_date_{{ $datas->id }}">Startdatum:</label>
+                          <input type="date" id="start_date_{{ $datas->id }}" name="start_date[{{ $datas->product->id }}]" required>
                         </div>
                         <div class="einddatumDiv">
-                          <label class="labeltjes" for="end_date_{{ $datas->id }}">Einddatum:</label>
-                          <input type="date" id="end_date_{{ $datas->id }}" name="end_date[{{ $datas->product->id }}]" class="end-date" min="{{ $today }}" required>
+                          <label for="end_date_{{ $datas->id }}">Einddatum:</label>
+                          <input type="date" id="end_date_{{ $datas->id }}" name="end_date[{{ $datas->product->id }}]" required>
                         </div>
                       </div>
-
                       <!-- Reason selector -->
-                      <label class="labeltjes" for="reason">Reden:</label>
+                      <label for="reason">Reden:</label>
                       <select name="reason" id="reason" required>
                         <option value="">Kies een reden</option>
                         <option value="Project">Project</option>
@@ -219,14 +183,12 @@
                       </select>
                     </div>
                   </div>
-
                   <!-- Delete button product -->
                   <div class="onderDiv2">
                     <div class="onderDivKnop2"><a href="{{ url('delete_cart', $datas->id) }}"><img src="assets/images/vuilbakje.png"></a></div>
                   </div>
                 </div>
                 @endforeach
-
             </div>
           </div>
           <!-- List of product right -->
@@ -236,14 +198,11 @@
               <div class="artikelLijst2">
                 <p class="artikelNaam2">{{ $datas->product->Merk }} {{ $datas->product->title }}</p>
               </div>
-
               @endforeach
-
               <!-- Submit button reservation -->
               <div class="knopDiv2">
                 <button type="submit">Reservering bevestigen</button>
               </div>
-
             </div>
           </div>
           </form>
@@ -252,55 +211,29 @@
     </div>
   </div>
   @include('home.footer')
-  
   <script>
-    window.onload = function() {
-        var startDateInputs = document.querySelectorAll('.start-date');
-        startDateInputs.forEach(function(input) {
-            input.onchange = function() {
-                var selectedDate = new Date(this.value + 'T00:00:00');
-                var day = selectedDate.getUTCDay();
-                // Days in JavaScript start from 0 (Sunday), so 1 is Monday
-                if (day !== 0) {
-                    this.setCustomValidity('Selecteer een maandag alfublieft');
-                    this.reportValidity();
-                } else {
-                    this.setCustomValidity('');
-                }
-            };
-        });
+    document.addEventListener("DOMContentLoaded", function () {
+    // Zoek alle datum-inputvelden
+    var dateInputs = document.querySelectorAll('input[type="date"]');
 
-        var endDateInputs = document.querySelectorAll('.end-date');
-        endDateInputs.forEach(function(input) {
-            input.onchange = function() {
-                var selectedDate = new Date(this.value + 'T00:00:00');
-                var day = selectedDate.getUTCDay();
-                // Days in JavaScript start from 0 (Sunday), so 5 is Friday
-                if (day !== 4) {
-                    this.setCustomValidity('Selecteer een vrijdag alstublieft');
-                    this.reportValidity();
-                } else {
-                    this.setCustomValidity('');
-                }
-            };
-        });
+    // Loop door elk datum-inputveld
+    dateInputs.forEach(function(input) {
+        // Blokkeer alle dagen behalve maandag
+        input.addEventListener('input', function() {
+            var selectedDate = new Date(input.value);
+            var dayOfWeek = selectedDate.getDay(); // 0 = zondag, 1 = maandag, ..., 6 = zaterdag
+            if (dayOfWeek !== 1) { // Als het geen maandag is
+                // Bereken het aantal dagen dat moet worden afgetrokken om terug te gaan naar de vorige maandag
+                var daysToSubtract = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+                selectedDate.setDate(selectedDate.getDate() - daysToSubtract);
 
-        var form = document.querySelector('form');
-        form.onsubmit = function(e) {
-            startDateInputs.forEach(function(input) {
-                if (!input.checkValidity()) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            endDateInputs.forEach(function(input) {
-                if (!input.checkValidity()) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-        };
-    };
+                // Stel de waarde van het inputveld in op de vorige maandag
+                var previousMonday = selectedDate.getFullYear() + '-' + ('0' + (selectedDate.getMonth() + 1)).slice(-2) + '-' + ('0' + selectedDate.getDate()).slice(-2);
+                input.value = previousMonday;
+            }
+        });
+    });
+});
 </script>
 
 </body>
