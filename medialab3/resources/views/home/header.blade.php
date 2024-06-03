@@ -1,6 +1,5 @@
 
 
-
 <!-- ***** Header Area Start ***** -->
 <header class="header-area header-sticky">
     <div class="container">
@@ -14,10 +13,10 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li><a href="{{url('/')}}" class="{{ Request::is('/') ? 'active' : '' }}"><img src="assets/images/homeIcon-white.png" alt="" style="max-width: 35px;" ></a></li>
-                        <li><a href="{{url('show_favorites')}}" class="{{ Request::is('show_favorites') ? 'active' : '' }}"><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a></li>
-                        <li><a href="{{url('show_cart')}}" class="{{ Request::is('show_cart') ? 'active' : '' }}"><img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 35px;" ></a></li>
-                        <li><a href="{{url('show_reservation')}}" class="{{ Request::is('show_reservation') ? 'active' : '' }}"><img src="assets/images/kalender-white.png" alt="" style="max-width: 35px;" ></a></li>
+                        <li><a href="{{url('/')}}" class="{{ Request::is('/') ? 'active' : '' }}"><img src="assets/images/homeIcon-white.png" alt="" style="max-width: 35px;" ></a> Startpagina </li>
+                        <li><a href="{{url('show_favorites')}}" class="{{ Request::is('show_favorites') ? 'active' : '' }}"><img src="assets/images/favorieten-white.png" alt="" style="max-width: 35px;" ></a> </li>
+                        <li><a href="{{url('show_cart')}}" class="{{ Request::is('show_cart') ? 'active' : '' }}"><img src="assets/images/winkelmandje-white.png" alt="" style="max-width: 35px;" > Winkelmand</a></li>
+                        <li><a href="{{url('show_reservation')}}" class="{{ Request::is('show_reservation') ? 'active' : '' }}"><img src="assets/images/kalender-white.png" alt="" style="max-width: 35px;" > Reservaties</a></li>
                         
 
                         @if (Route::has('login'))
