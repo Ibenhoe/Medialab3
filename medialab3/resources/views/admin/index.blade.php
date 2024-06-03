@@ -7,11 +7,11 @@
         th{
             padding: 20px;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 12px;
             border-bottom: 3px solid grey;
         }
         td{
-            padding: 20px;
+            padding: 10px;
             border-bottom: 1px solid grey;
         }
         .page-content {
@@ -20,7 +20,7 @@
         .btn-btn-warning {
           color: white;
           background-color: green;
-          padding: 5px 10px;
+          padding: 5px 5px;
           border-radius: 5px;
           margin-bottom: 5px;
         }
@@ -32,7 +32,7 @@
         .btn-btn-danger {
           color: white;
           background-color: red;
-          padding: 5px 10px;
+          padding: 5px 5px;
           border-radius: 5px;
           margin-bottom: 5px;
         }
@@ -52,6 +52,9 @@
           color: white;
           text-decoration: none;
           filter: brightness(80%);
+        }
+        .minderBreed {
+          font-size: 13px;
         }
     </style>
   </head>
@@ -76,6 +79,7 @@
                 <th>Email</th>
                 <th>Product titel</th>
                 <th>Serial nummer</th>
+                <th>Uitleen/ retour datum</th>
                 <th>Hoeveelheid</th>
                 <th>Status</th>
                 <th>Product afbeelding</th>
@@ -84,12 +88,13 @@
 
               @foreach($data as $borrow)
               <tr>
-                <td>{{$borrow->user->name}}</td>
-                <td>{{$borrow->user->email}}</td>
-                <td>{{$borrow->product->Merk}} {{$borrow->product->title}}</td>
-                <td>{{$borrow->item->serial_number}}</td>
-                <td>{{$borrow->product->getRemainingAttribute()}}</td>
-                <td>{{$borrow->status}}</td>
+                <td class="minderBreed">{{$borrow->user->name}}</td>
+                <td class="minderBreed">{{$borrow->user->email}}</td>
+                <td class="minderBreed">{{$borrow->product->Merk}} {{$borrow->product->title}}</td>
+                <td class="minderBreed">{{$borrow->item->serial_number}}</td>
+                <td class="minderBreed"><p>{{$borrow->start_date}}</p><p> / {{$borrow->end_date}}</p></td>
+                <td class="minderBreed">{{$borrow->product->getRemainingAttribute()}}</td>
+                <td class="minderBreed">{{$borrow->status}}</td>
                 <td><img src="producten_images/{{$borrow->product->product_img}}" style="width: 100px; height: 100px;"></td>
 
                 @if ($borrow->status == 'approved')
