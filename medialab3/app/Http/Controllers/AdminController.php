@@ -58,7 +58,8 @@ class AdminController extends Controller
     public function cat_edit($id)
     {
         $data = Categorie::find($id);
-        return view('admin.edit_category', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.edit_category', compact('data', 'user'));
     }
 
     public function update_category(Request $request, $id)
@@ -118,8 +119,8 @@ class AdminController extends Controller
     {
         $data = Product::find($id);
         $category = Categorie::all();
-
-        return view('admin.update_product', compact('data', 'category'));
+        $user = auth()->user()->name;
+        return view('admin.update_product', compact('data', 'category', 'user'));
     }
 
     public function update_product1(Request $request, $id)
@@ -307,7 +308,8 @@ class AdminController extends Controller
 
 
         $products = $query->get();
-        return view('admin.show_product', compact('products'));
+        $user = auth()->user()->name;
+        return view('admin.show_product', compact('products', 'user'));
     }
 
     public function search_user(Request $request)
@@ -323,7 +325,8 @@ class AdminController extends Controller
         }
 
         $data = $query->get();
-        return view('admin.show_user', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.show_user', compact('data', 'user'));
     }
 
     public function search_blacklist(Request $request)
@@ -339,16 +342,19 @@ class AdminController extends Controller
         }
 
         $data = $query->where('blacklist', 1)->get();
-        return view('admin.show_blacklist', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.show_blacklist', compact('data', 'user'));
     }
     public function showOutgoingProducts()
     {
         $data = Reservation::where('status', 'approved')->paginate(10);
-        return view('admin.index', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.index', compact('data', 'user'));
     }
     public function showIncomingProducts()
     {
         $data = Reservation::where('status', 'pending')->paginate(10);
-        return view('admin.index', compact('data'));
+        $user = auth()->user()->name;
+        return view('admin.index', compact('data', 'user'));
     }
 }
