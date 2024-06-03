@@ -17,9 +17,6 @@ use App\Mail\HelloMail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
 
 class HomeController extends Controller
 {
@@ -230,17 +227,12 @@ class HomeController extends Controller
                 // Retrieve the ID of the logged-in user
                 $user_id = Auth::id();
 
-<<<<<<< Updated upstream
-                // Find an available item for the product
-                $item = Item::where('product_id', $request->product_id)
-=======
             if ($request->start_date < Carbon::now()->toDateString()) {
                 return redirect()->back()->with('message', 'The start date must be today or later.');
             }
             
             // Find an available item for the product
             $item = Item::where('product_id', $request->product_id)
->>>>>>> Stashed changes
                     ->where('availability', 1)
                     ->first();
 
