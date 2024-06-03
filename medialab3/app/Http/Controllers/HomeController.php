@@ -18,7 +18,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
 
 <<<<<<< Updated upstream
-use function PHPUnit\Framework\isNull;
 =======
 >>>>>>> Stashed changes
 
