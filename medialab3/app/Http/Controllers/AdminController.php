@@ -96,7 +96,7 @@ class AdminController extends Controller
             $data->product_img = $product_image_name;
         }
         $data->save();
-        
+
         return redirect()->back()->with('message', 'Product Added Successfully');
     }
 
@@ -144,32 +144,31 @@ class AdminController extends Controller
     public function approve_product($id)
     {
         $data = Reservation::find($id);
-    
+
         if ($data->status == 'approved') {
             return redirect()->back()->with('message', 'Product Already Approved');
         } else {
             $item = Item::find($data->item_id);
             $item->availability = 0;
             $item->save();
-    
+
             $data->status = 'approved';
-    
+
             $product = Product::find($item->product_id);
-    
+
             // Retrieve the user associated with the reservation
             $user = User::find($data->user_id);
-    
+
             if ($user) {
                 Mail::to($user->email)->send(new Bevestigd($user, $item, $product, $data));
                 $data->save();
-            }
-            else
+            } else
                 return redirect()->back()->with('error', 'User not found');
-    
+
             return redirect()->back()->with('message', 'Product Approved Successfully');
         }
     }
-    
+
 
     public function returned_product($id)
     {
@@ -189,8 +188,22 @@ class AdminController extends Controller
 
     public function rejected_product($id)
     {
-        $deleted = DB::table('reservations')->where('id', $id)->delete();
 
+        $data = Reservation::find($id);
+        $item = Item::find($data->item_id);
+        $item->availability = 1;
+        $item->save();
+        $product = Product::find($item->product_id);
+
+        // Retrieve the user associated with the reservation
+        $user = User::find($data->user_id);
+
+        if ($user) {
+            Mail::to($user->email)->send(new Weigeren($user, $item, $product, $data));
+        } else
+            return redirect()->back()->with('error', 'User not found');
+
+        $deleted = DB::table('reservations')->where('id', $id)->delete();
         if ($deleted)
             return redirect()->back()->with('message', 'Product Rejected Successfully');
         else
@@ -238,7 +251,8 @@ class AdminController extends Controller
         return view('admin.add_item', compact('data', 'items', 'user'));
     }
 
-    public function generateSerial(Request $request){
+    public function generateSerial(Request $request)
+    {
         $request->validate([
             'product_name' => 'required|integer|min:1',
         ]);
@@ -250,11 +264,12 @@ class AdminController extends Controller
         $item->serial_number = $serialNumber;
         $item->availability = 1;
         $item->save();
-        
+
         return redirect()->back()->with('serial_number', $serialNumber);
     }
-    
-    private function generateSerialNumber($productId){
+
+    private function generateSerialNumber($productId)
+    {
 
         $serialNumber = 'SN' . strtoupper((uniqid()));
         return $serialNumber;
@@ -289,7 +304,7 @@ class AdminController extends Controller
                     });
             });
         }
-        
+
 
         $products = $query->get();
         return view('admin.show_product', compact('products'));
