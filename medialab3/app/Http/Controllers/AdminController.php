@@ -24,7 +24,8 @@ class AdminController extends Controller
     public function index()
     {
         $data = Reservation::paginate(10);
-        return view('admin.index', compact('data'));
+        $data2 = auth()->user()->name;
+        return view('admin.index', compact('data', 'data2'));
     }
 
     public function categorie_page()
