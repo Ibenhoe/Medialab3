@@ -347,13 +347,13 @@ class AdminController extends Controller
     }
     public function showOutgoingProducts()
     {
-        $data = Reservation::where('status', 'approved')->paginate(10);
+        $data = Reservation::where('status', 'pending')->paginate(10);
         $user = auth()->user()->name;
         return view('admin.index', compact('data', 'user'));
     }
     public function showIncomingProducts()
     {
-        $data = Reservation::where('status', 'pending')->paginate(10);
+        $data = Reservation::where('status', 'approved')->orderBy('end_date', 'asc')->paginate(10);
         $user = auth()->user()->name;
         return view('admin.index', compact('data', 'user'));
     }

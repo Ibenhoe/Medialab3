@@ -80,7 +80,7 @@
                 <th>Product titel</th>
                 <th>Serial nummer</th>
                 <th>Uitleen/ retour datum</th>
-                <th>Hoeveelheid</th>
+                <th>Schade</th>
                 <th>Status</th>
                 <th>Product afbeelding</th>
                 <th>Verander status</th>
@@ -93,7 +93,7 @@
                 <td class="minderBreed">{{$borrow->product->Merk}} {{$borrow->product->title}}</td>
                 <td class="minderBreed">{{$borrow->item->serial_number}}</td>
                 <td class="minderBreed"><p>{{$borrow->start_date}}</p><p> / {{$borrow->end_date}}</p></td>
-                <td class="minderBreed">{{$borrow->product->getRemainingAttribute()}}</td>
+                <td class="minderBreed">{{$borrow->defect}}</td>
                 <td class="minderBreed">{{$borrow->status}}</td>
                 <td><img src="producten_images/{{$borrow->product->product_img}}" style="width: 100px; height: 100px;"></td>
 

@@ -40,12 +40,12 @@
 
               <div class="div_pad">
                   <label for="">Product Merk</label>
-                  <input type="text" name="product_merk">
+                  <input type="text" name="product_merk" required>
               </div>
 
               <div class="div_pad">
                   <label for="">Product Titel</label>
-                  <input type="text" name="product_title">
+                  <input type="text" name="product_title" required>
               </div>
               
               <div class="div_pad">
@@ -60,17 +60,17 @@
 
               <div class="div_pad">
                   <label for="">Product beschrijving</label>
-                  <textarea name="product_description" cols="30" rows="5"></textarea>
+                  <textarea name="product_description" cols="30" rows="5" required></textarea>
               </div>
 
               <div class="div_pad">
                   <label for="">Product afbeelding</label>
-                  <input type="file" name="product_image">
+                  <input type="file" name="product_image" required>
               </div>
 
               <!--Submit button -->
               <div class="div_pad">
-                  <input type="submit" value="Add product" class="btn btn-info">
+                  <input type="submit" value="Product toevoegen" class="btn btn-info">
               </div>
 
             </form>
