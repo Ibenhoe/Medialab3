@@ -107,8 +107,8 @@
                   <tr>
                     <td>{{$datas->cat_title}}</td>
                     <td>
-                      <a class="btn-btn-info" href="{{url('cat_edit',$datas->id)}}">Edit</a>
-                      <a onclick="confirmation(event)" class="btn-btn-danger" href="{{url('cat_delete',$datas->id)}}">Delete</a>
+                      <a class="btn-btn-info" href="{{url('cat_edit',$datas->id)}}">Bewerk</a>
+                      <a onclick="confirmation(event)" class="btn-btn-danger" href="{{url('cat_delete',$datas->id)}}">Verwijder</a>
                     </td>
                   </tr>
                   @endforeach
