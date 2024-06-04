@@ -95,3 +95,36 @@ https://chatgpt.com/share/c2ef519f-6782-4594-b574-090511772cb4
 Youtube tutorial Laravel mail en ChatGPT chatlog voor error oplossing
 https://www.youtube.com/watch?v=PeK_tD4T3Og
 https://chatgpt.com/c/6ba718bc-d338-49c9-a485-21ef4a99aae6
+
+
+Hoe run je onze code:
+Benodigdheden:
+php 8.2
+XAMPP
+
+
+composer install
+Zet de .env file in de bestanden naast de .env.example
+
+npm install
+npm run build
+
+php artisan migrate
+php artisan serve
+
+
+Chatgpt links Iben:
+https://chatgpt.com/share/0b970f15-1566-4e83-8e88-74e61c9dea6f
+https://chatgpt.com/share/973f60fc-0a11-4fd5-b21b-e17a8ecbf229
+https://chatgpt.com/share/eedc7be0-de5b-42f0-bd11-fc85fa4bc3a3
+https://chatgpt.com/share/e0893c58-1af4-4bd0-8839-fd009d322b78
+https://chatgpt.com/share/cf20b365-42f2-426a-b4f6-966ccaaf4189
+https://chatgpt.com/share/e7fdc0f4-53e0-4550-bd1f-0828b41434e3
+https://chatgpt.com/share/97d4f752-2599-45fc-ae31-f94873107103
+https://chatgpt.com/share/359a9942-7156-4c69-8f19-31c043492bd6
+https://chatgpt.com/share/3adc5ea9-6080-43ff-b7ee-4a7ddc3003f0
+https://chatgpt.com/share/dec6459f-3bae-4dff-a9ca-a92e3b3b426e
+https://chatgpt.com/share/4a1cf282-bbd5-47d9-8c40-4b123c854912
+https://chatgpt.com/share/b79f6797-8d42-4fc0-b992-b6870d4b79c5
+https://chatgpt.com/share/493fd47d-af95-4487-9010-542e158ee675
+https://chatgpt.com/share/27791442-50ae-4ada-942b-cf06812f05b0
